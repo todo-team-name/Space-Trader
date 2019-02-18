@@ -3,6 +3,7 @@ import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -27,6 +28,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     private HashMap<PointTypes, Integer> pointValues;
 
     private Spinner difficultySpinner;
+    private TextView pilotName;
     private TextView pilotDisplay;
     private TextView remPointsDisplay;
     private TextView fighterDisplay;
@@ -41,6 +43,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         ArrayAdapter<Difficulty> difficultyArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Difficulty.values());
         difficultyArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyArrayAdapter);
+        pilotName = (TextView) findViewById(R.id.nameInput);
+
 
         pointValues = new HashMap<>();
         pilotDisplay = (TextView) findViewById(R.id.pilotPointsDisplay);
@@ -52,11 +56,14 @@ public class ConfigurationActivity extends AppCompatActivity {
         for (PointTypes pointType : PointTypes.values()) {
             pointValues.put(pointType, 0);
         }
+
     }
 
     public void createGameState(View view) {
-        Player currentPlayer = new Player("Default Name", pointValues);
+        Player currentPlayer = new Player(pilotName.getText().toString(), pointValues);
         GameState currentGameState = new GameState(currentPlayer, (Difficulty) difficultySpinner.getSelectedItem());
+        Log.i("Player Name", currentPlayer.getName());
+        Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
     }
 
     private void updatePointDisplays() {
