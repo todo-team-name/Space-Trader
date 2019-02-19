@@ -12,14 +12,17 @@
         android:paddingTop="50dp"
         android:paddingLeft="50dp"
         android:text="@string/name_label" />
+
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="50dp"
-        android:paddingLeft="50dp"
+        android:layout_toRightOf="@+id/nameLabel"
         android:hint="@string/name_label"
-        android:layout_toRightOf="@+id/nameLabel" />
+        android:inputType="textPersonName"
+        android:paddingLeft="18dp"
+        android:paddingTop="50dp"
+        android:singleLine="false" />
     <TextView
         android:id="@+id/difficultyLabel"
         android:layout_width="wrap_content"
