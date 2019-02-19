@@ -16,5 +16,6 @@ public class ConfigurationViewModel extends AndroidViewModel {
 
     public void setCurrentPlayer(Player player) {
         currentPlayer = player;
+
     }
 }
