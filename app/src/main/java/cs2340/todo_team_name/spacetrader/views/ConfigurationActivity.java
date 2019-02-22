@@ -11,10 +11,13 @@ import android.widget.TextView;
 
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
 import cs2340.todo_team_name.spacetrader.model.GameState;
+import cs2340.todo_team_name.spacetrader.model.GenerateGame;
 import cs2340.todo_team_name.spacetrader.model.Player;
+import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.viewmodel.ConfigurationViewModel;
 import cs2340.todo_team_name.spacetrader.enums.Difficulty;
 import cs2340.todo_team_name.spacetrader.R;
@@ -34,6 +37,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     private TextView fighterDisplay;
     private TextView traderDisplay;
     private TextView engineerDisplay;
+    private HashSet<SolarSystem> solarSystems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         difficultyArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyArrayAdapter);
         pilotName = (TextView) findViewById(R.id.nameInput);
+
 
 
         pointValues = new HashMap<>();
@@ -61,9 +66,14 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     public void createGameState(View view) {
         Player currentPlayer = new Player(pilotName.getText().toString(), pointValues);
+        GenerateGame gameGen = new GenerateGame(currentPlayer, new HashSet<SolarSystem>());
+        solarSystems = gameGen.generate();
         GameState currentGameState = new GameState(currentPlayer, (Difficulty) difficultySpinner.getSelectedItem());
         Log.i("Player Name", currentPlayer.getName());
         Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
+        for(SolarSystem sol : solarSystems) {
+           Log.i("Solar System: ", sol.toString());
+        }
     }
 
     private void updatePointDisplays() {

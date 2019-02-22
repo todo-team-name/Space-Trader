@@ -1,0 +1,6 @@
+package cs2340.todo_team_name.spacetrader.enums;
+
+public enum TechLevel {
+    PREAGRICULTURE, AGRICULTURE, MEDIEVAL, RENAISSANCE, EARLYINDUSTRIAL, INDUSTRIAL,
+    POSTINDUSTRIAL, HITECH
+}
