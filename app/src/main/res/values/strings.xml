@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SpaceTrader</string>
-    <string name="name_label">Name:</string>
+    <string name="name_label">Name</string>
+    <string name="play_button">Play Game</string>
     <string name="skill_points_label">Remaining Skill Points:</string>
     <string name="pilot_points_label">Pilot:</string>
     <string name="fighter_points_label">Fighter:</string>
