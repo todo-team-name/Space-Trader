@@ -10,6 +10,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
+
 import java.util.HashMap;
 
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
@@ -39,10 +41,10 @@ public class ConfigurationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
-        difficultySpinner = findViewById(R.id.difficultySpinner);
-        ArrayAdapter<Difficulty> difficultyArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Difficulty.values());
-        difficultyArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        difficultySpinner.setAdapter(difficultyArrayAdapter);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.difficulty_array, android.R.layout.simple_spinner_item);
+        MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner) findViewById(R.id.difficultySpinner);
+        materialDesignSpinner.setAdapter(adapter);
         pilotName = (TextView) findViewById(R.id.nameInput);
 
 

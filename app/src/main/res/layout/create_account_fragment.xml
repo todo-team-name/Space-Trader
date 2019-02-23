@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".views.LoginFragment">
-
+    tools:context=".views.OnboardFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,35 +26,35 @@
             android:src="@drawable/ic_space_trader_logo" />
 
         <TextView
-            android:id="@+id/welcome"
+            android:id="@+id/hey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/logo"
             android:fontFamily="@font/nunito_bold"
-            android:text="@string/welcome"
+            android:text="@string/hey"
             android:textColor="@color/colorPrimary"
             android:textSize="34sp" />
 
         <TextView
-            android:id="@+id/sign_in"
+            android:id="@+id/create_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/welcome"
-            android:layout_marginBottom="90dp"
+            android:layout_below="@id/hey"
+            android:layout_marginBottom="50dp"
             android:fontFamily="@font/nunito_bold"
-            android:text="@string/sign_in_prompt"
+            android:text="@string/create_account_prompt"
             android:textColor="@color/colorSecondary"
             android:textSize="30sp" />
 
         <!--Username input-->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/username_input_layout"
+            android:id="@+id/new_username_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/sign_in">
+            android:layout_below="@+id/create_account">
 
             <EditText
-                android:id="@+id/username_input"
+                android:id="@+id/new_username_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito"
@@ -65,13 +65,13 @@
 
         <!--Password input-->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_input_layout"
+            android:id="@+id/new_password_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/username_input_layout">
+            android:layout_below="@+id/new_username_input_layout">
 
             <EditText
-                android:id="@+id/password_input"
+                android:id="@+id/new_password_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito"
@@ -80,31 +80,37 @@
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/create_account_button"
-            android:layout_width="wrap_content"
+        <!--Verify password-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/verify_password_input_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/password_input_layout"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="120dp"
-            android:clickable="true"
-            android:fontFamily="@font/nunito"
-            android:text="@string/create_account"
-            android:textColor="@color/colorAccent" />
+            android:layout_below="@+id/new_password_input_layout"
+            android:layout_marginBottom="120dp">
 
-        <!--Sign in button-->
+            <EditText
+                android:id="@+id/verify_password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/verify_password_hint"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Sign up button-->
         <Button
-            android:id="@+id/sign_in_button"
+            android:id="@+id/sign_up_button"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_below="@id/create_account_button"
+            android:layout_below="@id/verify_password_input_layout"
             android:drawableEnd="@drawable/ic_next"
             android:paddingEnd="30dp"
             android:background="@drawable/round_button"
             android:elevation="10dp"
             android:fontFamily="@font/nunito"
             android:stateListAnimator="@null"
-            android:text="@string/play"
+            android:text="@string/get_started"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textSize="20sp"
             android:translationZ="50dp" />
