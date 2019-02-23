@@ -12,19 +12,13 @@ import com.google.android.material.button.MaterialButton;
 import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.viewmodel.NavigationHost;
 
-public class NewUserFragment extends Fragment {
+public class LoginFragment extends Fragment {
 
     @Override
     public View onCreateView (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.new_user_fragment, container, false);
-        MaterialButton playButton = view.findViewById(R.id.play_button);
+        View view = inflater.inflate(R.layout.login_fragment, container, false);
 
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((NavigationHost) getActivity()).navigateTo(new CommanderConfigurationFragment(), false);
-            }
-        });
+
 
         return view;
     }

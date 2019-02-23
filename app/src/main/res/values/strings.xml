@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">SpaceTrader</string>
-    <string name="name_label">Name</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="verify_password_hint">Verify Password</string>
     <string name="play_button">Play Game</string>
     <string name="skill_points_label">Remaining Skill Points:</string>
     <string name="pilot_points_label">Pilot:</string>
@@ -9,4 +11,9 @@
     <string name="engineer_points_label">Engineer:</string>
     <string name="create_player_label">Ok</string>
     <string name="difficulty_label">Difficulty</string>
+    <string name="welcome">Welcome,</string>
+    <string name="sign_in_prompt">sign in to continue</string>
+    <string name="get_started">Get Started</string>
+    <string name="play">Let's Play</string>
+    <string name="create_account">New User? Create an account.</string>
 </resources>

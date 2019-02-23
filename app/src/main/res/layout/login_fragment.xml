@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".views.LoginFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="25dp"
+        android:background="@color/background"
+        android:clipToPadding="false"
+        android:outlineProvider="bounds">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/ic_space_trader_logo" />
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/welcome"
+            android:textColor="@color/colorPrimary"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/welcome"
+            android:layout_marginBottom="105dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/sign_in_prompt"
+            android:textColor="@color/colorSecondary"
+            android:textSize="36sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/username_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sign_in">
+
+            <EditText
+                android:id="@+id/username_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/username_hint"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username_input_layout">
+
+            <EditText
+                android:id="@+id/password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/create_account_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password_input_layout"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="120dp"
+            android:clickable="true"
+            android:fontFamily="@font/nunito"
+            android:text="@string/create_account"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/my_button"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/create_account_button"
+            android:drawableEnd="@drawable/ic_next"
+            android:paddingEnd="30dp"
+            android:background="@drawable/round_button"
+            android:elevation="10dp"
+            android:fontFamily="@font/nunito"
+            android:stateListAnimator="@null"
+            android:text="@string/play"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textSize="20sp"
+            android:translationZ="50dp" />
+    </RelativeLayout>
+</ScrollView>
