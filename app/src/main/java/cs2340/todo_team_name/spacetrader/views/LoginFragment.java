@@ -49,7 +49,11 @@ public class LoginFragment extends Fragment {
     }
 
     // TODO: Methods to validate username and password
-    private boolean isUsernameValid(@Nullable Editable username){}
+    private boolean isUsernameValid(@Nullable Editable username){
+        return true;
+    }
 
-    private boolean isPasswordValid(@Nullable Editable password){}
+    private boolean isPasswordValid(@Nullable Editable password){
+        return true;
+    }
 }
