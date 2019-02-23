@@ -10,9 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-
 import cs2340.todo_team_name.spacetrader.R;
 
 public class LoginFragment extends Fragment {
@@ -20,30 +17,30 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_fragment, container, false);
-        final TextInputLayout usernameTextInput = view.findViewById(R.id.username_input_layout);
-        final TextInputEditText usernameEditText = view.findViewById(R.id.username_input);
-        final TextInputLayout passwordTextInput = view.findViewById(R.id.password_input_layout);
-        final TextInputEditText passwordEditText = view.findViewById(R.id.password_input);
-        Button signInButton = view.findViewById(R.id.sign_in_button);
-
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isUsernameValid(usernameEditText.getText())) {
-                    usernameTextInput.setError(getString(R.string.error_username));
-                } else{
-                    usernameTextInput.setError(null);
-                }
-
-                if(!isPasswordValid(passwordEditText.getText())) {
-                    passwordTextInput.setError(getString(R.string.error_password));
-                } else {
-                    passwordTextInput.setError(null);
-                }
+//        final TextInputLayout usernameTextInput = view.findViewById(R.id.username_input_layout);
+//        final TextInputEditText usernameEditText = view.findViewById(R.id.username_input);
+//        final TextInputLayout passwordTextInput = view.findViewById(R.id.password_input_layout);
+//        final TextInputEditText passwordEditText = view.findViewById(R.id.password_input);
+//        Button signInButton = view.findViewById(R.id.sign_in_button);
+//
+//        signInButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(!isUsernameValid(usernameEditText.getText())) {
+//                    usernameTextInput.setError(getString(R.string.error_username));
+//                } else{
+//                    usernameTextInput.setError(null);
+//                }
+//
+//                if(!isPasswordValid(passwordEditText.getText())) {
+//                    passwordTextInput.setError(getString(R.string.error_password));
+//                } else {
+//                    passwordTextInput.setError(null);
+//                }
 
                 // Once validation is complete start new activity
-            }
-        });
+//            }
+//        });
 
         return view;
     }

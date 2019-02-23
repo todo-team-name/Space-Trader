@@ -11,14 +11,14 @@
         android:layout_height="wrap_content"
         android:paddingTop="50dp"
         android:paddingLeft="50dp"
-        android:text="@string/name_label" />
+         />
 
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/nameLabel"
-        android:hint="@string/name_label"
+
         android:inputType="textPersonName"
         android:paddingLeft="18dp"
         android:paddingTop="50dp"
@@ -239,6 +239,5 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="50dp"
         android:onClick="createGameState"
-        android:text="@string/create_player_label" />
-
+    />
 </RelativeLayout>
