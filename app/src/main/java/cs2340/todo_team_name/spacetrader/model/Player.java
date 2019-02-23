@@ -8,6 +8,8 @@ public class Player {
     private String name;
 
     private HashMap<PointTypes, Integer> points;
+    private int credits;
+    private Ship ship;
 
 
     /**
@@ -17,6 +19,8 @@ public class Player {
     public Player (String name, HashMap<PointTypes, Integer> points) {
         this.name = name;
         this.points = points;
+        this.credits = 100;
+
     }
 
 //    /**

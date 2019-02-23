@@ -1,7 +1,14 @@
 package cs2340.todo_team_name.spacetrader.model;
 
+
 import java.util.HashSet;
 import java.util.Random;
+
+import cs2340.todo_team_name.spacetrader.enums.Colors;
+import cs2340.todo_team_name.spacetrader.enums.GovernmentType;
+import cs2340.todo_team_name.spacetrader.enums.MarketType;
+import cs2340.todo_team_name.spacetrader.enums.ResourceType;
+import cs2340.todo_team_name.spacetrader.enums.TechLevel;
 
 public class GenerateGame {
     private String[] nameList =
@@ -129,21 +136,70 @@ public class GenerateGame {
             };
     private HashSet<SolarSystem> solarSystems;
     private Player pilot;
+    private int numPlanets = 0;
+    private SolarSystem[] solar;
+    private int ind = 0;
+    private HashSet<String> usedNames;
+    private GovernmentType[] governmentTypes;
+    private TechLevel[] techLevels;
+    private ResourceType[] resources;
+    private MarketType[] marketTypes;
+    private int solsCovered = 0;
+    private Colors[] colors;
 
     public GenerateGame(Player pilot, HashSet<SolarSystem> solarSystems) {
         this.pilot = pilot;
         this.solarSystems = solarSystems;
+        this.solar = new SolarSystem[10];
+        this.usedNames = new HashSet<>();
+        this.governmentTypes = GovernmentType.values();
+        this.techLevels = TechLevel.values();
+        this.resources = ResourceType.values();
+        this.marketTypes = MarketType.values();
+        this.colors = Colors.values();
     }
 
 
 
     public HashSet<SolarSystem> generate() {
         Random num = new Random();
-        while(solarSystems.size() <= 10) {
+        //while(solarSystems.size() <= 10) {
+        while (numPlanets < 20) {
             int randName = num.nextInt(100);
-            int randXCoord = num.nextInt(50);
-            int randYCoord = num.nextInt(100);
-            this.solarSystems.add(new SolarSystem(nameList[randName],randXCoord, randYCoord));
+            if (solarSystems.size() < 10) {
+                int randXCoord = num.nextInt(50);
+                int randYCoord = num.nextInt(100);
+                boolean canAdd = usedNames.add(nameList[randName]);
+                if (canAdd) {
+                    SolarSystem toAdd = new SolarSystem(nameList[randName], randXCoord, randYCoord);
+                    this.solarSystems.add(toAdd);
+                    solar[ind] = toAdd;
+                    ind++;
+                }
+            } else {
+                int randIndex = num.nextInt(10);
+                boolean canAddPlanet = usedNames.add(nameList[randName]);
+                if (canAddPlanet) {
+                    GovernmentType randGov = governmentTypes[num.nextInt(3)];
+                    TechLevel randTech = techLevels[num.nextInt(8)];
+                    MarketType randMarket = marketTypes[num.nextInt(2)];
+                    ResourceType randResource = resources[num.nextInt(12)];
+                    String randColor = colors[num.nextInt(4)].getHex();
+                    Planet toAdd = new Planet(nameList[randName], randTech, randGov, randMarket, randColor);
+                    if (solsCovered < 10) {
+                        solar[solsCovered].addPlanet(toAdd);
+                        solsCovered++;
+                        numPlanets++;
+                    } else {
+                        boolean added = solar[randIndex].addPlanet(toAdd);
+                        while (!added) {
+                            randIndex = num.nextInt(10);
+                            added = solar[randIndex].addPlanet(toAdd);
+                        }
+                        numPlanets++;
+                    }
+                }
+            }
         }
         return this.solarSystems;
     }

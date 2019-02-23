@@ -4,14 +4,26 @@ public class SolarSystem {
     private String name;
     private int[] location;
     private Planet[] planets;
+    private int numPlanets;
 
     public SolarSystem(String name, int x, int y) {
         location = new int[2];
+        planets = new Planet[5];
+        numPlanets = 0;
         this.name = name;
         this.location[0] = x;
         this.location[1] = y;
     }
 
+    public boolean addPlanet(Planet p) {
+        if (numPlanets < planets.length) {
+            planets[numPlanets] = p;
+            numPlanets++;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     @Override
     public boolean equals(Object other) {
@@ -37,6 +49,10 @@ public class SolarSystem {
     }
     @Override
     public String toString() {
-       return "Name: " + name + " (" + location[0] + "," +location[1] + ")";
+        String currentPlanets = "";
+        for (Planet p: planets) {
+            currentPlanets += "\t" + p + "\n";
+        }
+       return "Name: " + name + " (" + location[0] + "," +location[1] + ") \n" + currentPlanets;
     }
 }
