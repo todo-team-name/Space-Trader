@@ -51,11 +51,12 @@ public enum Resources {
 
     private void buildIncreasedAndDecreased() {
 
+        /**
         ResourceType[] toAdd = {ResourceType.DESERT};
         increasedRes.put(WATER, toAdd);
-        toAdd = {ResourceType.LOTSOFWATER}
+        toAdd = {ResourceType.LOTSOFWATER};
         decreasedRes.put(WATER, toAdd);
-        toAdd = {ResourceType.LIFELESS}
+        toAdd = {ResourceType.LIFELESS};
         increasedRes.put(FURS, toAdd);
         toAdd
         decreasedRes.put(FURS, ResourceType.RICHFUANA);
@@ -71,7 +72,7 @@ public enum Resources {
         //maybe add PLAGUED by probably best for event
         decreasedRes.put(NARCOTICS, ResourceType.WEIRDMUSHROOMS);
         //again maybe add BORED for Narcotics
-        increasedRes.put(ROBOTS, ResourceType.WARLIKE);
+        increasedRes.put(ROBOTS, ResourceType.WARLIKE); **/
 
     }
 }
