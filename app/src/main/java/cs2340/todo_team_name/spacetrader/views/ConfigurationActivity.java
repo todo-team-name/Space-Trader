@@ -40,7 +40,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_configuration);
+        setContentView(R.layout.configure_commander_fragment);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.difficulty_array, android.R.layout.simple_spinner_item);
         MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner) findViewById(R.id.difficultySpinner);
@@ -62,10 +62,11 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     public void createGameState(View view) {
-        Player currentPlayer = new Player(pilotName.getText().toString(), pointValues);
-        GameState currentGameState = new GameState(currentPlayer, (Difficulty) difficultySpinner.getSelectedItem());
-        Log.i("Player Name", currentPlayer.getName());
-        Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
+        //Player currentPlayer = new Player(pilotName.getText().toString(), pointValues);
+        //GameState currentGameState = new GameState(currentPlayer, (Difficulty) difficultySpinner.getSelectedItem());
+        //Log.i("Player Name", currentPlayer.getName());
+        //Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
+        Log.i("I would be created here", "THIS STUFF");
     }
 
     private void updatePointDisplays() {

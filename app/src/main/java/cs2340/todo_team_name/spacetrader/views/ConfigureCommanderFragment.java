@@ -38,6 +38,36 @@ public class ConfigureCommanderFragment extends Fragment {
     private TextView engineerDisplay;
 
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.configure_commander_fragment, container, false);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.difficulty_array, android.R.layout.simple_spinner_item);
+        MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner) getActivity().findViewById(R.id.difficultySpinner);
+        materialDesignSpinner.setAdapter(adapter);
+        //pilotName = (TextView) getActivity().findViewById(R.id.nameInput);
+
+
+        pointValues = new HashMap<>();
+        pilotDisplay = (TextView) getActivity().findViewById(R.id.pilotPointsDisplay);
+        traderDisplay = getActivity().findViewById(R.id.traderPointsDisplay);
+        engineerDisplay = getActivity().findViewById(R.id.engineerPointsDisplay);
+        fighterDisplay = getActivity().findViewById(R.id.fighterPointsDisplay);
+        remPointsDisplay = (TextView) getActivity().findViewById(R.id.remainingPointsDisplay);
+
+        for (PointTypes pointType : PointTypes.values()) {
+            pointValues.put(pointType, 0);
+        }
+
+    }
+
+    /*@Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.configure_commander_fragment, container, false);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
@@ -58,13 +88,14 @@ public class ConfigureCommanderFragment extends Fragment {
             pointValues.put(pointType, 0);
         }
         return view;
-    }
+    } */
 
     public void createGameState(View view) {
-        Player currentPlayer = new Player(pilotName.getText().toString(), pointValues);
-        GameState currentGameState = new GameState(currentPlayer, (Difficulty) difficultySpinner.getSelectedItem());
-        Log.i("Player Name", currentPlayer.getName());
-        Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
+        //Player currentPlayer = new Player(pilotName.getText().toString(), pointValues);
+        //GameState currentGameState = new GameState(currentPlayer, (Difficulty) difficultySpinner.getSelectedItem());
+        //Log.i("Player Name", currentPlayer.getName());
+        //Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
+        Log.i("I would be created here", null);
     }
 
     private void updatePointDisplays() {
