@@ -1,7 +1,7 @@
 package cs2340.todo_team_name.spacetrader.views;
 import android.os.Bundle;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.View;
@@ -15,10 +15,7 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 import java.util.HashMap;
 
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
-import cs2340.todo_team_name.spacetrader.model.GameState;
-import cs2340.todo_team_name.spacetrader.model.Player;
 import cs2340.todo_team_name.spacetrader.viewmodel.ConfigurationViewModel;
-import cs2340.todo_team_name.spacetrader.enums.Difficulty;
 import cs2340.todo_team_name.spacetrader.R;
 
 

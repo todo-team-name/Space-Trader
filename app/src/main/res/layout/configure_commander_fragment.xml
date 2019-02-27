@@ -91,7 +91,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito"
-                android:text="@string/pilot_points_label"
+                android:text="@string/pilot_label"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:textSize="22sp" />
@@ -137,7 +137,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito"
-                android:text="@string/fighter_points_label"
+                android:text="@string/fighter_label"
                 android:textColor="@color/colorAccent"
                 android:textSize="22sp"
                 android:textAlignment="center"/>
@@ -184,7 +184,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito"
-                android:text="@string/trader_points_label"
+                android:text="@string/trader_label"
                 android:textColor="@color/colorAccent"
                 android:textSize="22sp"
                 android:textAlignment="center"/>
@@ -230,7 +230,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito"
-                android:text="@string/engineer_points_label"
+                android:text="@string/engineer_label"
                 android:textColor="@color/colorAccent"
                 android:textSize="22sp"
                 android:textAlignment="center"/>

@@ -1,13 +1,11 @@
 package cs2340.todo_team_name.spacetrader.views;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import cs2340.todo_team_name.spacetrader.R;
-import cs2340.todo_team_name.spacetrader.model.Player;
 import cs2340.todo_team_name.spacetrader.viewmodel.NavigationHost;
 
 public class MainActivity extends AppCompatActivity implements NavigationHost {

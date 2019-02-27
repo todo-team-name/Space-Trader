@@ -2,8 +2,8 @@ package cs2340.todo_team_name.spacetrader.viewmodel;
 
 
 import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.annotation.NonNull;
 
 import cs2340.todo_team_name.spacetrader.model.Player;
 

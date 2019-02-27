@@ -1,8 +1,8 @@
 package cs2340.todo_team_name.spacetrader.views;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +16,7 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 import java.util.HashMap;
 
 import cs2340.todo_team_name.spacetrader.R;
-import cs2340.todo_team_name.spacetrader.enums.Difficulty;
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
-import cs2340.todo_team_name.spacetrader.model.GameState;
-import cs2340.todo_team_name.spacetrader.model.Player;
 import cs2340.todo_team_name.spacetrader.viewmodel.ConfigurationViewModel;
 
 public class ConfigureCommanderFragment extends Fragment {
