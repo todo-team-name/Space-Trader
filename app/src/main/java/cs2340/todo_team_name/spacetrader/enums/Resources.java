@@ -56,9 +56,9 @@ public enum Resources {
         /*
         ResourceType[] toAdd = {ResourceType.DESERT};
         increasedRes.put(WATER, toAdd);
-        toAdd = {ResourceType.LOTSOFWATER}
+        toAdd = {ResourceType.LOTSOFWATER};
         decreasedRes.put(WATER, toAdd);
-        toAdd = {ResourceType.LIFELESS}
+        toAdd = {ResourceType.LIFELESS};
         increasedRes.put(FURS, toAdd);
         toAdd
         decreasedRes.put(FURS, ResourceType.RICHFUANA);
