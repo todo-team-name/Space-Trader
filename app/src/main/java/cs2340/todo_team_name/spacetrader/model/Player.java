@@ -1,7 +1,10 @@
 package cs2340.todo_team_name.spacetrader.model;
 
 import java.util.HashMap;
+import java.util.Map;
+
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
+import cs2340.todo_team_name.spacetrader.enums.Resources;
 
 public class Player {
     /** player name **/
@@ -10,6 +13,7 @@ public class Player {
     private HashMap<PointTypes, Integer> points;
     private int credits;
     private Ship ship;
+    private Inventory inventory;
 
 
     /**
@@ -20,7 +24,7 @@ public class Player {
         this.name = name;
         this.points = points;
         this.credits = 100;
-
+        inventory = new Inventory(10);
     }
 
 //    /**
@@ -47,4 +51,32 @@ public class Player {
     }
 
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public String sell(Resources resource) {
+        if(this.inventory.getInventory().get(resource) > 0) {
+            inventory.remove(resource);
+            credits += resource.getScaledValue();
+            return "You sold " + resource.getName();
+        } else {
+            return "You don't appear to have enough of " + resource.getName() + "!";
+        }
+    }
+
+    public String purchase(Resources resource) {
+        if(resource.getScaledValue() > credits) {
+            return "It doesn't seem you can afford " + resource.getName() + "!";
+        }
+        else {
+            if(this.inventory.getSize() <= this.inventory.getMaxCapacity()){
+                inventory.add(resource);
+                credits -= resource.getScaledValue();
+                return "You sold one " + resource.getName() +"!";
+            }
+            else return "It doesn't seem you have enough room in your inventory!";
+
+        }
+    }
 }

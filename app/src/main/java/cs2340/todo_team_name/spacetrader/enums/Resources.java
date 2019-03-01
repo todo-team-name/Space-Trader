@@ -1,5 +1,8 @@
 package cs2340.todo_team_name.spacetrader.enums;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -50,7 +53,7 @@ public enum Resources {
     }
 
     private void buildIncreasedAndDecreased() {
-
+        /*
         ResourceType[] toAdd = {ResourceType.DESERT};
         increasedRes.put(WATER, toAdd);
         toAdd = {ResourceType.LOTSOFWATER}
@@ -72,6 +75,35 @@ public enum Resources {
         decreasedRes.put(NARCOTICS, ResourceType.WEIRDMUSHROOMS);
         //again maybe add BORED for Narcotics
         increasedRes.put(ROBOTS, ResourceType.WARLIKE);
+        */
+        String json =
+                "" + "{" +
+                        "        decrease : {" +
+                        "" +
+                        "                'WATER'         : [LOTSOFWATER]," +
+                        "                'FUR'           : [RICHFUANA]," +
+                        "                'FOOD'          : [RICHSOIL]," +
+                        "                'ORE'           : [MINERALRICH]," +
+                        "                'GAMES'         : [ARTISTIC]," +
+                        "                'MEDICINE'      : [LOTSOFHERBS]," +
+                        "                'NARCOTICS'     : [WEIRDMUSHROOMS]" +
+                        "        }" +
+                        "" +
+                        "        increase : {" +
+                        "                'WATER'         : [DESERT]," +
+                        "                'FURS'          : [LIFELESS]," +
+                        "                'FOOD'          : [POORSOIL]," +
+                        "                'ORE'           : [NOSPECIALRESOURCE, WARLIKE]" +
+                        "                'FIREARMS'      : [WARLIKE]," +
+                        "                'ROBOTS'        : [WARLIKE]" +
+                        "        }" +
+                        "}";
+
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+        } catch (JSONException exc) {
+            exc.getCause();
+        }
 
     }
 }
