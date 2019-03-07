@@ -8,7 +8,7 @@
     <string name="fighter_label">Fighter</string>
     <string name="trader_label">Trader</string>
     <string name="engineer_label">Engineer</string>
-    <string name="difficulty_label">Difficulty</string>
+    <string name="difficulty_label">Choose Your Difficulty</string>
     <string name="welcome">Welcome,</string>
     <string name="sign_in_prompt">sign in to continue</string>
     <string name="get_started">Get Started</string>
@@ -25,4 +25,5 @@
     <string name="map_label">Map</string>
     <string name="commander_status_text">here\'s your commander status</string>
     <string name="next">Next</string>
+    <string name="temp_username">Hi Jameson,</string>
 </resources>

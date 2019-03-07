@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,9 +10,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginRight="25dp"
+        android:paddingLeft="25dp"
+        android:paddingTop="35dp"
+        android:paddingRight="25dp"
         android:background="@color/background"
         android:clipToPadding="false"
         android:outlineProvider="bounds">
@@ -33,7 +33,7 @@
             android:fontFamily="@font/nunito_bold"
             android:text="@string/welcome"
             android:textColor="@color/colorPrimary"
-            android:textSize="34sp" />
+            android:textSize="32sp" />
 
         <TextView
             android:id="@+id/sign_in"
@@ -109,4 +109,4 @@
             android:textSize="20sp"
             android:translationZ="50dp" />
     </RelativeLayout>
-</ScrollView>
+</LinearLayout>
