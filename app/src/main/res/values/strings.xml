@@ -26,4 +26,12 @@
     <string name="commander_status_text">here\'s your commander status</string>
     <string name="next">Next</string>
     <string name="temp_username">Hi Jameson,</string>
+    <string name="cargo">this is your cargo</string>
+    <string name="buy_cargo">Buy Cargo</string>
+    <string name="sell_cargo">Sell Cargo</string>
+    <string name="water_label">Water</string>
+    <string name="furs_label">Furs</string>
+    <string name="food_label">Food</string>
+    <string name="ore_label">Ore</string>
+    <string name="firearms_label">Firearms</string>
 </resources>
