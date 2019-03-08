@@ -4,8 +4,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public enum TechLevel {
-    PREAGRICULTURE, AGRICULTURE, MEDIEVAL, RENAISSANCE, EARLYINDUSTRIAL, INDUSTRIAL,
-    POSTINDUSTRIAL, HITECH;
+    PREAGRICULTURE(0),
+    AGRICULTURE(1),
+    MEDIEVAL(2),
+    RENAISSANCE(3),
+    EARLYINDUSTRIAL(4),
+    INDUSTRIAL(5),
+    POSTINDUSTRIAL(6),
+    HITECH(7);
 
     private String json = "" +
             "{" +
@@ -26,6 +32,12 @@ public enum TechLevel {
 
     private JSONObject jsonObject;
 
+    private int level;
+
+    TechLevel(int l) {
+        level = l;
+    }
+
     public JSONObject resourceTechLevels() {
         try {
             jsonObject = new JSONObject(json);
@@ -33,6 +45,10 @@ public enum TechLevel {
             exception.getCause();
         }
         return jsonObject;
+    }
+
+    public int getLevel() {
+        return level;
     }
 
 

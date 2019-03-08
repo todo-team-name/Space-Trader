@@ -8,19 +8,19 @@ import cs2340.todo_team_name.spacetrader.enums.Resources;
 public class Inventory {
     private int size = 0;
     private int maxCapacity;
-    private Map<Resources, Integer> inventory;
+    private Map<Resource, Integer> inventory;
 
     public Inventory(int size) {
         this.maxCapacity = size;
         this.inventory = new HashMap<>(this.size);
         Resources [] arr = Resources.values();
         for(int i = 0; i < arr.length; i++) {
-            this.inventory.put(arr[i], 0);
+            this.inventory.put(new Resource(arr[i]), 0);
         }
     }
 
 
-    public void add(Resources resource) {
+    public void add(Resource resource) {
         size++;
         this.inventory.put(resource, 1);
 
@@ -30,7 +30,7 @@ public class Inventory {
         return maxCapacity;
     }
 
-    public void remove(Resources resource) {
+    public void remove(Resource resource) {
         Integer value = this.inventory.get(resource);
         value--;
         size--;
@@ -41,7 +41,39 @@ public class Inventory {
         return size;
     }
 
-    public Map<Resources, Integer> getInventory() {
+    public Map<Resource, Integer> getInventory() {
         return inventory;
+    }
+
+    public boolean checkSelling(Resource res) {
+        return inventory.get(res) > 0;
+    }
+
+    public boolean checkPurchase() {
+        return size < maxCapacity;
+    }
+
+    public boolean incrementResoure(Resource res) {
+        if (size < maxCapacity) {
+            int curr = inventory.get(res);
+            curr++;
+            inventory.put(res, curr);
+            size++;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean decrementResource(Resource res) {
+        if (size > 0 && inventory.get(res) > 0) {
+            int curr = inventory.get(res);
+            curr--;
+            inventory.put(res, curr);
+            size--;
+            return true;
+        } else {
+            return false;
+        }
     }
 }

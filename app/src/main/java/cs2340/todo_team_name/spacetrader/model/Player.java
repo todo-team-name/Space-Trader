@@ -11,9 +11,10 @@ public class Player {
     private String name;
 
     private HashMap<PointTypes, Integer> points;
-    private int credits;
+    private double credits;
     private Ship ship;
     private Inventory inventory;
+    private Market currentMarket;
 
 
     /**
@@ -55,18 +56,26 @@ public class Player {
         return inventory;
     }
 
-    public String sell(Resources resource) {
-        if(this.inventory.getInventory().get(resource) > 0) {
-            inventory.remove(resource);
-            credits += resource.getScaledValue();
-            return "You sold " + resource.getName();
+    public String sell(Resource resource) {
+        if(inventory.checkSelling(resource)) {
+            //int currentVal = this.inventory.getInventory().get(resource);
+            // inventory.remove(resource);
+            //credits += resource.getScaledValue();
+            boolean marketCanBuy = currentMarket.purchase(resource);
+            if (marketCanBuy) {
+                credits += currentMarket.getPriceOfGood(resource);
+                inventory.decrementResource(resource);
+                return "You sold " + resource.getType();
+            } else {
+                return "The trader does not have enough credits to purchase this item at this time";
+            }
         } else {
-            return "You don't appear to have enough of " + resource.getName() + "!";
+            return "You don't appear to have enough of " + resource.getType() + "!";
         }
     }
 
-    public String purchase(Resources resource) {
-        if(resource.getScaledValue() > credits) {
+    public String purchase(Resource resource) {
+        /**if(resource.getScaledValue() > credits) {
             return "It doesn't seem you can afford " + resource.getName() + "!";
         }
         else {
@@ -77,6 +86,23 @@ public class Player {
             }
             else return "It doesn't seem you have enough room in your inventory!";
 
+        } **/
+        if (inventory.checkPurchase()) {
+            double price = currentMarket.getPriceOfGood(resource);
+            if (credits > price) {
+                credits -= price;
+                inventory.incrementResoure(resource);
+                currentMarket.sell(resource);
+            } else {
+                return "You don't have enough credits to afford this good";
+            }
+        } else {
+            return "Inventory is currently full";
         }
+        return "Error";
+    }
+
+    public void updateMarket(Market m) {
+        currentMarket = m;
     }
 }

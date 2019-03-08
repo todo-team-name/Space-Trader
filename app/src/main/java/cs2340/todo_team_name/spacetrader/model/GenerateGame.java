@@ -185,7 +185,7 @@ public class GenerateGame {
                     MarketType randMarket = marketTypes[num.nextInt(2)];
                     ResourceType randResource = resources[num.nextInt(12)];
                     String randColor = colors[num.nextInt(4)].getHex();
-                    Planet toAdd = new Planet(nameList[randName], randTech, randGov, randMarket, randColor);
+                    Planet toAdd = new Planet(nameList[randName], randTech, randGov, randMarket, randColor, randResource);
                     if (solsCovered < 10) {
                         solar[solsCovered].addPlanet(toAdd);
                         solsCovered++;

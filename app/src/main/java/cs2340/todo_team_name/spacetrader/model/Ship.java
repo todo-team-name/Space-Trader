@@ -7,7 +7,7 @@ import cs2340.todo_team_name.spacetrader.enums.Shields;
 import cs2340.todo_team_name.spacetrader.enums.ShipTypes;
 import cs2340.todo_team_name.spacetrader.enums.Weapons;
 
-class Ship {
+public class Ship {
     private ShipTypes shipType;
     private HashSet<Gadgets> gadgets;
     private Shields[] shields;

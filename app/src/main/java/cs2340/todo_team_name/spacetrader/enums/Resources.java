@@ -6,32 +6,38 @@ import org.json.JSONObject;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Random;
 
 import cs2340.todo_team_name.spacetrader.model.Resource;
 
 public enum Resources {
-    WATER("Water", 42, 12),
-    FURS("Furs", 285, 35),
-    FOOD("Food", 120, 15),
-    ORE("Ore", 440, 50),
-    GAMES("Games", 210, 30),
-    FIREARMS("Fire arms", 950, 225),
-    MEDICINE("Medicine", 435, 75),
-    MACHINES("Machines", 750, 60),
-    NARCOTICS("Narcotics", 3062, 438),
-    ROBOTS("Robots", 4175, 225);
+    WATER("Water", 30, 3, 4, 0),
+    FURS("Furs", 250, 10, 10, 0),
+    FOOD("Food", 100, 5, 5, 1),
+    ORE("Ore", 350, 20, 10, 2),
+    GAMES("Games", 250, -10, 5, 3),
+    FIREARMS("Fire arms", 1250, -75, 100, 3),
+    MEDICINE("Medicine", 650, -20, 10, 4),
+    MACHINES("Machines", 900, -30, 5, 4),
+    NARCOTICS("Narcotics", 3500, -125, 150, 5),
+    ROBOTS("Robots", 5000, -150, 100, 6);
 
     private String name;
     private int value;
+    private int increasePerLevel;
     private int range;
+    private int minLevel;
     private HashMap<Resources, ResourceType[]> increasedRes;
     private HashMap<Resources, ResourceType[]> decreasedRes;
+    private JSONObject json;
 
 
-    Resources(String name, int val, int ran) {
+    Resources(String name, int val, int inc, int ran, int lvl) {
         this.name = name;
         value = val;
+        increasePerLevel = inc;
         range = ran;
+        minLevel = lvl;
         buildIncreasedAndDecreased();
     }
 
@@ -47,9 +53,29 @@ public enum Resources {
         return range;
     }
 
-    public int getScaledValue() {
-        int scalar = 1;
-        return value;
+    public int getIncreasePerLevel() {
+        return increasePerLevel;
+    }
+
+    public boolean checkLevel(int i) {
+        return i >= minLevel;
+    }
+
+    public double getScaledValue(TechLevel t) {
+        Random rand = new Random();
+        int randomScalar = rand.nextInt(range + 1);
+        double scalar = ((double) randomScalar) / 100;
+        boolean addOrSubtract = rand.nextBoolean();
+        double toReturn = 0;
+        if (addOrSubtract) {
+            toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) + (value * scalar));
+        } else {
+            toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) - (value * scalar));
+        }
+        toReturn = toReturn * 100;
+        toReturn = Math.round(toReturn);
+        toReturn = toReturn / 100;
+        return toReturn;
     }
 
     private void buildIncreasedAndDecreased() {
@@ -101,6 +127,7 @@ public enum Resources {
 
         try {
             JSONObject jsonObject = new JSONObject(json);
+            this.json = jsonObject;
         } catch (JSONException exc) {
             exc.getCause();
         }
