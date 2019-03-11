@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".views.ConfigureCommanderFragment">
+    <!--TODO: Will need to update context-->
+
+    <!--TODO: Number below cargo labels should display user's current holdings of said item
+        i.e if user has 4 water cargo, sell_water_display should show 4-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:clipToPadding="false"
+        android:outlineProvider="paddedBounds"
+        android:paddingLeft="25dp"
+        android:paddingTop="35dp"
+        android:paddingRight="25dp">
+
+        <!--Header-->
+        <TextView
+            android:id="@+id/market_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/market_label"
+            android:textColor="@color/colorPrimary"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/sell_cargo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/market_title"
+            android:layout_marginBottom="40dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/sell_cargo_header"
+            android:textColor="@color/colorSecondary"
+            android:textSize="30sp" />
+
+        <!--Sell Cargo Container-->
+        <RelativeLayout
+            android:id="@+id/available_cargo_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sell_cargo">
+
+            <!--Available Credit-->
+            <TextView
+                android:id="@+id/current_credit_label"
+                android:layout_width="155dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/credit_label"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/available_credit_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_toRightOf="@+id/available_credit_label"
+                android:fontFamily="@font/nunito"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp" />
+
+            <!--Water-->
+            <LinearLayout
+                android:id="@+id/sell_water"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/available_credit_display"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/sell_water_minus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/ic_minus"
+                    android:onClick="decrementValues" />
+
+                <TextView
+                    android:id="@+id/sell_water_label"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="@string/buy_water_label"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/sell_water_plus"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/ic_add"
+                    android:onClick="incrementValues" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/sell_water_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sell_water"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito"
+                android:text="0"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+            <!--Furs-->
+            <LinearLayout
+                android:id="@+id/sell_furs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sell_water_display"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/sell_furs_minus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/ic_minus"
+                    android:onClick="decrementValues" />
+
+                <TextView
+                    android:id="@+id/sell_furs_label"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="@string/buy_furs_label"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/sell_furs_plus"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/ic_add"
+                    android:onClick="incrementValues" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/sell_furs_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sell_furs"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito"
+                android:text="0"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+            <!--Food-->
+            <LinearLayout
+                android:id="@+id/sell_food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sell_furs_display"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/sell_food_minus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/ic_minus"
+                    android:onClick="decrementValues" />
+
+                <TextView
+                    android:id="@+id/sell_food_label"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="@string/buy_food_label"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/sell_food_plus"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/ic_add"
+                    android:onClick="incrementValues" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/sell_food_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sell_food"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito"
+                android:text="0"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+            <!--Ore-->
+            <LinearLayout
+                android:id="@+id/sell_ore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sell_food_display"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/sell_ore_minus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/ic_minus"
+                    android:onClick="decrementValues" />
+
+                <TextView
+                    android:id="@+id/sell_ore_label"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="@string/buy_ore_label"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/sell_ore_plus"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/ic_add"
+                    android:onClick="incrementValues" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/sell_ore_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sell_ore"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito"
+                android:text="0"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+            <!--Firearms-->
+            <LinearLayout
+                android:id="@+id/sell_firearms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sell_ore_display"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/sell_firearms_minus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/ic_minus"
+                    android:onClick="decrementValues" />
+
+                <TextView
+                    android:id="@+id/sell_firearms_label"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="@string/buy_firearms_label"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/sell_firearms_plus"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/ic_add"
+                    android:onClick="incrementValues" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/sell_firearms_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sell_firearms"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito"
+                android:text="0"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/sell_firearms_display"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/colorAccent"
+                android:fontFamily="@font/nunito"
+                android:text="@string/sell_cargo"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/background"
+                android:textSize="20dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+    <!--Bottom Navigation-->
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bottom_navigation_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            style="@style/Widget.MaterialComponents.BottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            app:itemIconTint="@color/background"
+            app:itemTextColor="@color/background"
+            app:menu="@menu/bottom_navigation_menu" />
+    </FrameLayout>
+</RelativeLayout>
