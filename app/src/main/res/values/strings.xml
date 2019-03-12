@@ -30,8 +30,17 @@
     <string name="buy_cargo">Buy Cargo</string>
     <string name="sell_cargo">Sell Cargo</string>
     <string name="water_label">Water</string>
+    <string name="buy_water_label">Water (30 cred)</string>
     <string name="furs_label">Furs</string>
+    <string name="buy_furs_label">Furs (235 cred)</string>
     <string name="food_label">Food</string>
+    <string name="buy_food_label">Food (145 cred)</string>
     <string name="ore_label">Ore</string>
+    <string name="buy_ore_label">Ore (360 cred)</string>
     <string name="firearms_label">Firearms</string>
+    <string name="buy_firearms_label">Firearms (450 cred)</string>
+    <string name="buy_cargo_header">buy cargo here</string>
+    <string name="sell_cargo_header">sell cargo here</string>
+    <string name="credit_available">Credit Available:</string>
+    <string name="credit_label">Current Credit:</string>
 </resources>
