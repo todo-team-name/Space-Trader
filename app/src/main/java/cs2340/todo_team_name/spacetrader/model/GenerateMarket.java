@@ -1,5 +1,6 @@
 package cs2340.todo_team_name.spacetrader.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,7 +8,7 @@ import cs2340.todo_team_name.spacetrader.enums.ResourceType;
 import cs2340.todo_team_name.spacetrader.enums.Resources;
 import cs2340.todo_team_name.spacetrader.enums.TechLevel;
 
-public class GenerateMarket {
+public class GenerateMarket implements Serializable {
 
     private TechLevel techLevel;
     private ResourceType resourceType;

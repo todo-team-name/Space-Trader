@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".views.ConfigureCommanderFragment">
+    tools:context=".views.PlayerActivity">
     <!--TODO: Will need to update context-->
 
     <RelativeLayout
@@ -60,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:layout_toRightOf="@+id/available_credit_label"
+                android:text = "Error"
                 android:fontFamily="@font/nunito"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
@@ -79,7 +80,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:background="@drawable/ic_minus"
-                    android:onClick="decrementValues" />
+                    android:onClick="trySellItem" />
 
                 <TextView
                     android:id="@+id/buy_water_label"
@@ -96,7 +97,7 @@
                     android:layout_width="19dp"
                     android:layout_height="19dp"
                     android:background="@drawable/ic_add"
-                    android:onClick="incrementValues" />
+                    android:onClick="buyItem" />
             </LinearLayout>
 
             <TextView
@@ -124,7 +125,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:background="@drawable/ic_minus"
-                    android:onClick="decrementValues" />
+                    android:onClick="trySellItem" />
 
                 <TextView
                     android:id="@+id/buy_furs_label"
@@ -141,7 +142,7 @@
                     android:layout_width="19dp"
                     android:layout_height="19dp"
                     android:background="@drawable/ic_add"
-                    android:onClick="incrementValues" />
+                    android:onClick="buyItem" />
             </LinearLayout>
 
             <TextView
@@ -169,7 +170,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:background="@drawable/ic_minus"
-                    android:onClick="decrementValues" />
+                    android:onClick="trySellItem" />
 
                 <TextView
                     android:id="@+id/buy_food_label"
@@ -186,7 +187,7 @@
                     android:layout_width="19dp"
                     android:layout_height="19dp"
                     android:background="@drawable/ic_add"
-                    android:onClick="incrementValues" />
+                    android:onClick="buyItem" />
             </LinearLayout>
 
             <TextView
@@ -214,7 +215,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:background="@drawable/ic_minus"
-                    android:onClick="decrementValues" />
+                    android:onClick="trySellItem" />
 
                 <TextView
                     android:id="@+id/buy_ore_label"
@@ -231,7 +232,7 @@
                     android:layout_width="19dp"
                     android:layout_height="19dp"
                     android:background="@drawable/ic_add"
-                    android:onClick="incrementValues" />
+                    android:onClick="buyItem" />
             </LinearLayout>
 
             <TextView
@@ -259,7 +260,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:background="@drawable/ic_minus"
-                    android:onClick="decrementValues" />
+                    android:onClick="trySellItem" />
 
                 <TextView
                     android:id="@+id/buy_firearms_label"
@@ -276,7 +277,7 @@
                     android:layout_width="19dp"
                     android:layout_height="19dp"
                     android:background="@drawable/ic_add"
-                    android:onClick="incrementValues" />
+                    android:onClick="buyItem" />
             </LinearLayout>
 
             <TextView

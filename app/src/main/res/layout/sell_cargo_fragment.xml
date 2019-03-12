@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".views.ConfigureCommanderFragment">
+    tools:context=".views.PlayerActivity">
     <!--TODO: Will need to update context-->
 
     <!--TODO: Number below cargo labels should display user's current holdings of said item
@@ -82,7 +82,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:background="@drawable/ic_minus"
-                    android:onClick="decrementValues" />
+                    android:onClick="sellItemSell" />
 
                 <TextView
                     android:id="@+id/sell_water_label"
@@ -99,7 +99,7 @@
                     android:layout_width="19dp"
                     android:layout_height="19dp"
                     android:background="@drawable/ic_add"
-                    android:onClick="incrementValues" />
+                    android:onClick="buyItemSell" />
             </LinearLayout>
 
             <TextView
@@ -127,7 +127,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:background="@drawable/ic_minus"
-                    android:onClick="decrementValues" />
+                    android:onClick="sellItemSell" />
 
                 <TextView
                     android:id="@+id/sell_furs_label"
@@ -144,7 +144,7 @@
                     android:layout_width="19dp"
                     android:layout_height="19dp"
                     android:background="@drawable/ic_add"
-                    android:onClick="incrementValues" />
+                    android:onClick="buyItemSell" />
             </LinearLayout>
 
             <TextView
@@ -172,7 +172,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:background="@drawable/ic_minus"
-                    android:onClick="decrementValues" />
+                    android:onClick="sellItemSell" />
 
                 <TextView
                     android:id="@+id/sell_food_label"
@@ -189,7 +189,7 @@
                     android:layout_width="19dp"
                     android:layout_height="19dp"
                     android:background="@drawable/ic_add"
-                    android:onClick="incrementValues" />
+                    android:onClick="buyItemSell" />
             </LinearLayout>
 
             <TextView
@@ -217,7 +217,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:background="@drawable/ic_minus"
-                    android:onClick="decrementValues" />
+                    android:onClick="sellItemSell" />
 
                 <TextView
                     android:id="@+id/sell_ore_label"
@@ -234,7 +234,7 @@
                     android:layout_width="19dp"
                     android:layout_height="19dp"
                     android:background="@drawable/ic_add"
-                    android:onClick="incrementValues" />
+                    android:onClick="buyItemSell" />
             </LinearLayout>
 
             <TextView
@@ -262,7 +262,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:background="@drawable/ic_minus"
-                    android:onClick="decrementValues" />
+                    android:onClick="sellItemSell" />
 
                 <TextView
                     android:id="@+id/sell_firearms_label"
@@ -279,7 +279,7 @@
                     android:layout_width="19dp"
                     android:layout_height="19dp"
                     android:background="@drawable/ic_add"
-                    android:onClick="incrementValues" />
+                    android:onClick="buyItemSell" />
             </LinearLayout>
 
             <TextView

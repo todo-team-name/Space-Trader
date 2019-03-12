@@ -1,6 +1,8 @@
 package cs2340.todo_team_name.spacetrader.model;
 
-public class SolarSystem {
+import java.io.Serializable;
+
+public class SolarSystem implements Serializable {
     private String name;
     private int[] location;
     private Planet[] planets;
@@ -22,6 +24,14 @@ public class SolarSystem {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public Planet getPlanet(int ind) {
+        if (ind < numPlanets) {
+            return planets[ind];
+        } else {
+            return null;
         }
     }
 

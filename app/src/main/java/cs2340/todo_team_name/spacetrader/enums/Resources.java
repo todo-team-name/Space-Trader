@@ -3,6 +3,7 @@ package cs2340.todo_team_name.spacetrader.enums;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -10,7 +11,7 @@ import java.util.Random;
 
 import cs2340.todo_team_name.spacetrader.model.Resource;
 
-public enum Resources {
+public enum Resources implements Serializable {
     WATER("Water", 30, 3, 4, 0),
     FURS("Furs", 250, 10, 10, 0),
     FOOD("Food", 100, 5, 5, 1),

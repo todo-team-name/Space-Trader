@@ -3,7 +3,9 @@ package cs2340.todo_team_name.spacetrader.enums;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public enum TechLevel {
+import java.io.Serializable;
+
+public enum TechLevel implements Serializable {
     PREAGRICULTURE(0),
     AGRICULTURE(1),
     MEDIEVAL(2),

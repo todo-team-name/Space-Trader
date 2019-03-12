@@ -10,7 +10,7 @@ import cs2340.todo_team_name.spacetrader.enums.TechLevel;
 import java.io.Serializable;
 
 public class BasicMarket extends Market implements Serializable {
-    private int credits;
+    private double credits;
     private TechLevel techLevel;
     private GovernmentType governmentType;
     private ResourceType resourceType;
@@ -22,6 +22,7 @@ public class BasicMarket extends Market implements Serializable {
         resourceType = res;
         GenerateMarket gen = new GenerateMarket(tech, res);
         resources = gen.generate();
+        credits = 500;
     }
 
     public boolean purchase(Resources resource) {
@@ -42,7 +43,11 @@ public class BasicMarket extends Market implements Serializable {
     }
 
     public double getPriceOfGood(Resources resource) {
-        return resources.get(resource);
+        if (resources.containsKey(resource)) {
+            return resources.get(resource);
+        } else {
+            return 999999;
+        }
     }
 
 }

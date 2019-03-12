@@ -1,12 +1,14 @@
 package cs2340.todo_team_name.spacetrader.model;
 
+import java.io.Serializable;
+
 import cs2340.todo_team_name.spacetrader.enums.GovernmentType;
 import cs2340.todo_team_name.spacetrader.enums.MarketType;
 import cs2340.todo_team_name.spacetrader.enums.ResourceType;
 import cs2340.todo_team_name.spacetrader.enums.Resources;
 import cs2340.todo_team_name.spacetrader.enums.TechLevel;
 
-public class Planet {
+public class Planet implements Serializable {
     private ResourceType resources;
     private TechLevel techLevel;
     private GovernmentType governmentType;
@@ -51,6 +53,7 @@ public class Planet {
         }
     }
 
+
     @Override
     public String toString() {
         return name + " " + techLevel + " " + governmentType + " " + marketType + " " + hexColor;
@@ -58,6 +61,10 @@ public class Planet {
 
     public void updatePlayerMarket(Player p) {
         p.updateMarket(market);
+    }
+
+    public Market getMarket() {
+        return market;
     }
 
 }

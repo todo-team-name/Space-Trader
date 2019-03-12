@@ -1,6 +1,8 @@
 package cs2340.todo_team_name.spacetrader.enums;
 
-public enum Colors {
+import java.io.Serializable;
+
+public enum Colors implements Serializable {
     C1("#65E28B"),
     C2("#7F2CCB"),
     C3("#FF84E8"),

@@ -13,6 +13,8 @@ import cs2340.todo_team_name.spacetrader.views.PlayerActivity;
 
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -74,11 +76,14 @@ public class ConfigurationActivity extends AppCompatActivity {
         GameState currentGameState = new GameState(currentPlayer, Difficulty.valueOf(diff));
         Log.i("Player Name", currentPlayer.getName());
         Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
+        ArrayList<SolarSystem> solist = new ArrayList<>();
         for(SolarSystem sol : solarSystems) {
             Log.i("Solar System: ", sol.toString());
+            solist.add(sol);
         }
         Intent intent = new Intent(this, PlayerActivity.class);
         intent.putExtra("player", currentPlayer);
+        intent.putExtra("universe", solist);
         startActivity(intent);
     }
 

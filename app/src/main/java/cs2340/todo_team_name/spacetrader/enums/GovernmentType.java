@@ -1,5 +1,7 @@
 package cs2340.todo_team_name.spacetrader.enums;
 
-public enum GovernmentType {
+import java.io.Serializable;
+
+public enum GovernmentType implements Serializable {
     ANARCHIST, CAPITALIST, COMMUNIST
 }

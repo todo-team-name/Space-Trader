@@ -19,18 +19,25 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Stack;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
+import cs2340.todo_team_name.spacetrader.model.Planet;
 import cs2340.todo_team_name.spacetrader.model.Player;
+import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.viewmodel.ConfigurationViewModel;
 import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.viewmodel.PlayerViewModel;
 
 public class PlayerActivity extends AppCompatActivity implements ActivityDataProvider {
     private PlayerViewModel playerViewModel;
+    private ArrayList<SolarSystem> solarSystems;
     private HashMap<PointTypes, Integer> pointValues;
     private TextView pilot;
     private TextView trader;
@@ -46,7 +53,7 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
     private TextView firearms;
     private TextView ore;
     private Stack<View> viewStack;
-
+    private Planet currentPlanet;
 
 
     @Override
@@ -56,6 +63,10 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         player = (Player) intent.getSerializableExtra("player");
+        solarSystems = (ArrayList<SolarSystem>) intent.getSerializableExtra("universe");
+        currentPlanet = solarSystems.get(0).getPlanet(0);
+        playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
+        playerViewModel.setPlayer(player);
         loadFragment(new Status_Fragment());
         pilot = findViewById(R.id.pilot_card_info);
         trader = findViewById(R.id.trader_card_info);
@@ -111,6 +122,14 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         setContentView(newview);
     }*/
 
+    public void openBuyMarket(View view) {
+        loadFragment(new Buy_Market_Fragment());
+    }
+
+    public void openSellMarket(View view) {
+        loadFragment(new Sell_Market_Fragment());
+    }
+
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
@@ -125,6 +144,156 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
 
     public Player getPlayer() {
         return player;
+    }
+
+
+    public void buyItem(View view) {
+        Buy_Market_Fragment frag = (Buy_Market_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
+        switch (view.getId()) {
+            case R.id.buy_water_plus:
+                playerViewModel.handleBuyItem("WATER", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_water_display);
+                break;
+            case R.id.buy_furs_plus:
+                playerViewModel.handleBuyItem("FURS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_furs_display);
+                break;
+            case R.id.buy_food_plus:
+                playerViewModel.handleBuyItem("FOOD", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_food_display);
+                break;
+            case R.id.buy_ore_plus:
+                playerViewModel.handleBuyItem("ORE", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_ore_display);
+                break;
+            case R.id.buy_firearms_plus:
+                playerViewModel.handleBuyItem("FIREARMS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_firearms_display);
+                break;
+        }
+
+    }
+
+    public void trySellItem(View view) {
+        Buy_Market_Fragment frag = (Buy_Market_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
+        switch (view.getId()) {
+            case R.id.buy_water_minus:
+                playerViewModel.handleSellItem("WATER", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_water_display);
+                break;
+            case R.id.buy_furs_minus:
+                playerViewModel.handleSellItem("FURS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_furs_display);
+                break;
+            case R.id.buy_food_minus:
+                playerViewModel.handleSellItem("FOOD", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_food_display);
+                break;
+            case R.id.buy_ore_minus:
+                playerViewModel.handleSellItem("ORE", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_ore_display);
+                break;
+            case R.id.buy_firearms_minus:
+                playerViewModel.handleSellItem("FIREARMS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_firearms_display);
+                break;
+        }
+    }
+
+    public void buyItemSell(View view) {
+        Sell_Market_Fragment sellFrag = (Sell_Market_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
+        switch (view.getId()) {
+            case R.id.sell_water_plus:
+                playerViewModel.handleBuyItem("WATER", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_water_display);                break;
+            case R.id.sell_furs_plus:
+                playerViewModel.handleBuyItem("FURS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_furs_display);
+                break;
+            case R.id.sell_food_plus:
+                playerViewModel.handleBuyItem("FOOD", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_food_display);
+                break;
+            case R.id.sell_ore_plus:
+                playerViewModel.handleBuyItem("ORE", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_ore_display);
+                break;
+            case R.id.sell_firearms_plus:
+                playerViewModel.handleBuyItem("FIREARMS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_firearms_display);
+                break;
+        }
+    }
+
+    public void sellItemSell(View view) {
+        Sell_Market_Fragment sellFrag = (Sell_Market_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
+        switch (view.getId()) {
+            case R.id.sell_water_minus:
+                playerViewModel.handleSellItem("WATER", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_water_display);
+                break;
+            case R.id.sell_furs_minus:
+                playerViewModel.handleSellItem("FURS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_furs_display);
+                break;
+            case R.id.sell_food_minus:
+                playerViewModel.handleSellItem("FOOD", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_food_display);
+                break;
+            case R.id.sell_ore_minus:
+                playerViewModel.handleSellItem("ORE", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_ore_display);
+                break;
+            case R.id.sell_firearms_minus:
+                playerViewModel.handleSellItem("FIREARMS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_firearms_display);
+                break;
+        }
+    }
+
+
+    public Planet getCurrentPlanet() {
+        return currentPlanet;
     }
 
 }
