@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".views.ConfigurationActivity">
+    tools:context=".views.PlayerActivity">
     <!-- TODO: Will need to change tool:context to match fragment or activity-->
 
     <RelativeLayout
@@ -196,7 +196,7 @@
             android:textSize="34dp" />
     </RelativeLayout>
 
-    <!--Bottom Navigation-->
+    <!--Bottom Navigation
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
@@ -212,5 +212,5 @@
             app:itemIconTint="@color/background"
             app:itemTextColor="@color/background"
             app:menu="@menu/bottom_navigation_menu" />
-    </FrameLayout>
+    </FrameLayout>-->
 </RelativeLayout>

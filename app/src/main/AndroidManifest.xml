@@ -21,6 +21,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="cs2340.todo_team_name.spacetrader.views.PlayerActivity"></activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

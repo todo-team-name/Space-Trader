@@ -88,6 +88,7 @@ public class ConfigureCommanderFragment extends Fragment {
     } */
 
     public void createGameState(View view) {
+        Log.i("Logged to", "Config Fragmet");
         //Player currentPlayer = new Player(pilotName.getText().toString(), pointValues);
         //GameState currentGameState = new GameState(currentPlayer, (Difficulty) difficultySpinner.getSelectedItem());
         //Log.i("Player Name", currentPlayer.getName());

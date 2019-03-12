@@ -1,4 +1,5 @@
 package cs2340.todo_team_name.spacetrader.views;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,13 +9,19 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+import cs2340.todo_team_name.spacetrader.views.PlayerActivity;
 
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
+import cs2340.todo_team_name.spacetrader.enums.Difficulty;
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
+import cs2340.todo_team_name.spacetrader.model.GameState;
+import cs2340.todo_team_name.spacetrader.model.GenerateGame;
+import cs2340.todo_team_name.spacetrader.model.Player;
+import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.viewmodel.ConfigurationViewModel;
 import cs2340.todo_team_name.spacetrader.R;
 
@@ -26,13 +33,14 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     private HashMap<PointTypes, Integer> pointValues;
 
-    private Spinner difficultySpinner;
+    private MaterialBetterSpinner difficultySpinner;
     private TextView pilotName;
     private TextView pilotDisplay;
     private TextView remPointsDisplay;
     private TextView fighterDisplay;
     private TextView traderDisplay;
     private TextView engineerDisplay;
+    private HashSet<SolarSystem> solarSystems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +50,8 @@ public class ConfigurationActivity extends AppCompatActivity {
                 R.array.difficulty_array, android.R.layout.simple_spinner_item);
         MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner) findViewById(R.id.difficultySpinner);
         materialDesignSpinner.setAdapter(adapter);
-        pilotName = (TextView) findViewById(R.id.nameInput);
-
+        //pilotName = (TextView) findViewById(R.id.nameInput);
+        difficultySpinner = materialDesignSpinner;
 
         pointValues = new HashMap<>();
         pilotDisplay = (TextView) findViewById(R.id.pilotPointsDisplay);
@@ -59,14 +67,23 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     public void createGameState(View view) {
-        //Player currentPlayer = new Player(pilotName.getText().toString(), pointValues);
-        //GameState currentGameState = new GameState(currentPlayer, (Difficulty) difficultySpinner.getSelectedItem());
-        //Log.i("Player Name", currentPlayer.getName());
-        //Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
-        Log.i("I would be created here", "THIS STUFF");
+        Player currentPlayer = new Player("TestPlayer", pointValues);
+        GenerateGame gameGen = new GenerateGame(currentPlayer, new HashSet<SolarSystem>());
+        solarSystems = gameGen.generate();
+        String diff = difficultySpinner.getText().toString().toUpperCase();
+        GameState currentGameState = new GameState(currentPlayer, Difficulty.valueOf(diff));
+        Log.i("Player Name", currentPlayer.getName());
+        Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
+        for(SolarSystem sol : solarSystems) {
+            Log.i("Solar System: ", sol.toString());
+        }
+        Intent intent = new Intent(this, PlayerActivity.class);
+        intent.putExtra("player", currentPlayer);
+        startActivity(intent);
     }
 
     private void updatePointDisplays() {
+        Log.i("Logged to", "Config Activity");
         pilotDisplay.setText(pointValues.get(PointTypes.PILOT).toString());
         engineerDisplay.setText(pointValues.get(PointTypes.ENGINEER).toString());
         traderDisplay.setText(pointValues.get(PointTypes.TRADER).toString());

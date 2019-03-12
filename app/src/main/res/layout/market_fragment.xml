@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".views.ConfigurationActivity">
+    tools:context=".views.PlayerActivity">
     <!-- TODO: Will need to change tool:context to match fragment or activity-->
 
     <RelativeLayout
