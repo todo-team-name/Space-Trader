@@ -86,6 +86,7 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
                                 break;
                             case R.id.menu_map:
                                 Log.i("Map", "This Map");
+                                loadFragment(new MapActivity());
                                 break;
                             case R.id.menu_market:
                                 Log.i("Market", "This market");

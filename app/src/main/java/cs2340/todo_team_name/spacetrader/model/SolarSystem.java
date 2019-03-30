@@ -5,6 +5,11 @@ import java.io.Serializable;
 public class SolarSystem implements Serializable {
     private String name;
     private int[] location;
+
+    public Planet[] getPlanets() {
+        return planets;
+    }
+
     private Planet[] planets;
     private int numPlanets;
 
@@ -35,6 +40,14 @@ public class SolarSystem implements Serializable {
         }
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public String getCoord() {
+        return "(" + this.location[0] + ", " + this.location[1] + ")";
+    }
+
     @Override
     public boolean equals(Object other) {
         if(this == other) {
@@ -57,12 +70,9 @@ public class SolarSystem implements Serializable {
         hash += this.location[1] * 17;
         return hash;
     }
+
     @Override
     public String toString() {
-        String currentPlanets = "";
-        for (Planet p: planets) {
-            currentPlanets += "\t" + p + "\n";
-        }
-       return "Name: " + name + " (" + location[0] + "," +location[1] + ") \n" + currentPlanets;
+       return "Name: " + name + " (" + location[0] + "," +location[1] + ") \n";
     }
 }

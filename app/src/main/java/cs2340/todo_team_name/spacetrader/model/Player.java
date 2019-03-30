@@ -18,6 +18,26 @@ public class Player implements Serializable {
     private Inventory inventory;
     private Market currentMarket;
 
+    public SolarSystem getCurrentSolarSystem() {
+        return currentSolarSystem;
+    }
+
+    public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
+        this.currentSolarSystem = currentSolarSystem;
+    }
+
+    private SolarSystem currentSolarSystem;
+
+    public Planet getCurrentPlanet() {
+        return currentPlanet;
+    }
+
+    public void setCurrentPlanet(Planet currentPlanet) {
+        this.currentPlanet = currentPlanet;
+    }
+
+    private Planet currentPlanet;
+
 
     /**
      * Create a Player with allocated skill points

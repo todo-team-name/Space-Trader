@@ -43,4 +43,5 @@
     <string name="sell_cargo_header">sell cargo here</string>
     <string name="credit_available">Credit Available:</string>
     <string name="credit_label">Current Credit:</string>
+    <string name="Travel_to_Solar_System">Please choose a Solar System, </string>
 </resources>

@@ -17,6 +17,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 import cs2340.todo_team_name.spacetrader.enums.Difficulty;
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
@@ -42,6 +43,15 @@ public class ConfigurationActivity extends AppCompatActivity {
     private TextView fighterDisplay;
     private TextView traderDisplay;
     private TextView engineerDisplay;
+
+
+
+    //ArrayList here because of argument type of method below in onCreate()
+    private static ArrayList<SolarSystem> solist;
+    public static List<SolarSystem> getSolist() {
+        return solist;
+    }
+
     private HashSet<SolarSystem> solarSystems;
 
     @Override
@@ -76,7 +86,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         GameState currentGameState = new GameState(currentPlayer, Difficulty.valueOf(diff));
         Log.i("Player Name", currentPlayer.getName());
         Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
-        ArrayList<SolarSystem> solist = new ArrayList<>();
+        solist = new ArrayList<>();
         for(SolarSystem sol : solarSystems) {
             Log.i("Solar System: ", sol.toString());
             solist.add(sol);
