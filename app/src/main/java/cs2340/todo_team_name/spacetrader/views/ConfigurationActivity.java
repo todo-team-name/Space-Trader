@@ -7,17 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
-import cs2340.todo_team_name.spacetrader.views.PlayerActivity;
 
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
 import cs2340.todo_team_name.spacetrader.enums.Difficulty;
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
@@ -48,7 +44,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     //ArrayList here because of argument type of method below in onCreate()
     private static ArrayList<SolarSystem> solist;
-    public static List<SolarSystem> getSolist() {
+    public static ArrayList<SolarSystem> getSolist() {
         return solist;
     }
 

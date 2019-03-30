@@ -131,6 +131,9 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         loadFragment(new Sell_Market_Fragment());
     }
 
+    public void openChangeSystem(View view) { loadFragment(new Change_System_Fragment());}
+
+
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
@@ -292,6 +295,20 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         }
     }
 
+
+    public void changeSystemToSystemOne(View view) {
+        Change_System_Fragment change_system_fragment = (Change_System_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
+        SolarSystem toChange = ConfigurationActivity.getSolist().get(0);
+        player.setCurrentSolarSystem(toChange);
+
+    }
+
+    public void changeToSystemTwo(View view) {
+        Change_System_Fragment change_system_fragment = (Change_System_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
+        SolarSystem toChange = ConfigurationActivity.getSolist().get(1);
+        player.setCurrentSolarSystem(toChange);
+
+    }
 
     public Planet getCurrentPlanet() {
         return currentPlanet;

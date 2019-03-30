@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context=".views.ConfigureCommanderFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:clipToPadding="false"
+        android:outlineProvider="paddedBounds"
+        android:paddingLeft="25dp"
+        android:paddingTop="35dp"
+        android:paddingRight="25dp">
+
+        <!--Header-->
+        <TextView
+            android:id="@+id/hi_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/temp_username"
+            android:textColor="@color/colorPrimary"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/create_commander_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hi_username"
+            android:layout_marginBottom="40dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="let's go to another system"
+            android:textColor="@color/colorSecondary"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/system1button"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/create_commander_text"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="50dp"
+            android:onClick="changeSystem"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/system2button"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/create_commander_text"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="40dp"
+            android:layout_toEndOf="@+id/system1button"
+            android:onClick="openChangeSystem"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/system3button"
+            android:layout_width="153dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/system1button"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="233dp"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/system4button"
+            android:layout_width="153dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/system1button"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="212dp"
+            android:layout_marginTop="37dp"
+            android:onClick="changeSystem"
+            android:text="Button" />
+
+        <!--Difficulty spinner-->
+
+        <!--Remaining Points-->
+
+
+        <!--Pilot point allocation-->
+
+        <!--Fighter point allocation-->
+
+
+        <!--Trader point allocation-->
+
+        <!--Engineer point allocation-->
+
+    </RelativeLayout>
+</LinearLayout>

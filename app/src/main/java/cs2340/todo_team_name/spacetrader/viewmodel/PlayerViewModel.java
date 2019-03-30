@@ -9,6 +9,7 @@ import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.enums.Resources;
 import cs2340.todo_team_name.spacetrader.model.Planet;
 import cs2340.todo_team_name.spacetrader.model.Player;
+import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 
 public class PlayerViewModel extends ViewModel {
     private Player player;
@@ -29,5 +30,9 @@ public class PlayerViewModel extends ViewModel {
         Resources resource = Resources.valueOf(res);
         current.updatePlayerMarket(player);
         player.sell(resource);
+    }
+
+    public void updateLocation(SolarSystem system) {
+        player.setCurrentSolarSystem(system);
     }
 }
