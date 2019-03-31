@@ -35,4 +35,10 @@ public class PlayerViewModel extends ViewModel {
     public void updateLocation(SolarSystem system) {
         player.setCurrentSolarSystem(system);
     }
+
+    public void checkSolar(SolarSystem solarSystem) {
+        if (player.getCurrentSolarSystem() == null) {
+            player.setCurrentSolarSystem(solarSystem);
+        }
+    }
 }

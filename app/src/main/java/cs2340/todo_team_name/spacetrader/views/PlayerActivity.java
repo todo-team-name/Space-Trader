@@ -68,6 +68,7 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         currentPlanet = solarSystems.get(0).getPlanet(0);
         playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         playerViewModel.setPlayer(player);
+        playerViewModel.checkSolar(solarSystems.get(0));
         loadFragment(new Status_Fragment());
         pilot = findViewById(R.id.pilot_card_info);
         trader = findViewById(R.id.trader_card_info);
