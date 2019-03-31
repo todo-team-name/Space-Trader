@@ -33,6 +33,11 @@ public class MarketActivity extends Fragment {
     private TextView food;
     private TextView firearms;
     private TextView ore;
+    private TextView games;
+    private TextView medicine;
+    private TextView machines;
+    private TextView narcotics;
+    private TextView robots;
     private Player player;
 
 
@@ -47,12 +52,22 @@ public class MarketActivity extends Fragment {
         food = view.findViewById(R.id.food_cargo_info);
         firearms = view.findViewById(R.id.firearms_cargo_info);
         ore = view.findViewById(R.id.ore_cargo_info);
+        games = view.findViewById(R.id.games_cargo_info);
+        medicine = view.findViewById(R.id.medicine_cargo_info);
+        machines = view.findViewById(R.id.machines_cargo_info);
+        narcotics = view.findViewById(R.id.narcotics_cargo_info);
+        robots = view.findViewById(R.id.robots_cargo_info);
         Inventory inv = player.getInventory();
         water.setText(Integer.toString(inv.getResource(Resources.WATER)));
         furs.setText(Integer.toString(inv.getResource(Resources.FURS)));
         food.setText(Integer.toString(inv.getResource(Resources.FOOD)));
         firearms.setText(Integer.toString(inv.getResource(Resources.FIREARMS)));
         ore.setText(Integer.toString(inv.getResource(Resources.ORE)));
+        games.setText(Integer.toString(inv.getResource(Resources.GAMES)));
+        medicine.setText(Integer.toString(inv.getResource(Resources.MEDICINE)));
+        machines.setText(Integer.toString(inv.getResource(Resources.MACHINES)));
+        narcotics.setText(Integer.toString(inv.getResource(Resources.NARCOTICS)));
+        robots.setText(Integer.toString(inv.getResource(Resources.ROBOTS)));
         /*Resource res = new Resource(Resources.WATER);
         water.setText(Integer.toString(inv.getResource(res)));
         res = new Resource(Resources.FURS);

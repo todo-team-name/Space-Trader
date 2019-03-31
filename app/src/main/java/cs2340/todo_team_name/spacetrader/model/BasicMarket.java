@@ -50,4 +50,8 @@ public class BasicMarket extends Market implements Serializable {
         }
     }
 
+    public boolean contains(Resources resource) {
+        return resources.containsKey(resource);
+    }
+
 }

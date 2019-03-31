@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -291,12 +295,244 @@
                 android:textColor="@color/colorSecondary"
                 android:textSize="18sp" />
 
+            <!--Games-->
+            <LinearLayout
+                android:id="@+id/buy_games"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buy_firearms_display"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buy_games_minus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/ic_minus"
+                    android:onClick="trySellItem" />
+
+                <TextView
+                    android:id="@+id/buy_games_label"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="GAMES"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/buy_games_plus"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/ic_add"
+                    android:onClick="buyItem" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/buy_games_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buy_games"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito"
+                android:text="0"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+
+            <!--Medicine-->
+            <LinearLayout
+                android:id="@+id/buy_medicine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buy_games_display"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buy_medicine_minus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/ic_minus"
+                    android:onClick="trySellItem" />
+
+                <TextView
+                    android:id="@+id/buy_medicine_label"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="MEDICINE"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/buy_medicine_plus"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/ic_add"
+                    android:onClick="buyItem" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/buy_medicine_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buy_medicine"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito"
+                android:text="0"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+
+            <!--Machines-->
+            <LinearLayout
+                android:id="@+id/buy_machines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buy_medicine_display"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buy_machines_minus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/ic_minus"
+                    android:onClick="trySellItem" />
+
+                <TextView
+                    android:id="@+id/buy_machines_label"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="MACHINES"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/buy_machines_plus"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/ic_add"
+                    android:onClick="buyItem" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/buy_machines_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buy_machines"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito"
+                android:text="0"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+
+            <!--Narcotics-->
+            <LinearLayout
+                android:id="@+id/buy_narcotics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buy_machines_display"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buy_narcotics_minus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/ic_minus"
+                    android:onClick="trySellItem" />
+
+                <TextView
+                    android:id="@+id/buy_narcotics_label"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="NARCOTICS"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/buy_narcotics_plus"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/ic_add"
+                    android:onClick="buyItem" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/buy_narcotics_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buy_narcotics"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito"
+                android:text="0"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+            <!--Robots-->
+            <LinearLayout
+                android:id="@+id/buy_robots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buy_narcotics_display"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buy_robots_minus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/ic_minus"
+                    android:onClick="trySellItem" />
+
+                <TextView
+                    android:id="@+id/buy_robots_label"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="NARCOTICS"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22sp" />
+
+                <Button
+                    android:id="@+id/buy_robots_plus"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/ic_add"
+                    android:onClick="buyItem" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/buy_robots_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buy_robots"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito"
+                android:text="0"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+
+
+
+
             <Button
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_below="@id/buy_firearms_display"
+                android:layout_below="@id/buy_narcotics_display"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/round_button"
                 android:backgroundTint="@color/colorAccent"
                 android:fontFamily="@font/nunito"
@@ -307,3 +543,4 @@
         </RelativeLayout>
         </RelativeLayout>
 </RelativeLayout>
+</ScrollView>

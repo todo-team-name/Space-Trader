@@ -146,6 +146,10 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         return player;
     }
 
+    public PlayerViewModel getPlayerViewModel() {
+        return playerViewModel;
+    }
+
 
     public void buyItem(View view) {
         Buy_Market_Fragment frag = (Buy_Market_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
@@ -179,6 +183,36 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
                 Log.i("Creds", Double.toString(player.getCredits()));
                 frag.updateCredits();
                 frag.updateView(view, R.id.buy_firearms_display);
+                break;
+            case R.id.buy_games_plus:
+                playerViewModel.handleBuyItem("GAMES", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_games_display);
+                break;
+            case R.id.buy_medicine_plus:
+                playerViewModel.handleBuyItem("MEDICINE", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_medicine_display);
+                break;
+            case R.id.buy_machines_plus:
+                playerViewModel.handleBuyItem("MACHINES", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_machines_display);
+                break;
+            case R.id.buy_narcotics_plus:
+                playerViewModel.handleBuyItem("NARCOTICS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_narcotics_display);
+                break;
+            case R.id.buy_robots_plus:
+                playerViewModel.handleBuyItem("ROBOTS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_robots_display);
                 break;
         }
 
@@ -217,6 +251,36 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
                 frag.updateCredits();
                 frag.updateView(view, R.id.buy_firearms_display);
                 break;
+            case R.id.buy_games_minus:
+                playerViewModel.handleSellItem("GAMES", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_games_display);
+                break;
+            case R.id.buy_medicine_minus:
+                playerViewModel.handleSellItem("MEDICINE", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_medicine_display);
+                break;
+            case R.id.buy_machines_minus:
+                playerViewModel.handleSellItem("MACHINES", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_machines_display);
+                break;
+            case R.id.buy_narcotics_minus:
+                playerViewModel.handleSellItem("NARCOTICS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_narcotics_display);
+                break;
+            case R.id.buy_robots_minus:
+                playerViewModel.handleSellItem("ROBOTS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                frag.updateCredits();
+                frag.updateView(view, R.id.buy_robots_display);
+                break;
         }
     }
 
@@ -251,6 +315,36 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
                 Log.i("Creds", Double.toString(player.getCredits()));
                 sellFrag.updateCredits();
                 sellFrag.updateView(view, R.id.sell_firearms_display);
+                break;
+            case R.id.sell_games_plus:
+                playerViewModel.handleBuyItem("GAMES", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_games_display);
+                break;
+            case R.id.sell_medicine_plus:
+                playerViewModel.handleBuyItem("MEDICINE", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_medicine_display);
+                break;
+            case R.id.sell_machines_plus:
+                playerViewModel.handleBuyItem("MACHINES", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_machines_display);
+                break;
+            case R.id.sell_narcotics_plus:
+                playerViewModel.handleBuyItem("NARCOTICS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_narcotics_display);
+                break;
+            case R.id.sell_robots_plus:
+                playerViewModel.handleBuyItem("ROBOTS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_robots_display);
                 break;
         }
     }
@@ -287,6 +381,36 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
                 Log.i("Creds", Double.toString(player.getCredits()));
                 sellFrag.updateCredits();
                 sellFrag.updateView(view, R.id.sell_firearms_display);
+                break;
+            case R.id.sell_games_minus:
+                playerViewModel.handleBuyItem("GAMES", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_games_display);
+                break;
+            case R.id.sell_medicine_minus:
+                playerViewModel.handleBuyItem("MEDICINE", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_medicine_display);
+                break;
+            case R.id.sell_machines_minus:
+                playerViewModel.handleBuyItem("MACHINES", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_machines_display);
+                break;
+            case R.id.sell_narcotics_minus:
+                playerViewModel.handleBuyItem("NARCOTICS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_narcotics_display);
+                break;
+            case R.id.sell_robots_minus:
+                playerViewModel.handleBuyItem("ROBOTS", currentPlanet);
+                Log.i("Creds", Double.toString(player.getCredits()));
+                sellFrag.updateCredits();
+                sellFrag.updateView(view, R.id.sell_robots_display);
                 break;
         }
     }

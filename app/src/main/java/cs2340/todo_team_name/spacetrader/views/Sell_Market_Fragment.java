@@ -76,11 +76,11 @@ public class Sell_Market_Fragment extends Fragment {
         oreDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.ORE)));
 
         Market currentMarket = currentPlanet.getMarket();
-        water.setText(Double.toString(currentMarket.getPriceOfGood(Resources.WATER)));
-        furs.setText(Double.toString(currentMarket.getPriceOfGood(Resources.FURS)));
-        food.setText(Double.toString(currentMarket.getPriceOfGood(Resources.FOOD)));
-        firearms.setText(Double.toString(currentMarket.getPriceOfGood(Resources.FIREARMS)));
-        ore.setText(Double.toString(currentMarket.getPriceOfGood(Resources.ORE)));
+        water.setText("Water: " + Double.toString(currentMarket.getPriceOfGood(Resources.WATER)));
+        furs.setText("Furs: " + Double.toString(currentMarket.getPriceOfGood(Resources.FURS)));
+        food.setText("Food: " + Double.toString(currentMarket.getPriceOfGood(Resources.FOOD)));
+        firearms.setText("Firearms: " + Double.toString(currentMarket.getPriceOfGood(Resources.FIREARMS)));
+        ore.setText("Ore: " + Double.toString(currentMarket.getPriceOfGood(Resources.ORE)));
         return view;
     }
 
