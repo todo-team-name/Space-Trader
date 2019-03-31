@@ -53,6 +53,12 @@ public class Change_System_Fragment extends Fragment {
     private Button system2button;
     private Button system3button;
     private Button system4button;
+    private Button system5button;
+    private Button system6button;
+    private Button system7button;
+    private Button system8button;
+    private Button system9button;
+    private Button system10button;
 
 
 
@@ -63,15 +69,29 @@ public class Change_System_Fragment extends Fragment {
         player = activity.getPlayer();
         currentPlanet = player.getCurrentPlanet();
         ArrayList<SolarSystem> system = ConfigurationActivity.getSolist();
-        View view = inflater.inflate(R.layout.change_system_fragment, null);
+        View view = inflater.inflate(R.layout.change_solar_system, null);
         system1button = view.findViewById(R.id.system1button);
         system2button = view.findViewById(R.id.system2button);
-        system3button = view.findViewById((R.id.system3button));
+        system3button = view.findViewById(R.id.system3button);
         system4button = view.findViewById(R.id.system4button);
+        system5button = view.findViewById(R.id.system5button);
+        system6button = view.findViewById(R.id.system6button);
+        system7button = view.findViewById(R.id.system7button);
+        system8button = view.findViewById(R.id.system8button);
+        system9button = view.findViewById(R.id.system9button);
+        system10button = view.findViewById(R.id.system10button);
         system1button.setText(system.get(0).getName());
         system2button.setText(system.get(1).getName());
         system3button.setText(system.get(2).getName());
         system4button.setText(system.get(3).getName());
+        system5button.setText(system.get(4).getName());
+        system6button.setText(system.get(5).getName());
+        system7button.setText(system.get(6).getName());
+        system8button.setText(system.get(7).getName());
+        system9button.setText(system.get(8).getName());
+        system10button.setText(system.get(9).getName());
+
+
 
         Inventory currentInvetory = player.getInventory();
         Market currentMarket = currentPlanet.getMarket();

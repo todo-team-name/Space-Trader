@@ -104,6 +104,10 @@ public class ConfigureCommanderFragment extends Fragment {
         remPointsDisplay.setText(remPoints + "");
     }
 
+    private void updatePilotToSystemOne() {
+
+    }
+
     public void decFighter(View view) {
         if (pointValues.get(PointTypes.FIGHTER) > 0) {
             pointValues.put(PointTypes.FIGHTER, pointValues.get(PointTypes.FIGHTER) - 1);

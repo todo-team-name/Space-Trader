@@ -1,4 +1,5 @@
 package cs2340.todo_team_name.spacetrader.views;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -307,6 +308,7 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         Change_System_Fragment change_system_fragment = (Change_System_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
         SolarSystem toChange = ConfigurationActivity.getSolist().get(1);
         player.setCurrentSolarSystem(toChange);
+        openChangeSystem(view);
 
     }
 
