@@ -51,8 +51,6 @@ public class MapActivity extends Fragment {
         activity = (ActivityDataProvider) getActivity();
         player = activity.getPlayer();
         Log.i("Player", player.toString());
-        player.setCurrentSolarSystem(testSol);
-        player.setCurrentPlanet(testPlanet);
         currentSystem.setText(player.getCurrentSolarSystem().toString());
         currentPlanet.setText(player.getCurrentPlanet().toString());
 

@@ -17,26 +17,8 @@ public class Player implements Serializable {
     private Ship ship;
     private Inventory inventory;
     private Market currentMarket;
-
-    public SolarSystem getCurrentSolarSystem() {
-        return currentSolarSystem;
-    }
-
-    public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
-        this.currentSolarSystem = currentSolarSystem;
-    }
-
-    private SolarSystem currentSolarSystem;
-
-    public Planet getCurrentPlanet() {
-        return currentPlanet;
-    }
-
-    public void setCurrentPlanet(Planet currentPlanet) {
-        this.currentPlanet = currentPlanet;
-    }
-
     private Planet currentPlanet;
+    private SolarSystem currentSolarSystem;
 
 
     /**
@@ -134,5 +116,22 @@ public class Player implements Serializable {
 
     public double getCredits() {
         return credits;
+    }
+
+    public SolarSystem getCurrentSolarSystem() {
+        return currentSolarSystem;
+    }
+
+    public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
+        this.currentSolarSystem = currentSolarSystem;
+        setCurrentPlanet(currentSolarSystem.getPlanet(0));
+    }
+
+    public Planet getCurrentPlanet() {
+        return currentPlanet;
+    }
+
+    public void setCurrentPlanet(Planet currentPlanet) {
+        this.currentPlanet = currentPlanet;
     }
 }
