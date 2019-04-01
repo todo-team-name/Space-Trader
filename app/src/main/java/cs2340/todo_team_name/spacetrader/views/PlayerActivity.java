@@ -427,39 +427,42 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
     }
 
     public void changeSystem(View view) {
-        switch (view.getId()) {
-            case R.id.system1button:
-                player.setCurrentSolarSystem(solarSystems.get(0));
-                break;
-            case R.id.system2button:
-                player.setCurrentSolarSystem(solarSystems.get(1));
-                break;
-            case R.id.system3button:
-                player.setCurrentSolarSystem(solarSystems.get(2));
-                break;
-            case R.id.system4button:
-                player.setCurrentSolarSystem(solarSystems.get(3));
-                break;
-            case R.id.system5button:
-                player.setCurrentSolarSystem(solarSystems.get(4));
-                break;
-            case R.id.system6button:
-                player.setCurrentSolarSystem(solarSystems.get(5));
-                break;
-            case R.id.system7button:
-                player.setCurrentSolarSystem(solarSystems.get(6));
-                break;
-            case R.id.system8button:
-                player.setCurrentSolarSystem(solarSystems.get(7));
-                break;
-            case R.id.system9button:
-                player.setCurrentSolarSystem(solarSystems.get(8));
-                break;
-            case R.id.system10button:
-                player.setCurrentSolarSystem(solarSystems.get(9));
-                break;
+        if (player.getFuelCanisters() > 0) {
+            switch (view.getId()) {
+                case R.id.system1button:
+                    player.setCurrentSolarSystem(solarSystems.get(0));
+                    break;
+                case R.id.system2button:
+                    player.setCurrentSolarSystem(solarSystems.get(1));
+                    break;
+                case R.id.system3button:
+                    player.setCurrentSolarSystem(solarSystems.get(2));
+                    break;
+                case R.id.system4button:
+                    player.setCurrentSolarSystem(solarSystems.get(3));
+                    break;
+                case R.id.system5button:
+                    player.setCurrentSolarSystem(solarSystems.get(4));
+                    break;
+                case R.id.system6button:
+                    player.setCurrentSolarSystem(solarSystems.get(5));
+                    break;
+                case R.id.system7button:
+                    player.setCurrentSolarSystem(solarSystems.get(6));
+                    break;
+                case R.id.system8button:
+                    player.setCurrentSolarSystem(solarSystems.get(7));
+                    break;
+                case R.id.system9button:
+                    player.setCurrentSolarSystem(solarSystems.get(8));
+                    break;
+                case R.id.system10button:
+                    player.setCurrentSolarSystem(solarSystems.get(9));
+                    break;
+            }
+            currentPlanet = player.getCurrentPlanet();
+            player.useFuel();
         }
-        currentPlanet = player.getCurrentPlanet();
         loadFragment(new MapActivity());
     }
 

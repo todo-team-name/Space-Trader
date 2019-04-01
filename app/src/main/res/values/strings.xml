@@ -49,4 +49,5 @@
     <string name="narcotics_label">Narcotic</string>
     <string name="robots_label">Robots</string>
     <string name="Travel_to_Solar_System">Please choose a Solar System, </string>
+    <string name="fuel_canisters">Fuel canisters left</string>
 </resources>

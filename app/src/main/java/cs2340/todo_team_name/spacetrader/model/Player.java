@@ -19,6 +19,7 @@ public class Player implements Serializable {
     private Market currentMarket;
     private Planet currentPlanet;
     private SolarSystem currentSolarSystem;
+    private int fuelCanisters;
 
 
     /**
@@ -30,6 +31,7 @@ public class Player implements Serializable {
         this.points = points;
         this.credits = 100;
         inventory = new Inventory(10);
+        fuelCanisters = 10;
     }
 
 //    /**
@@ -123,8 +125,10 @@ public class Player implements Serializable {
     }
 
     public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
-        this.currentSolarSystem = currentSolarSystem;
-        setCurrentPlanet(currentSolarSystem.getPlanet(0));
+        if (fuelCanisters > 0) {
+            this.currentSolarSystem = currentSolarSystem;
+            setCurrentPlanet(currentSolarSystem.getPlanet(0));
+        }
     }
 
     public Planet getCurrentPlanet() {
@@ -134,4 +138,9 @@ public class Player implements Serializable {
     public void setCurrentPlanet(Planet currentPlanet) {
         this.currentPlanet = currentPlanet;
     }
+    public void useFuel() {
+        fuelCanisters--;
+    }
+
+    public int getFuelCanisters() {return fuelCanisters;}
 }

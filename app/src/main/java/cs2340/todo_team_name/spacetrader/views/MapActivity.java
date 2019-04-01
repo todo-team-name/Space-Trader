@@ -32,6 +32,8 @@ public class MapActivity extends Fragment {
     private TextView currentPlanet;
     private Player player;
     private ActivityDataProvider activity;
+    private TextView fuel;
+    private TextView hi;
 
 
     @Nullable
@@ -48,12 +50,16 @@ public class MapActivity extends Fragment {
         View view = inflater.inflate(R.layout.map_fragment, null);
         currentSystem = view.findViewById(R.id.current_system_info);
         currentPlanet = view.findViewById(R.id.current_planet_info);
+        fuel = view.findViewById(R.id.fuel_canisters);
         activity = (ActivityDataProvider) getActivity();
+        hi = view.findViewById(R.id.hi_username);
         player = activity.getPlayer();
         Log.i("Player", player.toString());
+        String s = "Hi " + player.getName() + ",";
+        hi.setText(s);
         currentSystem.setText(player.getCurrentSolarSystem().toString());
         currentPlanet.setText(player.getCurrentPlanet().toString());
-
+        fuel.setText(Integer.toString(player.getFuelCanisters()));
         return view;
     }
 }

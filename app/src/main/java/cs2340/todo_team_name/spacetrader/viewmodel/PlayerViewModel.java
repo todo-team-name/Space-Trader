@@ -58,5 +58,6 @@ public class PlayerViewModel extends ViewModel {
         if (player.getCurrentSolarSystem() == null) {
             player.setCurrentSolarSystem(solarSystem);
         }
+
     }
 }
