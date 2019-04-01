@@ -12,6 +12,7 @@ import cs2340.todo_team_name.spacetrader.enums.Resources;
 import cs2340.todo_team_name.spacetrader.model.Market;
 import cs2340.todo_team_name.spacetrader.model.Planet;
 import cs2340.todo_team_name.spacetrader.model.Player;
+import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 
 public class PlayerViewModel extends ViewModel {
     private Player player;
@@ -33,7 +34,7 @@ public class PlayerViewModel extends ViewModel {
         current.updatePlayerMarket(player);
         player.sell(resource);
     }
-
+  
     public HashMap<Resources, String> getAvailableItems(Market market) {
         Resources possible[] = Resources.values();
         HashMap<Resources, String> output = new HashMap<>();
@@ -47,5 +48,15 @@ public class PlayerViewModel extends ViewModel {
             output.put(res, s);
         }
         return output;
+    }
+  
+    public void updateLocation(SolarSystem system) {
+        player.setCurrentSolarSystem(system);
+    }
+
+    public void checkSolar(SolarSystem solarSystem) {
+        if (player.getCurrentSolarSystem() == null) {
+            player.setCurrentSolarSystem(solarSystem);
+        }
     }
 }

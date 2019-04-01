@@ -7,13 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
-import cs2340.todo_team_name.spacetrader.views.PlayerActivity;
 
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -42,6 +39,15 @@ public class ConfigurationActivity extends AppCompatActivity {
     private TextView fighterDisplay;
     private TextView traderDisplay;
     private TextView engineerDisplay;
+
+
+
+    //ArrayList here because of argument type of method below in onCreate()
+    private static ArrayList<SolarSystem> solist;
+    public static ArrayList<SolarSystem> getSolist() {
+        return solist;
+    }
+
     private HashSet<SolarSystem> solarSystems;
     private TextView hi;
     private String name;
@@ -82,7 +88,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         GameState currentGameState = new GameState(currentPlayer, Difficulty.valueOf(diff));
         Log.i("Player Name", currentPlayer.getName());
         Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
-        ArrayList<SolarSystem> solist = new ArrayList<>();
+        solist = new ArrayList<>();
         for(SolarSystem sol : solarSystems) {
             Log.i("Solar System: ", sol.toString());
             solist.add(sol);

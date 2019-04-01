@@ -1,4 +1,5 @@
 package cs2340.todo_team_name.spacetrader.views;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -67,6 +68,7 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         currentPlanet = solarSystems.get(0).getPlanet(0);
         playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         playerViewModel.setPlayer(player);
+        playerViewModel.checkSolar(solarSystems.get(0));
         loadFragment(new Status_Fragment());
         pilot = findViewById(R.id.pilot_card_info);
         trader = findViewById(R.id.trader_card_info);
@@ -86,6 +88,7 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
                                 break;
                             case R.id.menu_map:
                                 Log.i("Map", "This Map");
+                                loadFragment(new MapActivity());
                                 break;
                             case R.id.menu_market:
                                 Log.i("Market", "This market");
@@ -129,6 +132,9 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
     public void openSellMarket(View view) {
         loadFragment(new Sell_Market_Fragment());
     }
+
+    public void openChangeSystem(View view) { loadFragment(new Change_System_Fragment());}
+
 
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
@@ -415,8 +421,47 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         }
     }
 
+
     public Planet getCurrentPlanet() {
         return currentPlanet;
     }
+
+    public void changeSystem(View view) {
+        switch (view.getId()) {
+            case R.id.system1button:
+                player.setCurrentSolarSystem(solarSystems.get(0));
+                break;
+            case R.id.system2button:
+                player.setCurrentSolarSystem(solarSystems.get(1));
+                break;
+            case R.id.system3button:
+                player.setCurrentSolarSystem(solarSystems.get(2));
+                break;
+            case R.id.system4button:
+                player.setCurrentSolarSystem(solarSystems.get(3));
+                break;
+            case R.id.system5button:
+                player.setCurrentSolarSystem(solarSystems.get(4));
+                break;
+            case R.id.system6button:
+                player.setCurrentSolarSystem(solarSystems.get(5));
+                break;
+            case R.id.system7button:
+                player.setCurrentSolarSystem(solarSystems.get(6));
+                break;
+            case R.id.system8button:
+                player.setCurrentSolarSystem(solarSystems.get(7));
+                break;
+            case R.id.system9button:
+                player.setCurrentSolarSystem(solarSystems.get(8));
+                break;
+            case R.id.system10button:
+                player.setCurrentSolarSystem(solarSystems.get(9));
+                break;
+        }
+        currentPlanet = player.getCurrentPlanet();
+        loadFragment(new MapActivity());
+    }
+
 
 }

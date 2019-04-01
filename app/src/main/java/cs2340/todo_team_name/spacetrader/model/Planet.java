@@ -56,7 +56,7 @@ public class Planet implements Serializable {
 
     @Override
     public String toString() {
-        return name + " " + techLevel + " " + governmentType + " " + marketType + " " + hexColor;
+        return name;
     }
 
     public void updatePlayerMarket(Player p) {
