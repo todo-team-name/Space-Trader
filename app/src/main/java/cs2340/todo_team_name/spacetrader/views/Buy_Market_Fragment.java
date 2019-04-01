@@ -72,6 +72,7 @@ public class Buy_Market_Fragment extends Fragment {
         credits = (TextView) view.findViewById(R.id.available_credit_display);
         credits.setText(Double.toString(player.getCredits()));
         PlayerViewModel playerViewModel = activity.getPlayerViewModel();
+
         water = view.findViewById(R.id.buy_water_label);
         furs = view.findViewById(R.id.buy_furs_label);
         food = view.findViewById(R.id.buy_food_label);
@@ -82,6 +83,7 @@ public class Buy_Market_Fragment extends Fragment {
         machines = view.findViewById(R.id.buy_machines_label);
         narcotics = view.findViewById(R.id.buy_narcotics_label);
         robots = view.findViewById(R.id.buy_robots_label);
+
         Market currentMarket = currentPlanet.getMarket();
         HashMap<Resources, String> strings = playerViewModel.getAvailableItems(currentMarket);
         water.setText(strings.get(Resources.WATER));
@@ -94,6 +96,7 @@ public class Buy_Market_Fragment extends Fragment {
         machines.setText(strings.get(Resources.MACHINES));
         narcotics.setText(strings.get(Resources.NARCOTICS));
         robots.setText(strings.get(Resources.ROBOTS));
+
         waterDisplay = view.findViewById(R.id.buy_water_display);
         fursDisplay = view.findViewById(R.id.buy_furs_display);
         foodDisplay = view.findViewById(R.id.buy_food_display);
@@ -104,6 +107,7 @@ public class Buy_Market_Fragment extends Fragment {
         machineDisplay = view.findViewById(R.id.buy_machines_display);
         narcoticsDisplay = view.findViewById(R.id.buy_narcotics_display);
         robotsDisplay = view.findViewById(R.id.buy_robots_display);
+
         Inventory currentInvetory = player.getInventory();
         waterDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.WATER)));
         fursDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.FURS)));

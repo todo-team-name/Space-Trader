@@ -415,7 +415,6 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         }
     }
 
-
     public Planet getCurrentPlanet() {
         return currentPlanet;
     }

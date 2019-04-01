@@ -30,6 +30,7 @@ import cs2340.todo_team_name.spacetrader.model.Player;
 import cs2340.todo_team_name.spacetrader.model.Resource;
 import cs2340.todo_team_name.spacetrader.viewmodel.ConfigurationViewModel;
 import cs2340.todo_team_name.spacetrader.R;
+import cs2340.todo_team_name.spacetrader.viewmodel.PlayerViewModel;
 
 public class Sell_Market_Fragment extends Fragment {
     private ActivityDataProvider activity;
@@ -39,6 +40,11 @@ public class Sell_Market_Fragment extends Fragment {
     private TextView food;
     private TextView firearms;
     private TextView ore;
+    private TextView games;
+    private TextView medicine;
+    private TextView machines;
+    private TextView narcotics;
+    private TextView robots;
     private Player player;
     private Planet currentPlanet;
     private TextView waterDisplay;
@@ -46,6 +52,11 @@ public class Sell_Market_Fragment extends Fragment {
     private TextView foodDisplay;
     private TextView firearmsDisplay;
     private TextView oreDisplay;
+    private TextView gameDisplay;
+    private TextView medicineDisplay;
+    private TextView machineDisplay;
+    private TextView narcoticsDisplay;
+    private TextView robotsDisplay;
 
 
 
@@ -55,32 +66,57 @@ public class Sell_Market_Fragment extends Fragment {
         activity = (ActivityDataProvider) getActivity();
         player = activity.getPlayer();
         currentPlanet = activity.getCurrentPlanet();
+        PlayerViewModel playerViewModel = activity.getPlayerViewModel();
+        Market currentMarket = currentPlanet.getMarket();
+        HashMap<Resources, String> strings = playerViewModel.getAvailableItems(currentMarket);
         View view = inflater.inflate(R.layout.sell_cargo_fragment, null);
         credits = (TextView) view.findViewById(R.id.available_credit_display);
         credits.setText(Double.toString(player.getCredits()));
+
         water = view.findViewById(R.id.sell_water_label);
         furs = view.findViewById(R.id.sell_furs_label);
         food = view.findViewById(R.id.sell_food_label);
         firearms = view.findViewById(R.id.sell_firearms_label);
         ore = view.findViewById(R.id.sell_ore_label);
+        games = view.findViewById(R.id.sell_games_label);
+        medicine = view.findViewById(R.id.sell_medicine_label);
+        machines = view.findViewById(R.id.sell_machines_label);
+        narcotics = view.findViewById(R.id.sell_narcotics_label);
+        robots = view.findViewById(R.id.sell_robots_label);
+
         waterDisplay = view.findViewById(R.id.sell_water_display);
         fursDisplay = view.findViewById(R.id.sell_furs_display);
         foodDisplay = view.findViewById(R.id.sell_food_display);
         firearmsDisplay = view.findViewById(R.id.sell_firearms_display);
         oreDisplay = view.findViewById(R.id.sell_ore_display);
+        gameDisplay = view.findViewById(R.id.sell_games_display);
+        medicineDisplay = view.findViewById(R.id.sell_medicine_display);
+        machineDisplay = view.findViewById(R.id.sell_machines_display);
+        narcoticsDisplay = view.findViewById(R.id.sell_narcotics_display);
+        robotsDisplay = view.findViewById(R.id.sell_robots_display);
+
         Inventory currentInvetory = player.getInventory();
         waterDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.WATER)));
         fursDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.FURS)));
         foodDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.FOOD)));
         firearmsDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.FIREARMS)));
         oreDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.ORE)));
+        medicineDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.MEDICINE)));
+        machineDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.MACHINES)));
+        gameDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.GAMES)));
+        narcoticsDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.NARCOTICS)));
+        robotsDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.ROBOTS)));
 
-        Market currentMarket = currentPlanet.getMarket();
-        water.setText("Water: " + Double.toString(currentMarket.getPriceOfGood(Resources.WATER)));
-        furs.setText("Furs: " + Double.toString(currentMarket.getPriceOfGood(Resources.FURS)));
-        food.setText("Food: " + Double.toString(currentMarket.getPriceOfGood(Resources.FOOD)));
-        firearms.setText("Firearms: " + Double.toString(currentMarket.getPriceOfGood(Resources.FIREARMS)));
-        ore.setText("Ore: " + Double.toString(currentMarket.getPriceOfGood(Resources.ORE)));
+        water.setText(strings.get(Resources.WATER));
+        furs.setText(strings.get(Resources.FURS));
+        food.setText(strings.get(Resources.FOOD));
+        firearms.setText(strings.get(Resources.FIREARMS));
+        ore.setText(strings.get(Resources.ORE));
+        games.setText(strings.get(Resources.GAMES));
+        medicine.setText(strings.get(Resources.MEDICINE));
+        machines.setText(strings.get(Resources.MACHINES));
+        narcotics.setText(strings.get(Resources.NARCOTICS));
+        robots.setText(strings.get(Resources.ROBOTS));
         return view;
     }
 
@@ -101,6 +137,21 @@ public class Sell_Market_Fragment extends Fragment {
                 break;
             case R.id.sell_ore_display:
                 oreDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.ORE)));
+                break;
+            case R.id.sell_games_display:
+                gameDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.GAMES)));
+                break;
+            case R.id.sell_medicine_display:
+                medicineDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.MEDICINE)));
+                break;
+            case R.id.sell_machines_display:
+                machineDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.MACHINES)));
+                break;
+            case R.id.sell_narcotics_display:
+                narcoticsDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.NARCOTICS)));
+                break;
+            case R.id.sell_robots_display:
+                robotsDisplay.setText(Integer.toString(currentInvetory.getResource(Resources.ROBOTS)));
                 break;
         }
     }
