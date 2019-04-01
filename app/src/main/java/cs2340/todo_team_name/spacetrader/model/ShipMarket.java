@@ -49,4 +49,8 @@ public class ShipMarket extends Market implements Serializable {
             return 999999;
         }
     }
+
+    public boolean contains(Resources resource) {
+        return resources.containsKey(resource);
+    }
 }

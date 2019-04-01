@@ -49,18 +49,23 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     private HashSet<SolarSystem> solarSystems;
-
+    private TextView hi;
+    private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.configure_commander_fragment);
+        Intent intent = getIntent();
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.difficulty_array, android.R.layout.simple_spinner_item);
         MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner) findViewById(R.id.difficultySpinner);
         materialDesignSpinner.setAdapter(adapter);
         //pilotName = (TextView) findViewById(R.id.nameInput);
         difficultySpinner = materialDesignSpinner;
-
+        hi = findViewById(R.id.hi_username);
+        name = intent.getStringExtra("username");
+        String username = "Hi " + name + ",";
+        hi.setText(username);
         pointValues = new HashMap<>();
         pilotDisplay = (TextView) findViewById(R.id.pilotPointsDisplay);
         traderDisplay = findViewById(R.id.traderPointsDisplay);
@@ -75,7 +80,8 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     public void createGameState(View view) {
-        Player currentPlayer = new Player("TestPlayer", pointValues);
+        Player currentPlayer = new Player(name, pointValues);
+        Log.i("name", name);
         GenerateGame gameGen = new GenerateGame(currentPlayer, new HashSet<SolarSystem>());
         solarSystems = gameGen.generate();
         String diff = difficultySpinner.getText().toString().toUpperCase();

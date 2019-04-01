@@ -8,4 +8,5 @@ public abstract class Market implements Serializable {
     public abstract boolean purchase(Resources resource);
     public abstract boolean sell(Resources resource);
     public abstract double getPriceOfGood(Resources resource);
+    public abstract boolean contains(Resources resource);
 }

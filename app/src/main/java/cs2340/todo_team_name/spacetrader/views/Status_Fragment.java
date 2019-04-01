@@ -32,6 +32,7 @@ public class Status_Fragment extends Fragment {
     private TextView credits;
     private Player player;
     private ActivityDataProvider activity;
+    private TextView hi;
 
 
     @Nullable
@@ -49,6 +50,10 @@ public class Status_Fragment extends Fragment {
         credits = view.findViewById(R.id.funds_status);
         activity = (ActivityDataProvider) getActivity();
         player = activity.getPlayer();
+        hi = view.findViewById(R.id.hi_username);
+        String username = "Hi " + player.getName() + ",";
+        hi.setText(username);
+        activity = (ActivityDataProvider) getActivity();
         String creds = "$";
         creds = creds + Double.toString(player.getCredits());
         Log.i("Player", player.toString());

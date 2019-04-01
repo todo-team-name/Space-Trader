@@ -43,5 +43,10 @@
     <string name="sell_cargo_header">sell cargo here</string>
     <string name="credit_available">Credit Available:</string>
     <string name="credit_label">Current Credit:</string>
+    <string name="games_label">Games</string>
+    <string name="medicine_label">Medicine</string>
+    <string name="machines_label">Machines</string>
+    <string name="narcotics_label">Narcotic</string>
+    <string name="robots_label">Robots</string>
     <string name="Travel_to_Solar_System">Please choose a Solar System, </string>
 </resources>

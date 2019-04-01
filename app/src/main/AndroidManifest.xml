@@ -10,15 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="cs2340.todo_team_name.spacetrader.views.MainActivity">
-        </activity>
-
-        <activity android:name="cs2340.todo_team_name.spacetrader.views.ConfigurationActivity">
+        <activity android:name="cs2340.todo_team_name.spacetrader.views.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="cs2340.todo_team_name.spacetrader.views.MainActivity">
+        </activity>
+
+        <activity android:name="cs2340.todo_team_name.spacetrader.views.ConfigurationActivity">
+
         </activity>
 
         <activity android:name="cs2340.todo_team_name.spacetrader.views.PlayerActivity"></activity>
