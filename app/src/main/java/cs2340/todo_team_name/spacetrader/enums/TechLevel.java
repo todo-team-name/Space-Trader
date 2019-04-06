@@ -5,6 +5,9 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
+/**
+ * Tech levels available
+ */
 public enum TechLevel implements Serializable {
     PREAGRICULTURE(0),
     AGRICULTURE(1),
@@ -40,6 +43,10 @@ public enum TechLevel implements Serializable {
         level = l;
     }
 
+    /**
+     * jsonifies tech level
+     * @return json
+     */
     public JSONObject resourceTechLevels() {
         try {
             jsonObject = new JSONObject(json);
@@ -49,6 +56,10 @@ public enum TechLevel implements Serializable {
         return jsonObject;
     }
 
+    /**
+     * Integer representation of tech level
+     * @return int level
+     */
     public int getLevel() {
         return level;
     }

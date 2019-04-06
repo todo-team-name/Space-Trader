@@ -2,6 +2,9 @@ package cs2340.todo_team_name.spacetrader.enums;
 
 import java.io.Serializable;
 
+/**
+ * Available colors
+ */
 public enum Colors implements Serializable {
     C1("#65E28B"),
     C2("#7F2CCB"),
@@ -13,6 +16,10 @@ public enum Colors implements Serializable {
         hexValue = s;
     }
 
+    /**
+     * Gets hex value for color
+     * @return String hex value
+     */
     public String getHex() {
         return hexValue;
     }

@@ -1,5 +1,8 @@
 package cs2340.todo_team_name.spacetrader.enums;
 
+/**
+ * Difficulties available in game
+ */
 public enum Difficulty {
     BEGINNER("Beginner"),
     NORMAL("Normal"),
