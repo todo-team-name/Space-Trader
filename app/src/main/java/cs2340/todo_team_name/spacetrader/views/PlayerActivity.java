@@ -23,6 +23,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Stack;
 
 import androidx.fragment.app.Fragment;
@@ -55,6 +56,9 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
     private TextView ore;
     private Stack<View> viewStack;
     private Planet currentPlanet;
+    private Random random;
+    private double droughtScaleFactor = 1.4;
+    public static boolean isDrought = false;
 
 
     @Override
@@ -428,7 +432,10 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
 
     public void changeSystem(View view) {
         if (player.getFuelCanisters() > 0) {
+            random = new Random();
+            int randomNum = random.nextInt(10);
             switch (view.getId()) {
+
                 case R.id.system1button:
                     player.setCurrentSolarSystem(solarSystems.get(0));
                     break;
@@ -464,6 +471,10 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
             player.useFuel();
         }
         loadFragment(new MapActivity());
+    }
+
+    public static boolean getIsDrought() {
+        return isDrought;
     }
 
 

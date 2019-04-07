@@ -1,5 +1,7 @@
 package cs2340.todo_team_name.spacetrader.enums;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,6 +12,7 @@ import java.util.LinkedList;
 import java.util.Random;
 
 import cs2340.todo_team_name.spacetrader.model.Resource;
+import cs2340.todo_team_name.spacetrader.views.PlayerActivity;
 
 /**
  * Resources available for trading
@@ -94,13 +97,27 @@ public enum Resources implements Serializable {
     public double getScaledValue(TechLevel t) {
         Random rand = new Random();
         int randomScalar = rand.nextInt(range + 1);
+        boolean isDrought = rand.nextBoolean();
         double scalar = ((double) randomScalar) / 100;
         boolean addOrSubtract = rand.nextBoolean();
         double toReturn = 0;
         if (addOrSubtract) {
-            toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) + (value * scalar));
+            if(isDrought) {
+                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) + (value * scalar)) * 1.4;
+            } else {
+                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) + (value * scalar));
+            }
         } else {
-            toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) - (value * scalar));
+            if(isDrought) {
+                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) - (value * scalar)) * 1.4;
+            } else {
+                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) - (value * scalar));
+            }
+
         }
         toReturn = toReturn * 100;
         toReturn = Math.round(toReturn);
