@@ -39,6 +39,7 @@ import cs2340.todo_team_name.spacetrader.viewmodel.PlayerViewModel;
 public class PlayerActivity extends AppCompatActivity implements ActivityDataProvider {
     private PlayerViewModel playerViewModel;
     private ArrayList<SolarSystem> solarSystems;
+    private String token;
     private HashMap<PointTypes, Integer> pointValues;
     private TextView pilot;
     private TextView trader;
@@ -65,6 +66,7 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         Intent intent = getIntent();
         player = (Player) intent.getSerializableExtra("player");
         solarSystems = (ArrayList<SolarSystem>) intent.getSerializableExtra("universe");
+        token = intent.getStringExtra("token");
         currentPlanet = solarSystems.get(0).getPlanet(0);
         playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         playerViewModel.setPlayer(player);
@@ -466,5 +468,14 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         loadFragment(new MapActivity());
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        boolean updated = playerViewModel.updateInfo(player, solarSystems, token, this);
+    }
 
+    @Override
+    public ArrayList<SolarSystem> getSolarSystems() {
+        return solarSystems;
+    }
 }

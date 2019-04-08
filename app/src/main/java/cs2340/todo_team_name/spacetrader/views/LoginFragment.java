@@ -15,10 +15,12 @@ import cs2340.todo_team_name.spacetrader.R;
 
 public class LoginFragment extends Fragment {
     private EditText user;
+    private EditText password;
     @Override
     public View onCreateView (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_fragment, container, false);
         user = view.findViewById(R.id.username_input);
+        password = view.findViewById(R.id.password_input);
 //        final TextInputLayout usernameTextInput = view.findViewById(R.id.username_input_layout);
 //        final TextInputEditText usernameEditText = view.findViewById(R.id.username_input);
 //        final TextInputLayout passwordTextInput = view.findViewById(R.id.password_input_layout);
@@ -49,8 +51,11 @@ public class LoginFragment extends Fragment {
 
     public void login(Intent intent) {
         String username = "";
+        String pass = "";
         username = user.getText().toString();
+        pass = password.getText().toString();
         intent.putExtra("username", username);
+        intent.putExtra("password", pass);
 
     }
 

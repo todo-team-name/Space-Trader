@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import androidx.lifecycle.ViewModelProviders;
 import cs2340.todo_team_name.spacetrader.enums.Difficulty;
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
 import cs2340.todo_team_name.spacetrader.model.GameState;
@@ -23,12 +24,14 @@ import cs2340.todo_team_name.spacetrader.model.Player;
 import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.viewmodel.ConfigurationViewModel;
 import cs2340.todo_team_name.spacetrader.R;
+import cs2340.todo_team_name.spacetrader.viewmodel.LoginViewModel;
 
 
 public class ConfigurationActivity extends AppCompatActivity {
     private ConfigurationViewModel configurationViewModel;
     private static final int MAX_POINTS = 16;
     private int remPoints = MAX_POINTS;
+    private String token;
 
     private HashMap<PointTypes, Integer> pointValues;
 
@@ -56,6 +59,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.configure_commander_fragment);
         Intent intent = getIntent();
+        configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.difficulty_array, android.R.layout.simple_spinner_item);
         MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner) findViewById(R.id.difficultySpinner);
@@ -64,6 +68,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         difficultySpinner = materialDesignSpinner;
         hi = findViewById(R.id.hi_username);
         name = intent.getStringExtra("username");
+        token = intent.getStringExtra("token");
+        Log.i("TOKEN IN ACT", token);
         String username = "Hi " + name + ",";
         hi.setText(username);
         pointValues = new HashMap<>();
@@ -93,9 +99,11 @@ public class ConfigurationActivity extends AppCompatActivity {
             Log.i("Solar System: ", sol.toString());
             solist.add(sol);
         }
+        boolean configured = configurationViewModel.updateInfo(currentPlayer, solist, token, this);
         Intent intent = new Intent(this, PlayerActivity.class);
         intent.putExtra("player", currentPlayer);
         intent.putExtra("universe", solist);
+        intent.putExtra("token", token);
         startActivity(intent);
     }
 

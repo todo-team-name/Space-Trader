@@ -68,7 +68,7 @@ public class Change_System_Fragment extends Fragment {
         activity = (ActivityDataProvider) getActivity();
         player = activity.getPlayer();
         currentPlanet = player.getCurrentPlanet();
-        ArrayList<SolarSystem> system = ConfigurationActivity.getSolist();
+        ArrayList<SolarSystem> system = activity.getSolarSystems();
         View view = inflater.inflate(R.layout.change_solar_system, null);
         system1button = view.findViewById(R.id.system1button);
         system2button = view.findViewById(R.id.system2button);

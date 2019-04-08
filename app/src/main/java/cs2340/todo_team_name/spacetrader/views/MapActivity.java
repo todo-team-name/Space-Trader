@@ -43,7 +43,8 @@ public class MapActivity extends Fragment {
         //with the fragment you want to inflate
         //like if the class is HomeFragment it should have R.layout.home_fragment
         //if it is DashboardFragment it should have R.layout.fragment_dashboard
-        ArrayList<SolarSystem> solarSystems = ConfigurationActivity.getSolist();
+        activity = (ActivityDataProvider) getActivity();
+        ArrayList<SolarSystem> solarSystems = activity.getSolarSystems();
         SolarSystem testSol = solarSystems.get(0);
         Planet testPlanet = testSol.getPlanet(0);
 

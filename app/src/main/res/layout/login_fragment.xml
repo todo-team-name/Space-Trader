@@ -90,6 +90,7 @@
             android:clickable="true"
             android:fontFamily="@font/nunito"
             android:text="@string/create_account"
+            android:onClick="openCreateAccount"
             android:textColor="@color/colorAccent" />
 
         <!--Sign in button-->
