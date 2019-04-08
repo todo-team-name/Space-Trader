@@ -1,5 +1,7 @@
 package cs2340.todo_team_name.spacetrader.enums;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,7 +12,11 @@ import java.util.LinkedList;
 import java.util.Random;
 
 import cs2340.todo_team_name.spacetrader.model.Resource;
+import cs2340.todo_team_name.spacetrader.views.PlayerActivity;
 
+/**
+ * Resources available for trading
+ */
 public enum Resources implements Serializable {
     WATER("Water", 30, 3, 4, 0),
     FURS("Furs", 250, 10, 10, 0),
@@ -42,36 +48,76 @@ public enum Resources implements Serializable {
         buildIncreasedAndDecreased();
     }
 
+    /**
+     * Gets resource name
+     * @return String name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets resource price
+     * @return int monetary value
+     */
     public int getValue() {
         return value;
     }
 
+    /**
+     * Gets resource range
+     * @return int range
+     */
     public int getRange() {
         return range;
     }
 
+    /**
+     * Get resource increase per level
+     * @return int increasePerLevel
+     */
     public int getIncreasePerLevel() {
         return increasePerLevel;
     }
 
+    /**
+     * Checks if resource is available based on level
+     * @param i current level
+     * @return boolean current level is greater than minLevel
+     */
     public boolean checkLevel(int i) {
         return i >= minLevel;
     }
 
+    /**
+     * Scale resource value for market storage
+     * @param t current level
+     * @return double scaled resource value
+     */
     public double getScaledValue(TechLevel t) {
         Random rand = new Random();
         int randomScalar = rand.nextInt(range + 1);
+        boolean isDrought = rand.nextBoolean();
         double scalar = ((double) randomScalar) / 100;
         boolean addOrSubtract = rand.nextBoolean();
         double toReturn = 0;
         if (addOrSubtract) {
-            toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) + (value * scalar));
+            if(isDrought) {
+                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) + (value * scalar)) * 1.4;
+            } else {
+                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) + (value * scalar));
+            }
         } else {
-            toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) - (value * scalar));
+            if(isDrought) {
+                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) - (value * scalar)) * 1.4;
+            } else {
+                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) - (value * scalar));
+            }
+
         }
         toReturn = toReturn * 100;
         toReturn = Math.round(toReturn);
@@ -79,6 +125,9 @@ public enum Resources implements Serializable {
         return toReturn;
     }
 
+    /**
+     * Builds json for increased and decreased resources
+     */
     private void buildIncreasedAndDecreased() {
         /*
         ResourceType[] toAdd = {ResourceType.DESERT};

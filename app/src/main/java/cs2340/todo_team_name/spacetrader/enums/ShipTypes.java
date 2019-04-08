@@ -1,5 +1,8 @@
 package cs2340.todo_team_name.spacetrader.enums;
 
+/**
+ * Ship types available
+ */
 public enum ShipTypes {
     FLEA("Flea", 20, 5, 0, 25, 0, 0, 200),
     GNAT("Gnat", 14, 15, 1, 100, 1, 0, 500),
@@ -32,34 +35,66 @@ public enum ShipTypes {
         value = val;
     }
 
+    /**
+     * Gets ship name
+     * @return String name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets ship speed
+     * @return int speed
+     */
     public int getSpeed() {
         return speed;
     }
 
+    /**
+     * Gets ship inventory size
+     * @return int size
+     */
     public int getInventorySize() {
         return inventorySize;
     }
 
+    /**
+     * Gets number of ship weapons
+     * @return int weapons
+     */
     public int getWeaponsAvailable() {
         return weaponsAvailable;
     }
 
+    /**
+     * Gets ship's base health
+     * @return int health
+     */
     public int getBaseHealth() {
         return baseHealth;
     }
 
+    /**
+     * Gets number of ship gadgets
+     * @return int gadgets
+     */
     public int getGadgetsAvailable() {
         return gadgetsAvailable;
     }
 
+    /**
+     * Gets number of ship shields
+     * @return int shields
+     */
     public int getShieldsAvailable() {
         return shieldsAvailable;
     }
 
+    /**
+     * Gets ship price
+     * @return int price
+     */
     public int getValue() {
         return value;
     }

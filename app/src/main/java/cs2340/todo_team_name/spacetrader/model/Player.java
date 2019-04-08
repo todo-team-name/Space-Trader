@@ -6,6 +6,7 @@ import java.util.Map;
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
 import cs2340.todo_team_name.spacetrader.enums.Resources;
 import java.io.Serializable;
+import java.util.Random;
 
 @SuppressWarnings("serial")
 public class Player implements Serializable {
@@ -98,6 +99,7 @@ public class Player implements Serializable {
             if (credits > price) {
                 credits -= price;
                 inventory.incrementResource(resource);
+
                 currentMarket.sell(resource);
             } else {
                 return "You don't have enough credits to afford this good";
