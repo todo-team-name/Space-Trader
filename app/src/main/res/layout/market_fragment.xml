@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context=".views.PlayerActivity">
+    <!-- TODO: Will need to change tool:context to match fragment or activity-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:clipToPadding="false"
+        android:outlineProvider="paddedBounds"
+        android:paddingLeft="25dp"
+        android:paddingTop="35dp"
+        android:paddingRight="25dp">
+
+        <!--Header-->
+        <TextView
+            android:id="@+id/map_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/market_label"
+            android:textColor="@color/colorPrimary"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/user_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/map_title"
+            android:layout_marginBottom="40dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/cargo"
+            android:textColor="@color/colorSecondary"
+            android:textSize="30sp" />
+
+        <RelativeLayout
+            android:id="@+id/user_cargo_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_location">
+            <!--Water card-->
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/planet_player_at"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="20dp"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/water_cargo_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/nunito"
+                    android:paddingTop="5dp"
+                    android:text="@string/water_label"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/water_cargo_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="3"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
+
+            <!--Furs card-->
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/furs_cargo"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/planet_player_at"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/furs_cargo_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/nunito"
+                    android:paddingTop="5dp"
+                    android:text="@string/furs_label"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/furs_cargo_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="24"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
+
+            <!--Food card-->
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/food_cargo"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/furs_cargo"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/food_cargo_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/nunito"
+                    android:paddingTop="5dp"
+                    android:text="@string/food_label"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/food_cargo_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="10"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
+
+            <!--Ore card-->
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/ore_cargo"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_below="@id/planet_player_at"
+                android:layout_marginTop="20dp"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/ore_cargo_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/nunito"
+                    android:paddingTop="5dp"
+                    android:text="@string/ore_label"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/ore_cargo_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="6"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
+
+            <!--Firearms card-->
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/firearms_cargo"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_below="@id/furs_cargo"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/ore_cargo"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/firearms_cargo_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/nunito"
+                    android:paddingTop="5dp"
+                    android:text="@string/firearms_label"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/firearms_cargo_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="0"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
+
+
+            <!--Games card-->
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/games_cargo"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_below="@id/food_cargo"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/firearms_cargo"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/games_cargo_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/nunito"
+                    android:paddingTop="5dp"
+                    android:text="@string/games_label"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/games_cargo_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="0"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
+
+
+            <!--Medicine card-->
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/medicine_cargo"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/ore_cargo"
+
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="10dp">>
+
+                <TextView
+                    android:id="@+id/medicine_cargo_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/nunito"
+                    android:paddingTop="5dp"
+                    android:text="@string/medicine_label"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/medicine_cargo_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="0"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
+
+
+            <!--Machines card-->
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/machines_cargo"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_below="@id/firearms_cargo"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/medicine_cargo"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/machines_cargo_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/nunito"
+                    android:paddingTop="5dp"
+                    android:text="@string/machines_label"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/machines_cargo_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="0"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
+
+
+            <!--Narcotics card-->
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/narcotics_cargo"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_below="@id/games_cargo"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/machines_cargo"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/narcotics_cargo_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/nunito"
+                    android:paddingTop="5dp"
+                    android:text="@string/narcotics_label"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/narcotics_cargo_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="0"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
+
+
+            <!--Robots card-->
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/robots_cargo"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_below="@id/medicine_cargo"
+
+                android:layout_marginTop="20dp"
+
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/robots_cargo_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/nunito"
+                    android:paddingTop="5dp"
+                    android:text="@string/robots_label"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/robots_cargo_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="0"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="20dp" />
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/market_button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_navigation_container"
+        android:layout_below="@+id/user_cargo_container"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="60dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <!--Buy Cargo Button-->
+        <Button
+            android:id="@+id/buy_cargo_button"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/round_button"
+            android:backgroundTint="@color/colorAccent"
+            android:fontFamily="@font/nunito"
+            android:onClick="openBuyMarket"
+            android:text="@string/buy_cargo"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/background"
+            android:textSize="20dp" />
+
+        <!--Sell Cargo Button-->
+        <Button
+            android:id="@+id/sell_cargo_button"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_outline_button"
+            android:fontFamily="@font/nunito"
+            android:onClick="openSellMarket"
+            android:text="@string/sell_cargo"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp" />
+    </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
+</ScrollView>

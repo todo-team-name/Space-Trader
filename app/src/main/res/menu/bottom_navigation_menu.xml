@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_status"
+        android:title="@string/commander_status_label"
+        android:titleCondensed="@string/commander_status_label_small"
+        android:icon="@drawable/ic_user">
+    </item>
+    <item
+        android:id="@+id/menu_market"
+        android:title="@string/market_label"
+        android:icon="@drawable/ic_shopping_cart_circle">
+    </item>
+    <item
+        android:id="@+id/menu_map"
+        android:title="@string/map_label"
+        android:icon="@drawable/ic_worldwide">
+    </item>
+</menu>

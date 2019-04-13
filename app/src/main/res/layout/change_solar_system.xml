@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".views.PlayerActivity">
+    <!--TODO: Will need to update context-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:clipToPadding="false"
+        android:outlineProvider="paddedBounds"
+        android:paddingLeft="25dp"
+        android:paddingTop="35dp"
+        android:paddingRight="25dp">
+
+        <!--Header-->
+        <TextView
+            android:id="@+id/solarSystemsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Solar Systems"
+            android:textColor="@color/colorPrimary"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/lets_travel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/solarSystemsTitle"
+            android:layout_marginTop="-1dp"
+            android:layout_marginBottom="40dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Choose a Solar System!"
+            android:textColor="@color/colorSecondary"
+            android:textSize="30sp" />
+
+        <!--Buy Cargo Container-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/system1button"
+                android:layout_width="193dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="92dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="changeSystem"
+                android:text="@string/buy_cargo"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="40dp"
+                tools:layout_conversion_absoluteWidth="200dp" />
+
+            <Button
+                android:id="@+id/system2button"
+                android:layout_width="193dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="changeSystem"
+                android:text="@string/buy_cargo"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/system1button"
+                tools:layout_conversion_absoluteHeight="40dp"
+                tools:layout_conversion_absoluteWidth="200dp" />
+
+            <Button
+                android:id="@+id/system3button"
+                android:layout_width="193dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="changeSystem"
+                android:text="@string/buy_cargo"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/system2button"
+                tools:layout_conversion_absoluteHeight="40dp"
+                tools:layout_conversion_absoluteWidth="200dp" />
+
+            <Button
+                android:id="@+id/system4button"
+                android:layout_width="193dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="changeSystem"
+                android:text="@string/buy_cargo"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/system3button"
+                tools:layout_conversion_absoluteHeight="40dp"
+                tools:layout_conversion_absoluteWidth="200dp" />
+
+            <Button
+                android:id="@+id/system5button"
+                android:layout_width="193dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="changeSystem"
+                android:text="@string/buy_cargo"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/system4button"
+                tools:layout_conversion_absoluteHeight="40dp"
+                tools:layout_conversion_absoluteWidth="200dp" />
+
+            <Button
+                android:id="@+id/system6button"
+                android:layout_width="193dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="changeSystem"
+                android:text="@string/buy_cargo"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/system5button"
+                tools:layout_conversion_absoluteHeight="40dp"
+                tools:layout_conversion_absoluteWidth="200dp" />
+
+            <Button
+                android:id="@+id/system7button"
+                android:layout_width="193dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="changeSystem"
+                android:text="@string/buy_cargo"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/system6button"
+                tools:layout_conversion_absoluteHeight="40dp"
+                tools:layout_conversion_absoluteWidth="200dp" />
+
+            <Button
+                android:id="@+id/system8button"
+                android:layout_width="193dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="changeSystem"
+                android:text="@string/buy_cargo"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/system7button"
+                tools:layout_conversion_absoluteHeight="40dp"
+                tools:layout_conversion_absoluteWidth="200dp" />
+
+            <Button
+                android:id="@+id/system9button"
+                android:layout_width="193dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="changeSystem"
+                android:text="@string/buy_cargo"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/system8button"
+                tools:layout_conversion_absoluteHeight="40dp"
+                tools:layout_conversion_absoluteWidth="200dp" />
+
+            <Button
+                android:id="@+id/system10button"
+                android:layout_width="193dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/colorAccent"
+                android:onClick="changeSystem"
+                android:text="@string/buy_cargo"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/system9button"
+                tools:layout_conversion_absoluteHeight="40dp"
+                tools:layout_conversion_absoluteWidth="200dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/available_cargo_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buy_cargo">
+
+            <!--Remaining Credit-->
+
+            <!--Water-->
+
+            <!--Furs-->
+
+            <!--Food-->
+
+            <!--Ore-->
+
+            <!--Firearms-->
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

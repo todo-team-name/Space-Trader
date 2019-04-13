@@ -11,14 +11,14 @@
         android:layout_height="wrap_content"
         android:paddingTop="50dp"
         android:paddingLeft="50dp"
-        android:text="@string/name_label" />
+         />
 
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/nameLabel"
-        android:hint="@string/name_label"
+
         android:inputType="textPersonName"
         android:paddingLeft="18dp"
         android:paddingTop="50dp"
@@ -65,7 +65,7 @@
         android:layout_below="@id/skillPointsLabel"
         android:paddingTop="50dp"
         android:paddingLeft="25dp"
-        android:text="@string/pilot_points_label" />
+        android:text="@string/pilot_label" />
 
     <Button
         android:id="@+id/pilotPointsMinus"
@@ -108,7 +108,7 @@
         android:layout_below="@id/pilotPointsLabel"
         android:paddingTop="50dp"
         android:paddingLeft="25dp"
-        android:text="@string/fighter_points_label" />
+        android:text="@string/fighter_label" />
 
     <Button
         android:id="@+id/fighterPointsMinus"
@@ -151,7 +151,7 @@
         android:layout_below="@id/fighterPointsLabel"
         android:paddingTop="50dp"
         android:paddingLeft="25dp"
-        android:text="@string/trader_points_label" />
+        android:text="@string/trader_label" />
 
     <Button
         android:id="@+id/traderPointsMinus"
@@ -194,7 +194,7 @@
         android:layout_below="@id/traderPointsLabel"
         android:paddingTop="50dp"
         android:paddingLeft="25dp"
-        android:text="@string/engineer_points_label" />
+        android:text="@string/engineer_label" />
 
     <Button
         android:id="@+id/engineerPointsMinus"
@@ -239,6 +239,5 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="50dp"
         android:onClick="createGameState"
-        android:text="@string/create_player_label" />
-
+    />
 </RelativeLayout>
