@@ -1,6 +1,5 @@
 package cs2340.todo_team_name.spacetrader.viewmodel;
 
-import android.app.Application;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -15,19 +14,18 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
-import cs2340.todo_team_name.spacetrader.R;
+import cs2340.todo_team_name.spacetrader.enums.PointTypes;
 import cs2340.todo_team_name.spacetrader.enums.Resources;
 import cs2340.todo_team_name.spacetrader.model.Market;
 import cs2340.todo_team_name.spacetrader.model.Planet;
 import cs2340.todo_team_name.spacetrader.model.Player;
 import cs2340.todo_team_name.spacetrader.model.SolarSystem;
-import cs2340.todo_team_name.spacetrader.views.ConfigurationActivity;
 import cs2340.todo_team_name.spacetrader.views.PlayerActivity;
 
 public class PlayerViewModel extends ViewModel {
@@ -51,16 +49,11 @@ public class PlayerViewModel extends ViewModel {
         player.sell(resource);
     }
   
-    public HashMap<Resources, String> getAvailableItems(Market market) {
+    public HashMap<Resources, String> configureItemMap(Market market) {
         Resources possible[] = Resources.values();
         HashMap<Resources, String> output = new HashMap<>();
         for (Resources res: possible) {
-            String s = "";
-            if (market.contains(res)) {
-                s = res.getName() + ": " + market.getPriceOfGood(res);
-            } else {
-                s = "N/A";
-            }
+            String s = market.displayResource(res);
             output.put(res, s);
         }
         return output;
@@ -77,9 +70,10 @@ public class PlayerViewModel extends ViewModel {
 
     }
 
-    public boolean updateInfo(Player player, ArrayList<SolarSystem> solarSystem, final String token, PlayerActivity act) {
+    public void updateInfo(Player player, Collection<SolarSystem> solarSystem,
+                           final String token, PlayerActivity act) {
         SolarSystem[] solarSystems = new SolarSystem[solarSystem.size()];
-        solarSystems = solarSystem.toArray(solarSystems);
+        //solarSystems = solarSystem.toArray(solarSystems);
         JSONObject data = new JSONObject();
         JSONObject androidData = new JSONObject();
         Gson gson = new Gson();
@@ -96,16 +90,17 @@ public class PlayerViewModel extends ViewModel {
             androidData.put("solarsystems", solarArr);
             data.put("game_info_android", androidData);
         } catch (Exception e) {
-            //TODO HANDLE EXCEPTION
+            //HANDLE
         }
-        String jsonBody = data.toString();
-        final String finalToken = token;
+        //String jsonBody = data.toString();
+        //final String finalToken = token;
         RequestQueue queue = Volley.newRequestQueue(act);
         String url = "https://space-trader-backend.herokuapp.com/api/users/update";
         Log.i("DATA SENT", data.toString());
         Log.i("PREPPING", "REQUEST");
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.POST, url, data, new com.android.volley.Response.Listener<JSONObject>() {
+                (Request.Method.POST, url, data,
+                        new com.android.volley.Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
@@ -116,14 +111,14 @@ public class PlayerViewModel extends ViewModel {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
+                        // HANDLE
                         Log.i("FAILED", "THIS FAILED");
                     }
                 }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String>  params = new HashMap<String, String>();
-                String auth = "Bearer " + finalToken;
+                Map<String, String>  params = new HashMap<>();
+                String auth = "Bearer " + token;
                 Log.i("AUTH STRING", auth);
                 params.put("Content-Type", "application/json");
                 params.put("Authorization", auth);
@@ -146,8 +141,47 @@ public class PlayerViewModel extends ViewModel {
         try {
             Response response = client.newCall(request).execute();
         } catch (Exception e) {
-            //TODO
+            //HANDLE
         } */
-        return false;
+    }
+
+    public String hiString(Player player) {
+        return "Hi " + player.getName() + ",";
+    }
+
+    public String playerInventoryString(Player player, Resources res) {
+        return player.inventoryString(res);
+    }
+
+    public String playerSolarSystemString(Player player) {
+        return player.currentSolarSystemToString();
+    }
+
+    public String playerPlanetString(Player player) {
+        return player.currentPlanetToString();
+    }
+
+    public String fuelCanistersString(Player player) {
+        int canisters = player.getFuelCanisters();
+        return Integer.toString(canisters);
+    }
+
+    public String creditsString(Player player) {
+        double credits = player.getCredits();
+        return "$" + Double.toString(credits);
+    }
+
+    public String pointsString(Player player, PointTypes pointType) {
+        int points = player.getPoints(pointType);
+        return Integer.toString(points);
+    }
+
+    public List<String> allSolarSystemStrings(List<SolarSystem> solarSystemList) {
+        List<String> toReturn = new ArrayList<>();
+        for (SolarSystem system: solarSystemList) {
+            String name = system.getName();
+            toReturn.add(name);
+        }
+        return toReturn;
     }
 }

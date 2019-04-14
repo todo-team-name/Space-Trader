@@ -8,7 +8,7 @@ import cs2340.todo_team_name.spacetrader.enums.ShipTypes;
 import cs2340.todo_team_name.spacetrader.enums.Weapons;
 import java.io.Serializable;
 
-public class Ship implements Serializable {
+class Ship implements Serializable {
     private ShipTypes shipType;
     private HashSet<Gadgets> gadgets;
     private Shields[] shields;

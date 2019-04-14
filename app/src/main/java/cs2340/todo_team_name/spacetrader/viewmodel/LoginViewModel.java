@@ -48,7 +48,7 @@ public class LoginViewModel extends AndroidViewModel {
             data.put("username", username);
             data.put("password", password);
         } catch (Exception e) {
-            //TODO
+            //HANDLE
         }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.POST, url, data, new Response.Listener<JSONObject>() {
@@ -62,7 +62,7 @@ public class LoginViewModel extends AndroidViewModel {
                             Log.i("TOKEN IN LOGIN VIEWMODEL", token);
                             getData();
                         } catch (Exception e) {
-                            //TODO
+                            //HANDLE
                         }
 
                     }
@@ -70,20 +70,20 @@ public class LoginViewModel extends AndroidViewModel {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
+                        // HANDLE
 
                     }
                 });
         queue.add(jsonObjectRequest);
     }
 
-    public String tokenResult() {
+    /*public String tokenResult() {
         if (token.equals(" ")) {
             return null;
         } else {
             return token;
         }
-    }
+    }*/
 
     private void getData() {
         final String finalToken = token;
@@ -91,7 +91,8 @@ public class LoginViewModel extends AndroidViewModel {
         String url = "https://space-trader-backend.herokuapp.com/api/users/update";
         Log.i("PREPPING", "REQUEST");
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.POST, url, new JSONObject(), new com.android.volley.Response.Listener<JSONObject>() {
+                (Request.Method.POST, url, new JSONObject(),
+                        new com.android.volley.Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
@@ -124,13 +125,13 @@ public class LoginViewModel extends AndroidViewModel {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
+                        // HANDLE
                         Log.i("FAILED", "THIS FAILED");
                     }
                 }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String>  params = new HashMap<String, String>();
+                Map<String, String>  params = new HashMap<>();
                 String auth = "Bearer " + finalToken;
                 Log.i("AUTH STRING", auth);
                 params.put("Content-Type", "application/json");
@@ -153,7 +154,7 @@ public class LoginViewModel extends AndroidViewModel {
             data.put("username", toSend.getStringExtra("username"));
             data.put("password", toSend.getStringExtra("password"));
         } catch (Exception e) {
-            //TODO
+            //HANDLE
         }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.POST, url, data, new Response.Listener<JSONObject>() {
@@ -167,7 +168,7 @@ public class LoginViewModel extends AndroidViewModel {
                             Log.i("TOKEN IN LOGIN VIEWMODEL", token);
                             currentActivity.startActivity(toSend);
                         } catch (Exception e) {
-                            //TODO
+                            //HANDLE
                         }
 
                     }
@@ -175,7 +176,7 @@ public class LoginViewModel extends AndroidViewModel {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
+                        // HANDLE
 
                     }
                 });

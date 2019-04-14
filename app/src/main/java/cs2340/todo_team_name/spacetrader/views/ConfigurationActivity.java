@@ -14,6 +14,7 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 
 import androidx.lifecycle.ViewModelProviders;
 import cs2340.todo_team_name.spacetrader.enums.Difficulty;
@@ -24,7 +25,6 @@ import cs2340.todo_team_name.spacetrader.model.Player;
 import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.viewmodel.ConfigurationViewModel;
 import cs2340.todo_team_name.spacetrader.R;
-import cs2340.todo_team_name.spacetrader.viewmodel.LoginViewModel;
 
 
 public class ConfigurationActivity extends AppCompatActivity {
@@ -36,7 +36,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     private HashMap<PointTypes, Integer> pointValues;
 
     private MaterialBetterSpinner difficultySpinner;
-    private TextView pilotName;
+    //private TextView pilotName;
     private TextView pilotDisplay;
     private TextView remPointsDisplay;
     private TextView fighterDisplay;
@@ -46,25 +46,28 @@ public class ConfigurationActivity extends AppCompatActivity {
 
 
     //ArrayList here because of argument type of method below in onCreate()
-    private static ArrayList<SolarSystem> solist;
-    public static ArrayList<SolarSystem> getSolist() {
+    private  ArrayList<SolarSystem> solist;
+    public  ArrayList<SolarSystem> getSolist() {
         return solist;
     }
 
-    private HashSet<SolarSystem> solarSystems;
-    private TextView hi;
+    //private Set<SolarSystem> solarSystems;
+    //private TextView hi;
     private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.configure_commander_fragment);
         Intent intent = getIntent();
-        configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
+        configurationViewModel =
+                ViewModelProviders.of(this).get(ConfigurationViewModel.class);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.difficulty_array, android.R.layout.simple_spinner_item);
-        MaterialBetterSpinner materialDesignSpinner = (MaterialBetterSpinner) findViewById(R.id.difficultySpinner);
+        MaterialBetterSpinner materialDesignSpinner =
+                findViewById(R.id.difficultySpinner);
         materialDesignSpinner.setAdapter(adapter);
         //pilotName = (TextView) findViewById(R.id.nameInput);
+        TextView hi;
         difficultySpinner = materialDesignSpinner;
         hi = findViewById(R.id.hi_username);
         name = intent.getStringExtra("username");
@@ -73,11 +76,11 @@ public class ConfigurationActivity extends AppCompatActivity {
         String username = "Hi " + name + ",";
         hi.setText(username);
         pointValues = new HashMap<>();
-        pilotDisplay = (TextView) findViewById(R.id.pilotPointsDisplay);
+        pilotDisplay = findViewById(R.id.pilotPointsDisplay);
         traderDisplay = findViewById(R.id.traderPointsDisplay);
         engineerDisplay = findViewById(R.id.engineerPointsDisplay);
         fighterDisplay = findViewById(R.id.fighterPointsDisplay);
-        remPointsDisplay = (TextView) findViewById(R.id.remainingPointsDisplay);
+        remPointsDisplay = findViewById(R.id.remainingPointsDisplay);
 
         for (PointTypes pointType : PointTypes.values()) {
             pointValues.put(pointType, 0);
@@ -89,11 +92,12 @@ public class ConfigurationActivity extends AppCompatActivity {
         Player currentPlayer = new Player(name, pointValues);
         Log.i("name", name);
         GenerateGame gameGen = new GenerateGame(currentPlayer, new HashSet<SolarSystem>());
-        solarSystems = gameGen.generate();
-        String diff = difficultySpinner.getText().toString().toUpperCase();
+        Set<SolarSystem> solarSystems = gameGen.generate();
+        String diff = difficultySpinner.getText().toString();
+        diff = diff.toUpperCase();
         GameState currentGameState = new GameState(currentPlayer, Difficulty.valueOf(diff));
-        Log.i("Player Name", currentPlayer.getName());
-        Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
+        //Log.i("Player Name", currentPlayer.getName());
+        //Log.i("Current Game State Info", currentGameState.getDifficulty().toString());
         solist = new ArrayList<>();
         for(SolarSystem sol : solarSystems) {
             Log.i("Solar System: ", sol.toString());
@@ -109,10 +113,10 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     private void updatePointDisplays() {
         Log.i("Logged to", "Config Activity");
-        pilotDisplay.setText(pointValues.get(PointTypes.PILOT).toString());
-        engineerDisplay.setText(pointValues.get(PointTypes.ENGINEER).toString());
-        traderDisplay.setText(pointValues.get(PointTypes.TRADER).toString());
-        fighterDisplay.setText(pointValues.get(PointTypes.FIGHTER).toString());
+        pilotDisplay.setText(Integer.toString(pointValues.get(PointTypes.PILOT)));
+        engineerDisplay.setText(Integer.toString(pointValues.get(PointTypes.ENGINEER)));
+        traderDisplay.setText(Integer.toString(pointValues.get(PointTypes.TRADER)));
+        fighterDisplay.setText(Integer.toString(pointValues.get(PointTypes.FIGHTER)));
         remPointsDisplay.setText(remPoints + "");
     }
 
@@ -147,16 +151,19 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     public void decrementValues(View view) {
 
-        if (view.getId() == R.id.pilotPointsMinus && pointValues.get(PointTypes.PILOT) > 0) {
+        if ((view.getId() == R.id.pilotPointsMinus) && (pointValues.get(PointTypes.PILOT) > 0)) {
             pointValues.put(PointTypes.PILOT, pointValues.get(PointTypes.PILOT) - 1);
             remPoints++;
-        } else if (view.getId() == R.id.fighterPointsMinus && pointValues.get(PointTypes.FIGHTER) > 0) {
+        } else if ((view.getId() == R.id.fighterPointsMinus) &&
+                (pointValues.get(PointTypes.FIGHTER) > 0)) {
             pointValues.put(PointTypes.FIGHTER, pointValues.get(PointTypes.FIGHTER) - 1);
             remPoints++;
-        } else if (view.getId() == R.id.engineerPointsMinus && pointValues.get(PointTypes.ENGINEER) > 0) {
+        } else if ((view.getId() == R.id.engineerPointsMinus) &&
+                (pointValues.get(PointTypes.ENGINEER) > 0)) {
             pointValues.put(PointTypes.ENGINEER, pointValues.get(PointTypes.ENGINEER) - 1);
             remPoints++;
-        } else if (view.getId() == R.id.traderPointsMinus && pointValues.get(PointTypes.TRADER) > 0) {
+        } else if ((view.getId() == R.id.traderPointsMinus) &&
+                (pointValues.get(PointTypes.TRADER) > 0)) {
             pointValues.put(PointTypes.TRADER, pointValues.get(PointTypes.TRADER) - 1);
             remPoints++;
         }

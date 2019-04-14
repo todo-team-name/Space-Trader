@@ -5,19 +5,12 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
-import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Random;
-
-import cs2340.todo_team_name.spacetrader.model.Resource;
-import cs2340.todo_team_name.spacetrader.views.PlayerActivity;
 
 /**
  * Resources available for trading
  */
-public enum Resources implements Serializable {
+public enum Resources {
     WATER("Water", 30, 3, 4, 0),
     FURS("Furs", 250, 10, 10, 0),
     FOOD("Food", 100, 5, 5, 1),
@@ -29,13 +22,13 @@ public enum Resources implements Serializable {
     NARCOTICS("Narcotics", 3500, -125, 150, 5),
     ROBOTS("Robots", 5000, -150, 100, 6);
 
-    private String name;
-    private int value;
-    private int increasePerLevel;
-    private int range;
-    private int minLevel;
-    private HashMap<Resources, ResourceType[]> increasedRes;
-    private HashMap<Resources, ResourceType[]> decreasedRes;
+    private final String name;
+    private final int value;
+    private final int increasePerLevel;
+    private final int range;
+    private final int minLevel;
+    //private HashMap<Resources, ResourceType[]> increasedRes;
+    //private HashMap<Resources, ResourceType[]> decreasedRes;
     private JSONObject json;
 
 
@@ -100,22 +93,26 @@ public enum Resources implements Serializable {
         boolean isDrought = rand.nextBoolean();
         double scalar = ((double) randomScalar) / 100;
         boolean addOrSubtract = rand.nextBoolean();
-        double toReturn = 0;
+        double toReturn;
         if (addOrSubtract) {
             if(isDrought) {
-                Log.i("isDrought", String.valueOf(isDrought));
-                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) + (value * scalar)) * 1.4;
+//                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = (value + (increasePerLevel * (t.getLevel() - minLevel))
+                        + (value * scalar)) * 1.4;
             } else {
-                Log.i("isDrought", String.valueOf(isDrought));
-                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) + (value * scalar));
+//                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = (value + (increasePerLevel * (t.getLevel() - minLevel))
+                        + (value * scalar));
             }
         } else {
             if(isDrought) {
-                Log.i("isDrought", String.valueOf(isDrought));
-                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) - (value * scalar)) * 1.4;
+//                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = ((value + (increasePerLevel * (t.getLevel() - minLevel)))
+                        - (value * scalar)) * 1.4;
             } else {
-                Log.i("isDrought", String.valueOf(isDrought));
-                toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) - (value * scalar));
+//                Log.i("isDrought", String.valueOf(isDrought));
+                toReturn = ((value + (increasePerLevel * (t.getLevel() - minLevel)))
+                        - (value * scalar));
             }
 
         }
@@ -176,8 +173,7 @@ public enum Resources implements Serializable {
                         "}";
 
         try {
-            JSONObject jsonObject = new JSONObject(json);
-            this.json = jsonObject;
+            this.json = new JSONObject(json);
         } catch (JSONException exc) {
             exc.getCause();
         }

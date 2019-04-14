@@ -10,10 +10,8 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".views.PlayerActivity">
-    <!--TODO: Will need to update context-->
 
-    <!--TODO: Number below cargo labels should display user's current holdings of said item
-        i.e if user has 4 water cargo, sell_water_display should show 4-->
+    <!--    i.e if user has 4 water cargo, sell_water_display should show 4-->
 
     <RelativeLayout
         android:layout_width="match_parent"

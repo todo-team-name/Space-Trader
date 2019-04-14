@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:background="@color/background"
     tools:context=".views.PlayerActivity">
-    <!-- TODO: Will need to change tool:context to match fragment or activity-->
 
     <RelativeLayout
         android:id="@+id/map"

@@ -2,21 +2,21 @@ package cs2340.todo_team_name.spacetrader.model;
 
 import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import cs2340.todo_team_name.spacetrader.enums.GovernmentType;
 import cs2340.todo_team_name.spacetrader.enums.ResourceType;
 import cs2340.todo_team_name.spacetrader.enums.Resources;
 import cs2340.todo_team_name.spacetrader.enums.TechLevel;
-import java.io.Serializable;
+
 import java.util.Random;
 
-public class BasicMarket extends Market implements Serializable {
+public class BasicMarket extends Market {
     private double credits;
-    private TechLevel techLevel;
-    private GovernmentType governmentType;
-    private ResourceType resourceType;
+    private final TechLevel techLevel;
+    private final GovernmentType governmentType;
+    private final ResourceType resourceType;
+    private boolean scaled;
 
     public HashMap<Resources, Double> getResources() {
         return resources;
@@ -33,9 +33,10 @@ public class BasicMarket extends Market implements Serializable {
         credits = 500;
     }
 
+    @Override
     public boolean purchase(Resources resource) {
         Random random = new Random();
-        boolean isDrought = random.nextBoolean();
+        //boolean isDrought = random.nextBoolean();
         double price;
         price = resources.get(resource);
         if (credits >= price) {
@@ -46,20 +47,24 @@ public class BasicMarket extends Market implements Serializable {
         return false;
     }
 
-    public boolean sell(Resources resource) {
+    @Override
+    public void sell(Resources resource) {
         double price = resources.get(resource);
         //resources.remove(resource);
         credits += price;
-        return true;
     }
 
+    @Override
     public double getPriceOfGood(Resources resource) {
         Random random = new Random();
         boolean isDrought = random.nextBoolean();
         if (resources.containsKey(resource)) {
             if(isDrought) {
-                Log.i("Theres a drought!", "Price of Water Increased");
-                resources.put(Resources.WATER, resources.get(Resources.WATER).doubleValue()*1.4);
+//                Log.i("There's a drought!", "Price of Water Increased");
+                if (!scaled) {
+                    resources.put(resource, resources.get(resource) * 1.4);
+                    scaled = true;
+                }
                 return resources.get(resource);
             } else {
                 return resources.get(resource);
@@ -69,9 +74,18 @@ public class BasicMarket extends Market implements Serializable {
         }
     }
 
+    @Override
     public boolean contains(Resources resource) {
         return resources.containsKey(resource);
     }
 
+    @Override
+    public String displayResource(Resources res) {
+        if (resources.containsKey(res)) {
+            return res.getName() + ": " + resources.get(res);
+        } else {
+            return "N/A";
+        }
+    }
 
 }

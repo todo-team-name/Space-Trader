@@ -15,8 +15,7 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,20 +30,21 @@ import okhttp3.OkHttpClient;
 import okhttp3.RequestBody; */
 
 public class ConfigurationViewModel extends AndroidViewModel {
-    private Player currentPlayer;
+    //private Player currentPlayer;
 
     public ConfigurationViewModel (@NonNull Application application) {
         super(application);
     }
 
-    public void setCurrentPlayer(Player player) {
+    /*public void setCurrentPlayer(Player player) {
         currentPlayer = player;
 
-    }
+    }*/
 
-    public boolean updateInfo(Player player, ArrayList<SolarSystem> solarSystem, final String token, ConfigurationActivity act) {
-        SolarSystem[] solarSystems = new SolarSystem[solarSystem.size()];
-        solarSystems = solarSystem.toArray(solarSystems);
+    public boolean updateInfo(Player player, Collection<SolarSystem> solarSystem,
+                              final String token, ConfigurationActivity act) {
+        //SolarSystem[] solarSystems = new SolarSystem[solarSystem.size()];
+        //solarSystems = solarSystem.toArray(solarSystems);
         JSONObject data = new JSONObject();
         JSONObject androidData = new JSONObject();
         Gson gson = new Gson();
@@ -61,16 +61,17 @@ public class ConfigurationViewModel extends AndroidViewModel {
             androidData.put("solarsystems", solarArr);
             data.put("game_info_android", androidData);
         } catch (Exception e) {
-            //TODO HANDLE EXCEPTION
+            //HANDLE EXCEPTION
         }
-        String jsonBody = data.toString();
-        final String finalToken = token;
+        //String jsonBody = data.toString();
+        //final String finalToken = token;
         RequestQueue queue = Volley.newRequestQueue(act);
         String url = "https://space-trader-backend.herokuapp.com/api/users/update";
         Log.i("DATA SENT", data.toString());
         Log.i("PREPPING", "REQUEST");
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.POST, url, data, new com.android.volley.Response.Listener<JSONObject>() {
+                (Request.Method.POST, url, data,
+                        new com.android.volley.Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
@@ -81,14 +82,14 @@ public class ConfigurationViewModel extends AndroidViewModel {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
+                        // Handle error
                         Log.i("FAILED", "THIS FAILED");
                     }
                 }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
-                        Map<String, String>  params = new HashMap<String, String>();
-                        String auth = "Bearer " + finalToken;
+                        Map<String, String>  params = new HashMap<>();
+                        String auth = "Bearer " + token;
                         Log.i("AUTH STRING", auth);
                         params.put("Content-Type", "application/json");
                         params.put("Authorization", auth);
@@ -111,10 +112,12 @@ public class ConfigurationViewModel extends AndroidViewModel {
         try {
             Response response = client.newCall(request).execute();
         } catch (Exception e) {
-            //TODO
+            //HANDLE
         } */
         return false;
     }
+
+
 
 
 }

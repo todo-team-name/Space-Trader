@@ -2,6 +2,7 @@ package cs2340.todo_team_name.spacetrader.model;
 
 import java.io.Serializable;
 
+import androidx.annotation.NonNull;
 import cs2340.todo_team_name.spacetrader.enums.GovernmentType;
 import cs2340.todo_team_name.spacetrader.enums.MarketType;
 import cs2340.todo_team_name.spacetrader.enums.ResourceType;
@@ -10,14 +11,15 @@ import cs2340.todo_team_name.spacetrader.enums.TechLevel;
 
 public class Planet implements Serializable {
     private ResourceType resources;
-    private TechLevel techLevel;
-    private GovernmentType governmentType;
-    private MarketType marketType;
-    private String name;
-    private String hexColor;
+    private final TechLevel techLevel;
+    private final GovernmentType governmentType;
+    private final MarketType marketType;
+    private final String name;
+    private final String hexColor;
     private Market market;
 
-    public Planet(String n, TechLevel tech, GovernmentType gov, MarketType market, String hex, ResourceType res) {
+    public Planet(String n, TechLevel tech, GovernmentType gov, MarketType market,
+                  String hex, ResourceType res) {
         this.name = n;
         this.techLevel = tech;
         this.governmentType = gov;
@@ -34,26 +36,25 @@ public class Planet implements Serializable {
     public String purchase(Resources resource) {
         boolean purchased = market.purchase(resource);
         if (purchased) {
-            String m = "You just purchased " + resource.getName();
-            return m;
+            return "You just purchased " + resource.getName();
         } else {
-            String m = "Sorry, that item could not be purchased";
-            return m;
+            return "Sorry, that item could not be purchased";
         }
     }
 
     public String sell(Resources resource) {
-        boolean purchased = market.sell(resource);
-        if (purchased) {
-            String m = "You just sold " + resource.getName();
-            return m;
+        market.sell(resource);
+        return "You just sold " + resource.getName();
+        /*if (purchased) {
+            return "You just sold " + resource.getName();
+
         } else {
-            String m = "Sorry, that item could not be sold";
-            return m;
-        }
+            return "Sorry, that item could not be sold";
+        }*/
     }
 
 
+    @NonNull
     @Override
     public String toString() {
         return name;

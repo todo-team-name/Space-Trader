@@ -1,19 +1,16 @@
 package cs2340.todo_team_name.spacetrader.model;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
 import cs2340.todo_team_name.spacetrader.enums.Resources;
 import java.io.Serializable;
-import java.util.Random;
 
-@SuppressWarnings("serial")
 public class Player implements Serializable {
     /** player name **/
     private String name;
 
-    private HashMap<PointTypes, Integer> points;
+    private final HashMap<PointTypes, Integer> points;
     private double credits;
     private Ship ship;
     private Inventory inventory;
@@ -45,7 +42,8 @@ public class Player implements Serializable {
 //     * @return true if the number of allocated points equal the number allowed. false if
 //     * not enough or too many points have been allocated.
 //     */
-//    public boolean equalsAllowedPoints(int pilotPts, int fighterPts, int traderPts, int engineerPts) {
+//    public boolean equalsAllowedPoints(int pilotPts, int fighterPts,
+// int traderPts, int engineerPts) {
 //        return (pilotPts + fighterPts + traderPts + engineerPts) == MAX_POINTS;
 //    }
 
@@ -63,8 +61,8 @@ public class Player implements Serializable {
         return inventory;
     }
 
-    public String sell(Resources resource) {
-        if(inventory.checkSelling(resource)) {
+    public void sell(Resources resource) {
+        if (inventory.checkSelling(resource)) {
             //int currentVal = this.inventory.getInventory().get(resource);
             // inventory.remove(resource);
             //credits += resource.getScaledValue();
@@ -72,16 +70,17 @@ public class Player implements Serializable {
             if (marketCanBuy) {
                 credits += currentMarket.getPriceOfGood(resource);
                 inventory.decrementResource(resource);
-                return "You sold " + resource.getName();
-            } else {
+                //return "You sold " + resource.getName();
+            } /*else {
                 return "The trader does not have enough credits to purchase this item at this time";
             }
         } else {
             return "You don't appear to have enough of " + resource.getName() + "!";
+        }*/
         }
     }
 
-    public String purchase(Resources resource) {
+    public void purchase(Resources resource) {
         /**if(resource.getScaledValue() > credits) {
             return "It doesn't seem you can afford " + resource.getName() + "!";
         }
@@ -101,13 +100,8 @@ public class Player implements Serializable {
                 inventory.incrementResource(resource);
 
                 currentMarket.sell(resource);
-            } else {
-                return "You don't have enough credits to afford this good";
             }
-        } else {
-            return "Inventory is currently full";
         }
-        return "Error";
     }
 
     public void updateMarket(Market m) {
@@ -137,7 +131,7 @@ public class Player implements Serializable {
         return currentPlanet;
     }
 
-    public void setCurrentPlanet(Planet currentPlanet) {
+    private void setCurrentPlanet(Planet currentPlanet) {
         this.currentPlanet = currentPlanet;
     }
     public void useFuel() {
@@ -145,4 +139,20 @@ public class Player implements Serializable {
     }
 
     public int getFuelCanisters() {return fuelCanisters;}
+
+    public String inventoryString(Resources res) {
+        return inventory.resourceToString(res);
+    }
+
+    public String currentSolarSystemToString() {
+        return currentSolarSystem.toString();
+    }
+
+    public String currentPlanetToString() {
+        return currentPlanet.toString();
+    }
+
+    public Market currentMarket() {
+        return currentPlanet.getMarket();
+    }
 }

@@ -3,12 +3,10 @@ package cs2340.todo_team_name.spacetrader.enums;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
-
 /**
  * Tech levels available
  */
-public enum TechLevel implements Serializable {
+public enum TechLevel {
     PREAGRICULTURE(0),
     AGRICULTURE(1),
     MEDIEVAL(2),
@@ -18,26 +16,30 @@ public enum TechLevel implements Serializable {
     POSTINDUSTRIAL(6),
     HITECH(7);
 
-    private String json = "" +
+    private final String json = "" +
             "{" +
             "        techlevel : {" +
             "" +
-            "                'PREAGRICULTURE' : [WATER, FUR]," +
-            "                'AGRICULTURE'    : [WATER, FOOD, FUR]," +
-            "                'MEDIEVAL'       : [WATER, FOOD, FUR, ORE]," +
-            "                'RENAISSANCE'    : [WATER, FOOD, FUR, ORE, GAMES]," +
-            "                'EARLYINDUSTRIAL': [WATER, FOOD, FUR, ORE, GAMES, FIREARMS, NARCOTICS]," +
-            "                'INDUSTRIAL'     : [WATER, FOOD, FUR, ORE, GAMES, FIREARMS, NARCOTICS, MEDICINE, MACHINES]," +
-            "                'POSTINDUSTRIAL' : [WATER, FOOD, FUR, ORE, GAMES, FIREARMS, NARCOTICS, MEDICINE, MACHINES, ROBOTS]," +
-            "                'HITECH'         : [WATER, FOOD, FUR, ORE, GAMES, FIREARMS, NARCOTICS, MEDICINE, MACHINES, ROBOTS]" +
+            "'PREAGRICULTURE' : [WATER, FUR]," +
+            " 'AGRICULTURE'    : [WATER, FOOD, FUR]," +
+            "'MEDIEVAL'       : [WATER, FOOD, FUR, ORE]," +
+            "'RENAISSANCE'    : [WATER, FOOD, FUR, ORE, GAMES]," +
+            " 'EARLYINDUSTRIAL': [WATER, FOOD, FUR, ORE, GAMES, FIREARMS," + "" +
+            " NARCOTICS]," +
+            " 'INDUSTRIAL'     : [WATER, FOOD, FUR, ORE, GAMES, FIREARMS, NARCOTICS," +
+            " MEDICINE, MACHINES]," +
+            "  'POSTINDUSTRIAL' : [WATER, FOOD, FUR, ORE, GAMES, FIREARMS, NARCOTICS, MEDICINE," +
+            " MACHINES, ROBOTS]," +
+            " 'HITECH'         : [WATER, FOOD, FUR, ORE, GAMES, FIREARMS, NARCOTICS,"
+            + " MEDICINE, MACHINES, ROBOTS]" +
             "" +
-            "        }" +
+            " }" +
             "" +
             "}";
 
     private JSONObject jsonObject;
 
-    private int level;
+    private final int level;
 
     TechLevel(int l) {
         level = l;

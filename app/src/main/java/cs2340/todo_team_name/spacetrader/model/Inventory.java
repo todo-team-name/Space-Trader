@@ -7,7 +7,7 @@ import cs2340.todo_team_name.spacetrader.enums.Resources;
 import java.io.Serializable;
 
 public class Inventory implements Serializable {
-    private int size = 0;
+    private int size;
     private int maxCapacity;
     private Map<Resources, Integer> inventory;
 
@@ -15,8 +15,8 @@ public class Inventory implements Serializable {
         this.maxCapacity = size;
         this.inventory = new HashMap<>(this.size);
         Resources [] arr = Resources.values();
-        for(int i = 0; i < arr.length; i++) {
-            this.inventory.put(arr[i], 0);
+        for(Resources r : arr) {
+            this.inventory.put(r, 0);
         }
     }
 
@@ -54,31 +54,30 @@ public class Inventory implements Serializable {
         return size < maxCapacity;
     }
 
-    public boolean incrementResource(Resources res) {
+    public void incrementResource(Resources res) {
         if (size < maxCapacity) {
             int curr = inventory.get(res);
             curr++;
             inventory.put(res, curr);
             size++;
-            return true;
-        } else {
-            return false;
         }
     }
 
-    public boolean decrementResource(Resources res) {
-        if (size > 0 && inventory.get(res) > 0) {
+    public void decrementResource(Resources res) {
+        if ((size > 0) && (inventory.get(res) > 0)) {
             int curr = inventory.get(res);
             curr--;
             inventory.put(res, curr);
             size--;
-            return true;
-        } else {
-            return false;
         }
     }
 
     public int getResource(Resources res) {
         return inventory.get(res);
+    }
+
+    public String resourceToString(Resources res) {
+        int amount = inventory.get(res);
+        return Integer.toString(amount);
     }
 }

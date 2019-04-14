@@ -1,33 +1,23 @@
 package cs2340.todo_team_name.spacetrader.views;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 
-import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
-
-import java.util.HashMap;
-
 import androidx.fragment.app.Fragment;
-import cs2340.todo_team_name.spacetrader.enums.PointTypes;
 import cs2340.todo_team_name.spacetrader.enums.Resources;
-import cs2340.todo_team_name.spacetrader.model.Inventory;
 import cs2340.todo_team_name.spacetrader.model.Player;
-import cs2340.todo_team_name.spacetrader.model.Resource;
-import cs2340.todo_team_name.spacetrader.viewmodel.ConfigurationViewModel;
 import cs2340.todo_team_name.spacetrader.R;
+import cs2340.todo_team_name.spacetrader.viewmodel.PlayerViewModel;
 
 public class MarketActivity extends Fragment {
-    private ActivityDataProvider activity;
+    /*private ActivityDataProvider activity;
     private TextView water;
     private TextView furs;
     private TextView food;
@@ -38,12 +28,26 @@ public class MarketActivity extends Fragment {
     private TextView machines;
     private TextView narcotics;
     private TextView robots;
-    private Player player;
+    private Player player;*/
 
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        ActivityDataProvider activity;
+        PlayerViewModel playerViewModel = new PlayerViewModel();
+        TextView water;
+        TextView furs;
+        TextView food;
+        TextView firearms;
+        TextView ore;
+        TextView games;
+        TextView medicine;
+        TextView machines;
+        TextView narcotics;
+        TextView robots;
+        Player player;
         activity = (ActivityDataProvider) getActivity();
         player = activity.getPlayer();
         View view = inflater.inflate(R.layout.market_fragment, null);
@@ -57,17 +61,17 @@ public class MarketActivity extends Fragment {
         machines = view.findViewById(R.id.machines_cargo_info);
         narcotics = view.findViewById(R.id.narcotics_cargo_info);
         robots = view.findViewById(R.id.robots_cargo_info);
-        Inventory inv = player.getInventory();
-        water.setText(Integer.toString(inv.getResource(Resources.WATER)));
-        furs.setText(Integer.toString(inv.getResource(Resources.FURS)));
-        food.setText(Integer.toString(inv.getResource(Resources.FOOD)));
-        firearms.setText(Integer.toString(inv.getResource(Resources.FIREARMS)));
-        ore.setText(Integer.toString(inv.getResource(Resources.ORE)));
-        games.setText(Integer.toString(inv.getResource(Resources.GAMES)));
-        medicine.setText(Integer.toString(inv.getResource(Resources.MEDICINE)));
-        machines.setText(Integer.toString(inv.getResource(Resources.MACHINES)));
-        narcotics.setText(Integer.toString(inv.getResource(Resources.NARCOTICS)));
-        robots.setText(Integer.toString(inv.getResource(Resources.ROBOTS)));
+        //Inventory inv = player.getInventory();
+        water.setText(playerViewModel.playerInventoryString(player, Resources.WATER));
+        furs.setText(playerViewModel.playerInventoryString(player,Resources.FURS));
+        food.setText(playerViewModel.playerInventoryString(player,Resources.FOOD));
+        firearms.setText(playerViewModel.playerInventoryString(player,Resources.FIREARMS));
+        ore.setText(playerViewModel.playerInventoryString(player,Resources.ORE));
+        games.setText(playerViewModel.playerInventoryString(player,Resources.GAMES));
+        medicine.setText(playerViewModel.playerInventoryString(player,Resources.MEDICINE));
+        machines.setText(playerViewModel.playerInventoryString(player,Resources.MACHINES));
+        narcotics.setText(playerViewModel.playerInventoryString(player,Resources.NARCOTICS));
+        robots.setText(playerViewModel.playerInventoryString(player,Resources.ROBOTS));
         /*Resource res = new Resource(Resources.WATER);
         water.setText(Integer.toString(inv.getResource(res)));
         res = new Resource(Resources.FURS);

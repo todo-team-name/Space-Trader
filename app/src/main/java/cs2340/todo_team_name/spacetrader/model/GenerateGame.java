@@ -3,6 +3,7 @@ package cs2340.todo_team_name.spacetrader.model;
 
 import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import cs2340.todo_team_name.spacetrader.enums.Colors;
 import cs2340.todo_team_name.spacetrader.enums.GovernmentType;
@@ -11,10 +12,10 @@ import cs2340.todo_team_name.spacetrader.enums.ResourceType;
 import cs2340.todo_team_name.spacetrader.enums.TechLevel;
 
 public class GenerateGame {
-    private String[] nameList =
+    private final String[] nameList =
             {
                     "Acamar",
-                    "Adahn",		// The alternate personality for The Nameless One in "Planescape: Torment"
+                    "Adahn",
                     "Aldea",
                     "Andevian",
                     "Antedi",
@@ -134,20 +135,20 @@ public class GenerateGame {
                     "Zalkon",
                     "Zuul"			// From the first Ghostbusters movie
             };
-    private HashSet<SolarSystem> solarSystems;
-    private Player pilot;
-    private int numPlanets = 0;
-    private SolarSystem[] solar;
-    private int ind = 0;
-    private HashSet<String> usedNames;
-    private GovernmentType[] governmentTypes;
-    private TechLevel[] techLevels;
-    private ResourceType[] resources;
-    private MarketType[] marketTypes;
-    private int solsCovered = 0;
-    private Colors[] colors;
+    private final Set<SolarSystem> solarSystems;
+    private final Player pilot;
+    private int numPlanets;
+    private final SolarSystem[] solar;
+    private int ind;
+    private final Set<String> usedNames;
+    private final GovernmentType[] governmentTypes;
+    private final TechLevel[] techLevels;
+    private final ResourceType[] resources;
+    private final MarketType[] marketTypes;
+    private int solsCovered;
+    private final Colors[] colors;
 
-    public GenerateGame(Player pilot, HashSet<SolarSystem> solarSystems) {
+    public GenerateGame(Player pilot, Set<SolarSystem> solarSystems) {
         this.pilot = pilot;
         this.solarSystems = solarSystems;
         this.solar = new SolarSystem[10];
@@ -161,7 +162,7 @@ public class GenerateGame {
 
 
 
-    public HashSet<SolarSystem> generate() {
+    public Set<SolarSystem> generate() {
         Random num = new Random();
         //while(solarSystems.size() <= 10) {
         while (numPlanets < 20) {
@@ -180,12 +181,7 @@ public class GenerateGame {
                 int randIndex = num.nextInt(10);
                 boolean canAddPlanet = usedNames.add(nameList[randName]);
                 if (canAddPlanet) {
-                    GovernmentType randGov = governmentTypes[num.nextInt(3)];
-                    TechLevel randTech = techLevels[num.nextInt(8)];
-                    MarketType randMarket = marketTypes[num.nextInt(2)];
-                    ResourceType randResource = resources[num.nextInt(12)];
-                    String randColor = colors[num.nextInt(4)].getHex();
-                    Planet toAdd = new Planet(nameList[randName], randTech, randGov, randMarket, randColor, randResource);
+                    Planet toAdd = randomPlanet(num, randName);
                     if (solsCovered < 10) {
                         solar[solsCovered].addPlanet(toAdd);
                         solsCovered++;
@@ -204,6 +200,15 @@ public class GenerateGame {
         return this.solarSystems;
     }
 
+    private Planet randomPlanet(Random num, int nameInd) {
+        GovernmentType randGov = governmentTypes[num.nextInt(3)];
+        TechLevel randTech = techLevels[num.nextInt(8)];
+        MarketType randMarket = marketTypes[num.nextInt(2)];
+        ResourceType randResource = resources[num.nextInt(12)];
+        String randColor = colors[num.nextInt(4)].getHex();
+        return new Planet(nameList[nameInd], randTech, randGov,
+                randMarket, randColor, randResource);
+    }
 
 
 }

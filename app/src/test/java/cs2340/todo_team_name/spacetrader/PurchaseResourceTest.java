@@ -12,7 +12,6 @@ import cs2340.todo_team_name.spacetrader.model.GenerateMarket;
 import cs2340.todo_team_name.spacetrader.model.Inventory;
 import cs2340.todo_team_name.spacetrader.model.Market;
 import cs2340.todo_team_name.spacetrader.model.Player;
-import cs2340.todo_team_name.spacetrader.model.Resource;
 
 import static org.junit.Assert.assertEquals;
 

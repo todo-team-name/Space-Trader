@@ -15,14 +15,14 @@ public enum ShipTypes {
     TERMITE("Termite", 13, 60, 1, 200, 2, 3, 3000),
     WASP("Wasp", 14, 35, 3, 200, 2, 2, 3300);
 
-    private String name;
-    private int speed;
-    private int inventorySize;
-    private int weaponsAvailable;
-    private int baseHealth;
-    private int gadgetsAvailable;
-    private int shieldsAvailable;
-    private int value;
+    private final String name;
+    private final int speed;
+    private final int inventorySize;
+    private final int weaponsAvailable;
+    private final int baseHealth;
+    private final int gadgetsAvailable;
+    private final int shieldsAvailable;
+    private final int value;
 
     ShipTypes(String n, int s, int i, int w, int bh, int ga, int sa, int val) {
         name = n;

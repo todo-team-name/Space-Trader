@@ -2,15 +2,17 @@ package cs2340.todo_team_name.spacetrader.model;
 
 import java.io.Serializable;
 
+import androidx.annotation.NonNull;
+
 public class SolarSystem implements Serializable {
-    private String name;
-    private int[] location;
+    private final String name;
+    private final int[] location;
 
     public Planet[] getPlanets() {
         return planets;
     }
 
-    private Planet[] planets;
+    private final Planet[] planets;
     private int numPlanets;
 
     public SolarSystem(String name, int x, int y) {
@@ -44,7 +46,7 @@ public class SolarSystem implements Serializable {
         return this.name;
     }
 
-    public String getCoord() {
+    public String getCord() {
         return "(" + this.location[0] + ", " + this.location[1] + ")";
     }
 
@@ -58,8 +60,8 @@ public class SolarSystem implements Serializable {
         }
         SolarSystem that = (SolarSystem) other;
         return this.name.equals(that.name)
-                && this.location[0] == that.location[0]
-                && this.location[1] == that.location[1];
+                && (this.location[0] == that.location[0])
+                && (this.location[1] == that.location[1]);
     }
 
     @Override
@@ -71,6 +73,7 @@ public class SolarSystem implements Serializable {
         return hash;
     }
 
+    @NonNull
     @Override
     public String toString() {
        return "Name: " + name + " (" + location[0] + "," +location[1] + ") \n";

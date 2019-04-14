@@ -10,7 +10,7 @@ public enum Gadgets {
     TARGETING("Targetting System"),
     CLOAKING("Cloaking System");
 
-    private String name;
+    private final String name;
 
     Gadgets(String n) {
         name = n;
