@@ -10,6 +10,13 @@ import android.view.ViewGroup;
 import cs2340.todo_team_name.spacetrader.R;
 
 public class OnboardFragment extends Fragment {
+    /**
+     * Handles creating the view for our OnboardFragment
+     * @param inflater a layout inflater
+     * @param container a layout container
+     * @param savedInstanceState a saved instance state
+     * @return a created view
+     */
     @Override
     public View onCreateView (@NonNull LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {

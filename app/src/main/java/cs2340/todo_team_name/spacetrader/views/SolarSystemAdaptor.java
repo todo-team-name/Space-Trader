@@ -18,6 +18,12 @@ class SolarSystemAdaptor extends ArrayAdapter<SolarSystem> {
     // Your custom values for the spinner (User)
     private SolarSystem[] values;
 
+    /**
+     * Constructor for our SolarSystemAdaptor
+     * @param context provided app context
+     * @param textViewResourceId a resource id
+     * @param values a ser of solar systems
+     */
     public SolarSystemAdaptor(Context context, int textViewResourceId,
                        SolarSystem[] values) {
         super(context, textViewResourceId, values);
@@ -25,22 +31,43 @@ class SolarSystemAdaptor extends ArrayAdapter<SolarSystem> {
         this.values = values;
     }
 
+    /**
+     * Gets number of solar systems in our adaptor
+     * @return the number of solar systems
+     */
     @Override
     public int getCount(){
         return values.length;
     }
 
+    /**
+     * returns a solar system at a position in our set of systems
+     * @param position position of system
+     * @return a solar system at position
+     */
     @Override
     public SolarSystem getItem(int position){
         return values[position];
     }
 
+    /**
+     * gets the item ID of a specified system position
+     * @param position the position of a system
+     * @return the item id of the position
+     */
     @Override
     public long getItemId(int position){
         return position;
     }
 
 
+    /**
+     * gets a view for the passive state of the spinner
+     * @param position the position of the system
+     * @param convertView the current view
+     * @param parent the view group parent
+     * @return the spinner view
+     */
     // And the "magic" goes here
     // This is for the "passive" state of the spinner
     @NonNull
@@ -59,6 +86,12 @@ class SolarSystemAdaptor extends ArrayAdapter<SolarSystem> {
         return label;
     }
 
+    /**
+     * @param position position of system on spinner
+     * @param convertView the converted view
+     * @param parent the view group parent
+     * @return
+     */
     // And here is when the "chooser" is popped up
     // Normally is the same view, but you can customize it if you want
     @Override
