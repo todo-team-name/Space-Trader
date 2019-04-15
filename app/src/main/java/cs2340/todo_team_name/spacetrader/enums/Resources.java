@@ -103,7 +103,6 @@ public enum Resources implements Serializable {
         double toReturn = 0;
         if (addOrSubtract) {
             if(isDrought) {
-                Log.i("isDrought", String.valueOf(isDrought));
                 toReturn = (value + increasePerLevel * (t.getLevel() - minLevel) + (value * scalar)) * 1.4;
             } else {
                 Log.i("isDrought", String.valueOf(isDrought));

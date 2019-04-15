@@ -141,7 +141,10 @@ public class Player implements Serializable {
         this.currentPlanet = currentPlanet;
     }
     public void useFuel() {
-        fuelCanisters--;
+        if(fuelCanisters > 0) {
+            fuelCanisters--;
+        }
+
     }
 
     public int getFuelCanisters() {return fuelCanisters;}

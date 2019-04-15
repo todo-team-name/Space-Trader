@@ -28,7 +28,16 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:1.1.0"
     implementation "android.arch.lifecycle:viewmodel:1.1.0"
     testImplementation 'junit:junit:4.12'
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20180813'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+}
+
+android {
+    // ...
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
