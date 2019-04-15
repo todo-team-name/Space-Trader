@@ -99,4 +99,8 @@ public class BasicMarket extends Market {
         }
     }
 
+    @Override
+    public void updateMarketCredits(int credits) {
+        this.credits = credits;
+    }
 }

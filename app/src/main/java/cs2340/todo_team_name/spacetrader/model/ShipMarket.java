@@ -73,4 +73,9 @@ public class ShipMarket extends Market {
             return "N/A";
         }
     }
+
+    @Override
+    public void updateMarketCredits(int credits) {
+        this.credits = credits;
+    }
 }

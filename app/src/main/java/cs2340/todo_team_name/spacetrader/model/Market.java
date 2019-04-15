@@ -41,4 +41,6 @@ public abstract class Market implements Serializable {
      * @return string value of resource
      */
     public abstract String displayResource(Resources res);
+
+    public abstract void updateMarketCredits(int credits);
 }

@@ -162,6 +162,10 @@ public class ConfigureCommanderFragment extends Fragment {
         updatePointDisplays();
     }
 
+    /**
+     *
+     * @param view current view
+     */
     public void decrementValues(View view) {
 
         if ((view.getId() == R.id.pilotPointsMinus) && (pointValues.get(PointTypes.PILOT) > 0)) {

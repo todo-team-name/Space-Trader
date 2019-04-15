@@ -17,6 +17,9 @@ import cs2340.todo_team_name.spacetrader.model.Player;
 import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.viewmodel.PlayerViewModel;
 
+/**
+ * Activity for current status fragment
+ */
 public class Status_Fragment extends Fragment {
     /*private TextView pilot;
     private TextView trader;

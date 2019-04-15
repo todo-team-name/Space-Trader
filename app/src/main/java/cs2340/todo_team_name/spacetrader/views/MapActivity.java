@@ -19,6 +19,9 @@ import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.viewmodel.PlayerViewModel;
 
+/**
+ * Activity for map view
+ */
 public class MapActivity extends Fragment {
     /*private TextView currentSystem;
     private TextView currentPlanet;

@@ -15,7 +15,6 @@ import cs2340.todo_team_name.spacetrader.model.Player;
 
 import static org.junit.Assert.assertEquals;
 
-
 public class PurchaseResourceTest {
     @Test()
     public void checkPurchaseResource() {

@@ -16,6 +16,9 @@ import cs2340.todo_team_name.spacetrader.model.Player;
 import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.viewmodel.PlayerViewModel;
 
+/**
+ * Activity for Market view
+ */
 public class MarketActivity extends Fragment {
     /*private ActivityDataProvider activity;
     private TextView water;

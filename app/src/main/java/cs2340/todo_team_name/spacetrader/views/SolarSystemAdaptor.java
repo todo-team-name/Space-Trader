@@ -90,7 +90,7 @@ class SolarSystemAdaptor extends ArrayAdapter<SolarSystem> {
      * @param position position of system on spinner
      * @param convertView the converted view
      * @param parent the view group parent
-     * @return
+     * @return current view
      */
     // And here is when the "chooser" is popped up
     // Normally is the same view, but you can customize it if you want

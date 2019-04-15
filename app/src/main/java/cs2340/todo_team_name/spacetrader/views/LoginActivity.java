@@ -10,6 +10,9 @@ import androidx.lifecycle.ViewModelProviders;
 import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.viewmodel.LoginViewModel;
 
+/**
+ * Activity for login
+ */
 public class LoginActivity extends AppCompatActivity {
     //private EditText user;
     //private EditText password;

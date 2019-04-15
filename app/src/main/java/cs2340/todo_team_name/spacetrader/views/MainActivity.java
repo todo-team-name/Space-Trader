@@ -8,11 +8,14 @@ import android.os.Bundle;
 import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.viewmodel.NavigationHost;
 
+/**
+ * Activity for main view
+ */
 public class MainActivity extends AppCompatActivity implements NavigationHost {
 
     /**
      * Handles creating main activity
-     * @param savedInstanceState
+     * @param savedInstanceState current saved instance
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

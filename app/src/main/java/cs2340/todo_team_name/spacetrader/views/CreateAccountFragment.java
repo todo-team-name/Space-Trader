@@ -12,6 +12,9 @@ import android.widget.EditText;
 
 import cs2340.todo_team_name.spacetrader.R;
 
+/**
+ * Activity for create account
+ */
 public class CreateAccountFragment extends Fragment {
     private EditText user;
     private EditText password;

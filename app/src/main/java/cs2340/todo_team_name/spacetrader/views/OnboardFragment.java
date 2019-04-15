@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 
 import cs2340.todo_team_name.spacetrader.R;
 
+/**
+ * Activity for OnBoard fragment
+ */
 public class OnboardFragment extends Fragment {
     /**
      * Handles creating the view for our OnboardFragment

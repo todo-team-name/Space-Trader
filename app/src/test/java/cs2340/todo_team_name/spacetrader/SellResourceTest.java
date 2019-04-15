@@ -16,7 +16,7 @@ import cs2340.todo_team_name.spacetrader.model.Market;
 import cs2340.todo_team_name.spacetrader.model.Player;
 
 import static org.junit.Assert.assertEquals;
-
+//By Chasse Rush
 public class SellResourceTest {
     private Player player;
     private HashMap<PointTypes, Integer> points;
@@ -54,5 +54,17 @@ public class SellResourceTest {
         assertEquals(100, (long) player.getCredits());
         player.sell(Resources.WATER);
         assertEquals((long) (100 + market.getPriceOfGood(Resources.WATER)), (long) player.getCredits());
+    }
+
+    @Test
+    public void testSellResourceMarketCannotBuy() {
+        Inventory inventory = player.getInventory();
+        assertEquals(0, inventory.getResource(Resources.WATER));
+        market.updateMarketCredits(0);
+        inventory.add(Resources.WATER);
+        assertEquals(100, (long) player.getCredits());
+        player.sell(Resources.WATER);
+        assertEquals(1, inventory.getResource(Resources.WATER));
+        assertEquals(100, (long) player.getCredits());
     }
 }

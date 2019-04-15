@@ -26,6 +26,9 @@ import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.viewmodel.PlayerViewModel;
 
+/**
+ * Activity for player view
+ */
 public class PlayerActivity extends AppCompatActivity implements ActivityDataProvider {
     private PlayerViewModel playerViewModel;
     private ArrayList<SolarSystem> solarSystems;
@@ -53,7 +56,7 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
 
     /**
      * Handles creating player activity
-     * @param savedInstanceState
+     * @param savedInstanceState current saved instance
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
