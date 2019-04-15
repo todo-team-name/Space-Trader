@@ -15,6 +15,10 @@ public class LoginActivity extends AppCompatActivity {
     //private EditText password;
     private LoginViewModel loginViewModel;
 
+    /**
+     * Handles creating LoginActivity
+     * @param savedInstanceState a saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +30,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Loads fragment in LoginActivity
+     * @param fragment the fragment to load
+     */
     private void loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
@@ -36,6 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Logs user in the LoginView
+     * @param view the corresponding Login View
+     */
     public void login(View view) {
         Intent intent = new Intent(this, PlayerActivity.class);
         LoginFragment sellFrag =
@@ -52,10 +64,18 @@ public class LoginActivity extends AppCompatActivity {
         //startActivity(intent);
     }
 
+    /**
+     * Opens Create Account Fragment
+     * @param view the provided view
+     */
     public void openCreateAccount(View view) {
         loadFragment(new CreateAccountFragment());
     }
 
+    /**
+     * Dispatches the create account request from the view model
+     * @param view the provided view
+     */
     public void createAccount(View view) {
         Intent intent = new Intent(this, ConfigurationActivity.class);
         CreateAccountFragment createFrag = (CreateAccountFragment) getSupportFragmentManager().

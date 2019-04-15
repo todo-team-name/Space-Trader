@@ -51,6 +51,10 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
     private static boolean isDrought;
 
 
+    /**
+     * Handles creating player activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +62,9 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         player = (Player) intent.getSerializableExtra("player");
+
         solarSystems = (ArrayList<SolarSystem>) intent.getSerializableExtra("universe");
+
         token = intent.getStringExtra("token");
         SolarSystem currentSolarSystem = solarSystems.get(0);
         currentPlanet = currentSolarSystem.getPlanet(0);
@@ -127,17 +133,33 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         setContentView(newView);
     }*/
 
+    /**
+     * handles loading openBuyMarket fragment
+     * @param view provided view
+     */
     public void openBuyMarket(View view) {
         loadFragment(new Buy_Market_Fragment());
     }
 
+    /**
+     * handles loading openSellMarket fragment
+     * @param view provided view
+     */
     public void openSellMarket(View view) {
         loadFragment(new Sell_Market_Fragment());
     }
 
+    /**
+     * handles loading openChangeSystem fragment
+     * @param view provided view
+     */
     public void openChangeSystem(View view) { loadFragment(new Change_System_Fragment());}
 
 
+    /**
+     * Loads provided fragment
+     * @param fragment the provided fragment
+     */
     private void loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
@@ -148,16 +170,29 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         }
     }
 
+    /**
+     * returns player used in view
+     * @return the player associated with the view
+     */
     @Override
     public Player getPlayer() {
         return player;
     }
 
+
+    /**
+     * returns the player view model associated with the view
+     * @return the view model associated with this view.
+     */
     public PlayerViewModel getPlayerViewModel() {
         return playerViewModel;
     }
 
 
+    /**
+     * Dispatches buyItem actions on the view
+     * @param view the provided view
+     */
     public void buyItem(View view) {
         Buy_Market_Fragment frag =
                 (Buy_Market_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
@@ -204,7 +239,6 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
                 break;
             case R.id.buy_narcotics_plus:
                 playerViewModel.handleBuyItem("NARCOTICS", currentPlanet);
-                //Log.i("Creds", Double.toString(player.getCredits()));
                 frag.updateCredits();
                 frag.updateView(view, R.id.buy_narcotics_display);
                 break;
@@ -217,6 +251,10 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
 
     }
 
+    /**
+     * Dispatches trySellItem actions on the view
+     * @param view the provided view
+     */
     public void trySellItem(View view) {
         Buy_Market_Fragment frag =
                 (Buy_Market_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
@@ -274,6 +312,10 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         }
     }
 
+    /**
+     * Dispatches buyItemSell actions on the view
+     * @param view the provided view
+     */
     public void buyItemSell(View view) {
         Sell_Market_Fragment sellFrag =
                 (Sell_Market_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
@@ -331,6 +373,10 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
         }
     }
 
+    /**
+     * Dispatches sellItemSell actions on the view
+     * @param view the provided view
+     */
     public void sellItemSell(View view) {
         Sell_Market_Fragment sellFrag =
                 (Sell_Market_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragments);
@@ -389,11 +435,20 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
     }
 
 
+    /**
+     * returns planet associated with our current view
+     * @return the associated planet
+     */
     @Override
     public Planet getCurrentPlanet() {
         return currentPlanet;
     }
 
+
+    /**
+     * dispatches changeSystem actions
+     * @param view the provided view
+     */
     public void changeSystem(View view) {
         if (player.getFuelCanisters() > 0) {
             Random random = new Random();
@@ -438,17 +493,28 @@ public class PlayerActivity extends AppCompatActivity implements ActivityDataPro
     }
 
 
+    /**
+     * Handler for the view stopping
+     */
     @Override
     protected void onStop() {
         super.onStop();
         playerViewModel.updateInfo(player, solarSystems, token, this);
     }
 
+    /**
+     * returns if the current planet view shows a drought
+     * @return if there is a drought
+     */
     public static boolean getIsDrought() {
         return isDrought;
     }
 
 
+    /**
+     * returns solar systems in players view
+     * @return an array list of SolarSystem models
+     */
     @Override
     public ArrayList<SolarSystem> getSolarSystems() {
         return solarSystems;

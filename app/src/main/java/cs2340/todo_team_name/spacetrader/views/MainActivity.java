@@ -10,6 +10,10 @@ import cs2340.todo_team_name.spacetrader.viewmodel.NavigationHost;
 
 public class MainActivity extends AppCompatActivity implements NavigationHost {
 
+    /**
+     * Handles creating main activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

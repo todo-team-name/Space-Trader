@@ -29,6 +29,13 @@ public class Status_Fragment extends Fragment {
     private TextView hi;*/
 
 
+    /**
+     * Handles creating the view for our Status_Fragment
+     * @param inflater a layout inflater
+     * @param container a layout container
+     * @param savedInstanceState a saved instance state
+     * @return a created view
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,

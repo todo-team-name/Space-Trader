@@ -15,6 +15,14 @@ import cs2340.todo_team_name.spacetrader.R;
 public class LoginFragment extends Fragment {
     private EditText user;
     private EditText password;
+
+    /**
+     * Handles creating the view for our LoginFragment
+     * @param inflater a layout inflater
+     * @param container a layout container
+     * @param savedInstanceState a saved instance state
+     * @return a created view
+     */
     @Override
     public View onCreateView (@NonNull LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
@@ -49,6 +57,10 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Handles intent for logging in
+     * @param intent intent to modify for logging in
+     */
     public void login(Intent intent) {
         //String username = "";
         //String pass = "";

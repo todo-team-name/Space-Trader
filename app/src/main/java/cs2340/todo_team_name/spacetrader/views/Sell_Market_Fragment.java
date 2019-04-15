@@ -49,7 +49,13 @@ public class Sell_Market_Fragment extends Fragment {
     private TextView robotsDisplay;
 
 
-
+    /**
+     * Handles creating the view for our Sell_Market_Fragment
+     * @param inflater a layout inflater
+     * @param container a layout container
+     * @param savedInstanceState a saved instance state
+     * @return a created view
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -123,6 +129,11 @@ public class Sell_Market_Fragment extends Fragment {
         return view;
     }
 
+    /**
+     * Handles updating the sell market view
+     * @param view the current market view
+     * @param id the id associated with the resource we are selling
+     */
     public void updateView(View view, int id) {
         Inventory currentInventory = player.getInventory();
         switch (id) {
@@ -159,6 +170,9 @@ public class Sell_Market_Fragment extends Fragment {
         }
     }
 
+    /**
+     * Updates player credit text in view
+     */
     public void updateCredits() {
         credits.setText(Double.toString(player.getCredits()));
     }

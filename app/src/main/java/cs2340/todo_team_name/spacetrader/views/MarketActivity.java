@@ -31,6 +31,13 @@ public class MarketActivity extends Fragment {
     private Player player;*/
 
 
+    /**
+     * Handles creating the view for our MarketActivity
+     * @param inflater a layout inflater
+     * @param container a layout container
+     * @param savedInstanceState a saved instance state
+     * @return a created view
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,

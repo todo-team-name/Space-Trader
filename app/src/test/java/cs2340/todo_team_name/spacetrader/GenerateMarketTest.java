@@ -7,7 +7,6 @@ import cs2340.todo_team_name.spacetrader.model.GenerateMarket;
 import cs2340.todo_team_name.spacetrader.enums.ResourceType;
 import cs2340.todo_team_name.spacetrader.enums.Resources;
 import cs2340.todo_team_name.spacetrader.enums.TechLevel;
-import cs2340.todo_team_name.spacetrader.model.Resource;
 
 public class GenerateMarketTest {
     GenerateMarket marketGenerator;
