@@ -29,15 +29,30 @@ import cs2340.todo_team_name.spacetrader.model.Player;
 import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.views.LoginActivity;
 
+/**
+ * View model for login activity
+ */
 public class LoginViewModel extends AndroidViewModel {
 
     private String token = " ";
     private Intent toSend;
     private LoginActivity currentActivity;
+
+    /**
+     *
+     * @param application current application
+     */
     public LoginViewModel (@NonNull Application application) {
         super(application);
     }
 
+    /**
+     * requests to log user in
+     * @param username username entered
+     * @param password password entered
+     * @param act current activity
+     * @param intent intent to be started when logged in
+     */
     public void login_request(String username, String password, LoginActivity act, Intent intent) {
         RequestQueue queue = Volley.newRequestQueue(act);
         toSend = intent;
@@ -85,6 +100,9 @@ public class LoginViewModel extends AndroidViewModel {
         }
     }*/
 
+    /**
+     * gets data to be added to the intent when logged in
+     */
     private void getData() {
         final String finalToken = token;
         RequestQueue queue = Volley.newRequestQueue(currentActivity);
@@ -143,6 +161,11 @@ public class LoginViewModel extends AndroidViewModel {
         queue.add(jsonObjectRequest);
     }
 
+    /**
+     * allows user to create account
+     * @param intent intent to be started
+     * @param act current activity
+     */
     public void createAccountRequest(Intent intent, LoginActivity act) {
         toSend = intent;
         currentActivity = act;

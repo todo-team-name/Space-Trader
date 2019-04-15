@@ -21,6 +21,9 @@ import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.viewmodel.PlayerViewModel;
 import cs2340.todo_team_name.spacetrader.views.ActivityDataProvider;
 
+/**
+ * Fragment for the buy market view
+ */
 public class Buy_Market_Fragment extends Fragment {
     //private ActivityDataProvider activity;
     private TextView credits;
@@ -122,6 +125,11 @@ public class Buy_Market_Fragment extends Fragment {
         return view;
     }
 
+    /**
+     *
+     * @param view current view
+     * @param id id of what to change
+     */
     public void updateView(View view, int id) {
         //Inventory currentInventory = player.getInventory();
         switch (id) {
@@ -158,6 +166,9 @@ public class Buy_Market_Fragment extends Fragment {
         }
     }
 
+    /**
+     * updates the credits in the current view
+     */
     public void updateCredits() {
         credits.setText(Double.toString(player.getCredits()));
     }

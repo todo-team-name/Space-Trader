@@ -23,6 +23,9 @@ import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.viewmodel.PlayerViewModel;
 
+/**
+ * activity for the change system fragment
+ */
 public class Change_System_Fragment extends Fragment {
     //private ActivityDataProvider activity;
     private TextView water;
@@ -104,6 +107,9 @@ public class Change_System_Fragment extends Fragment {
 
     }*/
 
+    /**
+     * updates player's location
+     */
     public void updatePlayerLocation() {
         player.setCurrentSolarSystem(player.getCurrentSolarSystem());
     }

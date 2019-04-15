@@ -11,6 +11,9 @@ import java.lang.reflect.Type;
 import cs2340.todo_team_name.spacetrader.model.BasicMarket;
 import cs2340.todo_team_name.spacetrader.model.Market;
 
+/**
+ * Serializer for market class 
+ */
 class MarketSerializer implements JsonSerializer<Market> {
     @Override
     public JsonElement serialize(Market src, Type typeOfSrc, JsonSerializationContext context) {

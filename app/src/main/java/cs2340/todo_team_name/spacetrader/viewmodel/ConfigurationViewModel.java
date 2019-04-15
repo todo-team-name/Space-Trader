@@ -29,9 +29,16 @@ import cs2340.todo_team_name.spacetrader.views.ConfigurationActivity;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody; */
 
+/**
+ * View model for the configuration activity
+ */
 public class ConfigurationViewModel extends AndroidViewModel {
     //private Player currentPlayer;
 
+    /**
+     *
+     * @param application current application
+     */
     public ConfigurationViewModel (@NonNull Application application) {
         super(application);
     }
@@ -41,6 +48,14 @@ public class ConfigurationViewModel extends AndroidViewModel {
 
     }*/
 
+    /**
+     * Updates info and sends it to the backend db
+     * @param player current player
+     * @param solarSystem collection of solarsystems
+     * @param token current token for player
+     * @param act current activity
+     * @return true of false if successful
+     */
     public boolean updateInfo(Player player, Collection<SolarSystem> solarSystem,
                               final String token, ConfigurationActivity act) {
         //SolarSystem[] solarSystems = new SolarSystem[solarSystem.size()];

@@ -10,6 +10,8 @@ public interface NavigationHost {
     /**
      * Trigger a navigation to the specified fragment, optionally adding a transaction to the back
      * stack to make this navigation reversible.
+     * @param addToBackStack boolean value whether or not to add to stack
+     * @param fragment fragment to add
      */
     void navigateTo(Fragment fragment, boolean addToBackStack);
 }

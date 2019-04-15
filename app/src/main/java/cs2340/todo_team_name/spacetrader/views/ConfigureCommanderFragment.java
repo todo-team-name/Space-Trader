@@ -20,6 +20,9 @@ import cs2340.todo_team_name.spacetrader.R;
 import cs2340.todo_team_name.spacetrader.enums.PointTypes;
 import cs2340.todo_team_name.spacetrader.viewmodel.ConfigurationViewModel;
 
+/**
+ * activity for configure commander fragment
+ */
 public class ConfigureCommanderFragment extends Fragment {
     private ConfigurationViewModel configurationViewModel;
     private static final int MAX_POINTS = 16;
@@ -93,6 +96,10 @@ public class ConfigureCommanderFragment extends Fragment {
         return view;
     } */
 
+    /**
+     *
+     * @param view current view
+     */
     public void createGameState(View view) {
         Log.i("Logged to", "Config Fragment");
         //Player currentPlayer = new Player(pilotName.getText().toString(), pointValues);
@@ -103,6 +110,9 @@ public class ConfigureCommanderFragment extends Fragment {
         Log.i("I would be created here", null);
     }
 
+    /**
+     * updates point display
+     */
     private void updatePointDisplays() {
         pilotDisplay.setText(Integer.toString(pointValues.get(PointTypes.PILOT)));
         engineerDisplay.setText(Integer.toString(pointValues.get(PointTypes.ENGINEER)));
@@ -115,6 +125,10 @@ public class ConfigureCommanderFragment extends Fragment {
 
     }*/
 
+    /**
+     *
+     * @param view current view
+     */
     public void decFighter(View view) {
         if (pointValues.get(PointTypes.FIGHTER) > 0) {
             pointValues.put(PointTypes.FIGHTER, pointValues.get(PointTypes.FIGHTER) - 1);
@@ -123,6 +137,10 @@ public class ConfigureCommanderFragment extends Fragment {
         updatePointDisplays();
     }
 
+    /**
+     *
+     * @param view current view
+     */
     public void incrementValues(View view) {
         if (remPoints > 0) {
             switch (view.getId()){

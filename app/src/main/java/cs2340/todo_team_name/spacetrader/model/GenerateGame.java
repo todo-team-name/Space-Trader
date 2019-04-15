@@ -211,6 +211,12 @@ public class GenerateGame {
         return this.solarSystems;
     }
 
+    /**
+     * generates random planet
+     * @param num current random generator
+     * @param nameInd random name index to use
+     * @return returns randomly generated planet
+     */
     private Planet randomPlanet(Random num, int nameInd) {
         GovernmentType randGov = governmentTypes[num.nextInt(3)];
         TechLevel randTech = techLevels[num.nextInt(8)];

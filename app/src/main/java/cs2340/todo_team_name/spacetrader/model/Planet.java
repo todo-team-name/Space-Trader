@@ -84,7 +84,7 @@ public class Planet implements Serializable {
 
     /**
      * Updates player's market
-     * @param p
+     * @param p current player
      */
     public void updatePlayerMarket(Player p) {
         p.updateMarket(market);

@@ -9,6 +9,9 @@ import cs2340.todo_team_name.spacetrader.enums.TechLevel;
 
 import java.util.Random;
 
+/**
+ * Class for a basic market
+ */
 public class BasicMarket extends Market {
     private double credits;
     private final TechLevel techLevel;
@@ -16,12 +19,22 @@ public class BasicMarket extends Market {
     private final ResourceType resourceType;
     private boolean scaled;
 
+    /**
+     *
+     * @return returns current resource and value mapping
+     */
     public HashMap<Resources, Double> getResources() {
         return resources;
     }
 
     private HashMap<Resources, Double> resources;
 
+    /**
+     * constructor for basic market
+     * @param tech tech level for market
+     * @param gov government type for market
+     * @param res resource type for market
+     */
     public BasicMarket(TechLevel tech, GovernmentType gov, ResourceType res) {
         techLevel = tech;
         governmentType = gov;

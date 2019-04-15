@@ -28,14 +28,27 @@ import cs2340.todo_team_name.spacetrader.model.Player;
 import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.views.PlayerActivity;
 
+/**
+ * Viewmodel for player activity
+ */
 public class PlayerViewModel extends ViewModel {
     private Player player;
 
+    /**
+     *
+     * @param player sets current player
+     */
     public void setPlayer(Player player) {
         this.player = player;
     }
 
     //from point of view of buyer
+
+    /**
+     *
+     * @param res current resource to buy
+     * @param current current planet
+     */
     public void handleBuyItem(String res, Planet current) {
         Resources resource = Resources.valueOf(res);
         current.updatePlayerMarket(player);
@@ -43,12 +56,23 @@ public class PlayerViewModel extends ViewModel {
     }
 
     //From point of view of buyer
+
+    /**
+     *
+     * @param res resource to buy
+     * @param current current planet
+     */
     public void handleSellItem(String res, Planet current) {
         Resources resource = Resources.valueOf(res);
         current.updatePlayerMarket(player);
         player.sell(resource);
     }
-  
+
+    /**
+     *
+     * @param market market to configured map for
+     * @return mapping of resources and their respective string values
+     */
     public HashMap<Resources, String> configureItemMap(Market market) {
         Resources possible[] = Resources.values();
         HashMap<Resources, String> output = new HashMap<>();
@@ -58,11 +82,19 @@ public class PlayerViewModel extends ViewModel {
         }
         return output;
     }
-  
+
+    /**
+     *
+     * @param system solar system to update to
+     */
     public void updateLocation(SolarSystem system) {
         player.setCurrentSolarSystem(system);
     }
 
+    /**
+     *
+     * @param solarSystem solarsystem to set to
+     */
     public void checkSolar(SolarSystem solarSystem) {
         if (player.getCurrentSolarSystem() == null) {
             player.setCurrentSolarSystem(solarSystem);
@@ -70,6 +102,13 @@ public class PlayerViewModel extends ViewModel {
 
     }
 
+    /**
+     * info to update on db
+     * @param player current player
+     * @param solarSystem collection of solarsystems in game
+     * @param token token of player
+     * @param act current activity
+     */
     public void updateInfo(Player player, Collection<SolarSystem> solarSystem,
                            final String token, PlayerActivity act) {
         SolarSystem[] solarSystems = new SolarSystem[solarSystem.size()];
@@ -145,37 +184,79 @@ public class PlayerViewModel extends ViewModel {
         } */
     }
 
+    /**
+     *
+     * @param player current player
+     * @return generated string to display
+     */
     public String hiString(Player player) {
         return "Hi " + player.getName() + ",";
     }
 
+    /**
+     *
+     * @param player current player
+     * @param res resource to convert
+     * @return string value of resource
+     */
     public String playerInventoryString(Player player, Resources res) {
         return player.inventoryString(res);
     }
 
+    /**
+     *
+     * @param player current player
+     * @return string value of solar system
+     */
     public String playerSolarSystemString(Player player) {
         return player.currentSolarSystemToString();
     }
 
+    /**
+     *
+     * @param player current player
+     * @return string value of planet
+     */
     public String playerPlanetString(Player player) {
         return player.currentPlanetToString();
     }
 
+    /**
+     *
+     * @param player current player
+     * @return string value of fuel canister
+     */
     public String fuelCanistersString(Player player) {
         int canisters = player.getFuelCanisters();
         return Integer.toString(canisters);
     }
 
+    /**
+     *
+     * @param player current player
+     * @return string value of credits
+     */
     public String creditsString(Player player) {
         double credits = player.getCredits();
         return "$" + Double.toString(credits);
     }
 
+    /**
+     *
+     * @param player current player
+     * @param pointType point type to convert
+     * @return string value of points
+     */
     public String pointsString(Player player, PointTypes pointType) {
         int points = player.getPoints(pointType);
         return Integer.toString(points);
     }
 
+    /**
+     *
+     * @param solarSystemList collection of current solar systems in game
+     * @return collection of string values for solar systems
+     */
     public List<String> allSolarSystemStrings(List<SolarSystem> solarSystemList) {
         List<String> toReturn = new ArrayList<>();
         for (SolarSystem system: solarSystemList) {

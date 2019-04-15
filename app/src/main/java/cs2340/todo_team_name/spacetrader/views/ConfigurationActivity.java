@@ -26,7 +26,9 @@ import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.viewmodel.ConfigurationViewModel;
 import cs2340.todo_team_name.spacetrader.R;
 
-
+/**
+ * Activity for the configuration view
+ */
 public class ConfigurationActivity extends AppCompatActivity {
     private ConfigurationViewModel configurationViewModel;
     private static final int MAX_POINTS = 16;
@@ -47,6 +49,11 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     //ArrayList here because of argument type of method below in onCreate()
     private  ArrayList<SolarSystem> solist;
+
+    /**
+     *
+     * @return arraylist of solar systems
+     */
     public  ArrayList<SolarSystem> getSolist() {
         return solist;
     }
@@ -88,6 +95,10 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * generates game state when game is configured
+     * @param view current view
+     */
     public void createGameState(View view) {
         Player currentPlayer = new Player(name, pointValues);
         Log.i("name", name);
@@ -111,6 +122,9 @@ public class ConfigurationActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * updates current point dispalys
+     */
     private void updatePointDisplays() {
         Log.i("Logged to", "Config Activity");
         pilotDisplay.setText(Integer.toString(pointValues.get(PointTypes.PILOT)));
@@ -120,6 +134,10 @@ public class ConfigurationActivity extends AppCompatActivity {
         remPointsDisplay.setText(remPoints + "");
     }
 
+    /**
+     *
+     * @param view current view
+     */
     public void decFighter(View view) {
         if (pointValues.get(PointTypes.FIGHTER) > 0) {
             pointValues.put(PointTypes.FIGHTER, pointValues.get(PointTypes.FIGHTER) - 1);
@@ -128,6 +146,10 @@ public class ConfigurationActivity extends AppCompatActivity {
         updatePointDisplays();
     }
 
+    /**
+     * increments appropriate value
+     * @param view current view
+     */
     public void incrementValues(View view) {
         if (remPoints > 0) {
             switch (view.getId()){
@@ -149,6 +171,10 @@ public class ConfigurationActivity extends AppCompatActivity {
         updatePointDisplays();
     }
 
+    /**
+     * decrements appropriate value
+     * @param view current view
+     */
     public void decrementValues(View view) {
 
         if ((view.getId() == R.id.pilotPointsMinus) && (pointValues.get(PointTypes.PILOT) > 0)) {

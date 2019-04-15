@@ -24,7 +24,7 @@ public abstract class Market implements Serializable {
     /**
      *
      * @param resource resource to get price of
-     * @return
+     * @return price of good
      */
     public abstract double getPriceOfGood(Resources resource);
 
