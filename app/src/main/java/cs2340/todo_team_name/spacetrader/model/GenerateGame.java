@@ -11,6 +11,9 @@ import cs2340.todo_team_name.spacetrader.enums.MarketType;
 import cs2340.todo_team_name.spacetrader.enums.ResourceType;
 import cs2340.todo_team_name.spacetrader.enums.TechLevel;
 
+/**
+ * Class that generates the game
+ */
 public class GenerateGame {
     private final String[] nameList =
             {
@@ -148,6 +151,11 @@ public class GenerateGame {
     private int solsCovered;
     private final Colors[] colors;
 
+    /**
+     * constructor for class
+     * @param pilot player object to use to generate games
+     * @param solarSystems randomly generated set of solarsystems
+     */
     public GenerateGame(Player pilot, Set<SolarSystem> solarSystems) {
         this.pilot = pilot;
         this.solarSystems = solarSystems;
@@ -161,7 +169,10 @@ public class GenerateGame {
     }
 
 
-
+    /**
+     * generates set of solarsystems
+     * @return set of generated solarsystems with their respective planets
+     */
     public Set<SolarSystem> generate() {
         Random num = new Random();
         //while(solarSystems.size() <= 10) {

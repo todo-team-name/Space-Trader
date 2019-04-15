@@ -1,7 +1,5 @@
 package cs2340.todo_team_name.spacetrader.model;
 
-import android.util.Log;
-
 import java.util.HashMap;
 
 import cs2340.todo_team_name.spacetrader.enums.GovernmentType;

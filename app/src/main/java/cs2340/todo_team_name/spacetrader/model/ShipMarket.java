@@ -7,6 +7,9 @@ import cs2340.todo_team_name.spacetrader.enums.ResourceType;
 import cs2340.todo_team_name.spacetrader.enums.Resources;
 import cs2340.todo_team_name.spacetrader.enums.TechLevel;
 
+/**
+ * Manages the ship market, subclass of regular market
+ */
 public class ShipMarket extends Market {
     private double credits;
     private final TechLevel techLevel;
@@ -14,6 +17,12 @@ public class ShipMarket extends Market {
     private HashMap<Resources, Double> resources;
     private final ResourceType resourceType;
 
+    /**
+     * Creates a ship market instance
+     * @param tech the tech level of the ship, controls available resources
+     * @param gov the government type of the ship market
+     * @param res the resource type of the ship market
+     */
     public ShipMarket(TechLevel tech, GovernmentType gov, ResourceType res) {
         techLevel = tech;
         governmentType = gov;

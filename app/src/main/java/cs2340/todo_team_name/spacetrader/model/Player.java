@@ -6,8 +6,11 @@ import cs2340.todo_team_name.spacetrader.enums.PointTypes;
 import cs2340.todo_team_name.spacetrader.enums.Resources;
 import java.io.Serializable;
 
+/**
+ * Class for player of game
+ */
 public class Player implements Serializable {
-    /** player name **/
+    // player name //
     private String name;
 
     private final HashMap<PointTypes, Integer> points;
@@ -22,7 +25,8 @@ public class Player implements Serializable {
 
     /**
      * Create a Player with allocated skill points
-     *
+     * @param name name of player
+     * @param points  player's skill points
      */
     public Player (String name, HashMap<PointTypes, Integer> points) {
         this.name = name;
@@ -47,20 +51,35 @@ public class Player implements Serializable {
 //        return (pilotPts + fighterPts + traderPts + engineerPts) == MAX_POINTS;
 //    }
 
-    /** Getters and Setters **/
+    // Getters and Setters //
+    /**
+     * Returns player name
+     * @return player name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets player name
+     * @param name name to change to
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-
+    /**
+     * Returns player inventory
+     * @return player inventory
+     */
     public Inventory getInventory() {
         return inventory;
     }
 
+    /**
+     * Performs player's ability to sell goods
+     * @param resource resource for player to sell
+     */
     public void sell(Resources resource) {
         if (inventory.checkSelling(resource)) {
             //int currentVal = this.inventory.getInventory().get(resource);
@@ -80,8 +99,12 @@ public class Player implements Serializable {
         }
     }
 
+    /**
+     * Performs player's ability to buy goods
+     * @param resource resource for player to purchase
+     */
     public void purchase(Resources resource) {
-        /**if(resource.getScaledValue() > credits) {
+        /*if(resource.getScaledValue() > credits) {
             return "It doesn't seem you can afford " + resource.getName() + "!";
         }
         else {
@@ -92,7 +115,7 @@ public class Player implements Serializable {
             }
             else return "It doesn't seem you have enough room in your inventory!";
 
-        } **/
+        } */
         if (inventory.checkPurchase()) {
             double price = currentMarket.getPriceOfGood(resource);
             if (credits > price) {
@@ -104,22 +127,43 @@ public class Player implements Serializable {
         }
     }
 
+    /**
+     * Updates market for player to use
+     * @param m market to update
+     */
     public void updateMarket(Market m) {
         currentMarket = m;
     }
 
+    /**
+     * Gets player skill point allocation information
+     * @param type type of points allocated
+     * @return type of points
+     */
     public int getPoints(PointTypes type) {
         return points.get(type);
     }
 
+    /**
+     * Returns player's credits
+     * @return player's credits
+     */
     public double getCredits() {
         return credits;
     }
 
+    /**
+     * Returns player's current solar system location
+     * @return player's current SS location
+     */
     public SolarSystem getCurrentSolarSystem() {
         return currentSolarSystem;
     }
 
+    /**
+     * Sets player's current solar system location
+     * @param currentSolarSystem player's current SS location
+     */
     public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
         if (fuelCanisters > 0) {
             this.currentSolarSystem = currentSolarSystem;
@@ -127,31 +171,64 @@ public class Player implements Serializable {
         }
     }
 
+    /**
+     * Returns player's current planet location
+     * @return player's current planet location
+     */
     public Planet getCurrentPlanet() {
         return currentPlanet;
     }
 
+    /**
+     * Sets player's current planet location
+     * @param currentPlanet player's current planet location
+     */
     private void setCurrentPlanet(Planet currentPlanet) {
         this.currentPlanet = currentPlanet;
     }
+
+    /**
+     * Decrements player's fuel inventory after travelling
+     */
     public void useFuel() {
         fuelCanisters--;
     }
 
+    /**
+     * Returns player's current fuel inventory
+     * @return player's current fuel inventory
+     */
     public int getFuelCanisters() {return fuelCanisters;}
 
+    /**
+     * Returns player's current inventory
+     * @param res player's resources
+     * @return player's current inventory
+     */
     public String inventoryString(Resources res) {
         return inventory.resourceToString(res);
     }
 
+    /**
+     * Converts player's current SS location to a string
+     * @return player's current SS location as a string
+     */
     public String currentSolarSystemToString() {
         return currentSolarSystem.toString();
     }
 
+    /**
+     * Converts player's current planet location to a string
+     * @return player's current planet location as a string
+     */
     public String currentPlanetToString() {
         return currentPlanet.toString();
     }
 
+    /**
+     * Shows current market based on player's current location
+     * @return appropriate market
+     */
     public Market currentMarket() {
         return currentPlanet.getMarket();
     }

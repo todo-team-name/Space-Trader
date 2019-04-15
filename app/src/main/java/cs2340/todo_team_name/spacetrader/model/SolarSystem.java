@@ -4,10 +4,17 @@ import java.io.Serializable;
 
 import androidx.annotation.NonNull;
 
+/**
+ * Creates/represents solar system and planet objects
+ */
 public class SolarSystem implements Serializable {
     private final String name;
     private final int[] location;
 
+    /**
+     * Returns current created planets
+     * @return array of planets in game
+     */
     public Planet[] getPlanets() {
         return planets;
     }
@@ -15,6 +22,12 @@ public class SolarSystem implements Serializable {
     private final Planet[] planets;
     private int numPlanets;
 
+    /**
+     * SolarSystem constructor
+     * @param name name of solar system
+     * @param x x-coordinate location of solar system
+     * @param y y-coordinate location of solar system
+     */
     public SolarSystem(String name, int x, int y) {
         location = new int[2];
         planets = new Planet[5];
@@ -24,6 +37,11 @@ public class SolarSystem implements Serializable {
         this.location[1] = y;
     }
 
+    /**
+     * Adds planet to solar system
+     * @param p the planet to add
+     * @return true if successful add, false if invalid addition
+     */
     public boolean addPlanet(Planet p) {
         if (numPlanets < planets.length) {
             planets[numPlanets] = p;
@@ -34,6 +52,11 @@ public class SolarSystem implements Serializable {
         }
     }
 
+    /**
+     * Returns info for specific planet in solar system
+     * @param ind the index of the planet we are looking for
+     * @return the desired planet or null if invalid entry
+     */
     public Planet getPlanet(int ind) {
         if (ind < numPlanets) {
             return planets[ind];
@@ -42,10 +65,18 @@ public class SolarSystem implements Serializable {
         }
     }
 
+    /**
+     * Returns name of solar system
+     * @return name of solar system
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Returns coordinates of solar system's location
+     * @return solar system's coordinates
+     */
     public String getCord() {
         return "(" + this.location[0] + ", " + this.location[1] + ")";
     }

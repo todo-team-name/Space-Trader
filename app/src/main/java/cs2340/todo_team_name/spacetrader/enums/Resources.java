@@ -1,7 +1,5 @@
 package cs2340.todo_team_name.spacetrader.enums;
 
-import android.util.Log;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
