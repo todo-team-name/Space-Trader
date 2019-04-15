@@ -29,7 +29,7 @@ import cs2340.todo_team_name.spacetrader.model.SolarSystem;
 import cs2340.todo_team_name.spacetrader.views.PlayerActivity;
 
 /**
- * Viewmodel for player activity
+ * View model for player activity
  */
 public class PlayerViewModel extends ViewModel {
     private Player player;
@@ -93,7 +93,7 @@ public class PlayerViewModel extends ViewModel {
 
     /**
      *
-     * @param solarSystem solarsystem to set to
+     * @param solarSystem solar system to set to
      */
     public void checkSolar(SolarSystem solarSystem) {
         if (player.getCurrentSolarSystem() == null) {
@@ -105,7 +105,7 @@ public class PlayerViewModel extends ViewModel {
     /**
      * info to update on db
      * @param player current player
-     * @param solarSystem collection of solarsystems in game
+     * @param solarSystem collection of solar systems in game
      * @param token token of player
      * @param act current activity
      */

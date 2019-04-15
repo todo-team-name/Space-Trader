@@ -17,8 +17,8 @@ public class GenerateMarket implements Serializable {
 
     /**
      *
-     * @param t techlevel of the market
-     * @param r resourcetype of the market
+     * @param t tech level of the market
+     * @param r resource type of the market
      */
     public GenerateMarket(TechLevel t, ResourceType r) {
         techLevel = t;
@@ -27,7 +27,7 @@ public class GenerateMarket implements Serializable {
 
     /**
      * generates market's goods and respective prices
-     * @return returns the hashmap the market uses for values of goods
+     * @return returns the hash map the market uses for values of goods
      */
     public HashMap<Resources, Double> generate() {
         HashMap<Resources, Double> res = new HashMap<>();

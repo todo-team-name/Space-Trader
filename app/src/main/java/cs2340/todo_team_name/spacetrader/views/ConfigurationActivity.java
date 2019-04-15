@@ -52,7 +52,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     /**
      *
-     * @return arraylist of solar systems
+     * @return array list of solar systems
      */
     public  ArrayList<SolarSystem> getSolist() {
         return solist;
@@ -123,7 +123,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     /**
-     * updates current point dispalys
+     * updates current point displays
      */
     private void updatePointDisplays() {
         Log.i("Logged to", "Config Activity");

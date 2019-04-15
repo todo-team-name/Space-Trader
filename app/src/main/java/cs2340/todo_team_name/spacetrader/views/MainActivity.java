@@ -21,16 +21,16 @@ public class MainActivity extends AppCompatActivity implements NavigationHost {
      * Navigate to the given fragment.
      *
      * @param fragment       Fragment to navigate to.
-     * @param addToBackstack Whether or not the current fragment should be added to the backstack.
+     * @param addToBackStack Whether or not the current fragment should be added to the back stack.
      */
     @Override
-    public void navigateTo(Fragment fragment, boolean addToBackstack) {
+    public void navigateTo(Fragment fragment, boolean addToBackStack) {
         FragmentTransaction transaction =
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.container, fragment);
 
-        if (addToBackstack) {
+        if (addToBackStack) {
             transaction.addToBackStack(null);
         }
 

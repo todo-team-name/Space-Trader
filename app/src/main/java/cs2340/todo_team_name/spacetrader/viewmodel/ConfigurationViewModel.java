@@ -51,7 +51,7 @@ public class ConfigurationViewModel extends AndroidViewModel {
     /**
      * Updates info and sends it to the backend db
      * @param player current player
-     * @param solarSystem collection of solarsystems
+     * @param solarSystem collection of solar systems
      * @param token current token for player
      * @param act current activity
      * @return true of false if successful
